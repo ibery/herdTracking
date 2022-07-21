@@ -22,7 +22,16 @@ class TabBarController: UITabBarController {
         guard let myWorksViewController = Storyboard.myWorks.viewController else {return}
         myWorksViewController.tabBarItem = TabBarItems.myWorks.tabBarItem
         
-        self.setViewControllers([homeViewController , myWorksViewController], animated: false)
+        guard let addCowViewController = Storyboard.addCow.viewController else {return}
+        addCowViewController.tabBarItem = TabBarItems.addCow.tabBarItem
+        
+        guard let notificationViewController = Storyboard.notification.viewController else {return}
+        notificationViewController.tabBarItem = TabBarItems.notification.tabBarItem
+        
+        guard let feedViewController = Storyboard.feed.viewController else {return}
+        feedViewController.tabBarItem = TabBarItems.feed.tabBarItem
+        
+        self.setViewControllers([homeViewController , myWorksViewController , addCowViewController , notificationViewController , feedViewController], animated: false)
     }
     
     // MARK: - Setup
