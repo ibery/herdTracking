@@ -8,27 +8,58 @@
 import UIKit
 import RealmSwift
 
-struct CowViewModel {
+class CowViewModel {
     let realm = try! Realm()
-    var cows = Results<CowModel>?.self
+    var alert = Funcs()
+    var cows : Results<CowModel>?
+    var status = false
 
     
     func addCow (cow : CowModel){
-        do{
-            try realm.write{
-                realm.add(cow)
+        
+        if checkIfThereIsCow(earRing: cow.earTag){
+            alert.alerts(title: C.title, message: C.messageThereIsCow)
+        }else{
+            if checkIfThereIsColler(collarNumber: cow.collarNumber){
+                alert.alerts(title: C.title, message: C.MessageTehereIsCollar)
+            }else{
+                do{
+                    try realm.write{
+                        realm.add(cow)
+                    }
+                }catch{
+                    print("Error saving cow\(error.localizedDescription)")
+                    alert.alerts(title: C.title, message: C.filedToRegister)
+                }
             }
-        }catch{
-            print("Error saving cow\(error.localizedDescription)")
-            // alert message eklenecek
+
         }
     }
     
-    mutating func checkIfThereIsCow ( earRing : String) -> Bool {
+     func checkIfThereIsCow ( earRing : String) -> Bool {
         
         let cow = realm.objects(CowModel.self)
+        status = false
         
-        
-        return true
+        for c in cow {
+            if c.earTag == earRing {
+                status = true
+                break
+            }
+        }
+        return status
+    }
+    
+    func checkIfThereIsColler ( collarNumber : Int) -> Bool {
+        let cow = realm.objects(CowModel.self)
+        status = false
+   
+        for c in cow{
+            if c.collarNumber == collarNumber {
+                status = true
+                break
+            } 
+        }
+        return status
     }
 }
