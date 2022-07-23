@@ -20,7 +20,7 @@ class CowViewModel {
         if checkIfThereIsCow(earRing: cow.earTag){
             alert.alerts(title: C.title, message: C.messageThereIsCow)
         }else{
-            if checkIfThereIsColler(collarNumber: cow.collarNumber){
+            if checkIfThereIsColler(leashNumber: cow.leashNumber){
                 alert.alerts(title: C.title, message: C.MessageTehereIsCollar)
             }else{
                 do{
@@ -50,12 +50,12 @@ class CowViewModel {
         return status
     }
     
-    func checkIfThereIsColler ( collarNumber : Int) -> Bool {
+    func checkIfThereIsColler ( leashNumber : Int) -> Bool {
         let cow = realm.objects(CowModel.self)
         status = false
    
         for c in cow{
-            if c.collarNumber == collarNumber {
+            if c.leashNumber == leashNumber {
                 status = true
                 break
             } 

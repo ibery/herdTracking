@@ -61,8 +61,12 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         let c3 = NSUIColor(hex: 0x35012C)
         let c4 = NSUIColor(hex: 0x290025)
         let c5 = NSUIColor(hex: 0x11001C)
+        let c6 = NSUIColor(hex: 0x21001C)
+        let c7 = NSUIColor(hex: 0x31001C)
+        let c8 = NSUIColor(hex: 0x41001C)
+        let c9 = NSUIColor(hex: 0x51001C)
         
-        dataSet.colors = [c1,c2,c3,c4,c5]
+        dataSet.colors = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
         dataSet.drawValuesEnabled = false
         
         pieView.data = PieChartData(dataSet: dataSet)
