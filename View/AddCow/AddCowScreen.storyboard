@@ -16,87 +16,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lightBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fPF-A9-MCL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYo-eG-ORx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYo-eG-ORx">
-                                <rect key="frame" x="0.0" y="39" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fPF-A9-MCL">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFT-JN-EoM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Küpe No" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fsX-Dn-SPo">
-                                                <rect key="frame" x="45" y="67" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tasma No" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KgO-bg-fwt">
-                                                <rect key="frame" x="45" y="136" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Doğum Tarihi" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gah-Ha-HKd">
-                                                <rect key="frame" x="45" y="198" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="isim" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8D-Qb-OgO">
-                                                <rect key="frame" x="45" y="321" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grup no" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vg4-wA-kqw">
-                                                <rect key="frame" x="45" y="381" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qQf-td-xQG">
-                                                <rect key="frame" x="45" y="267" width="332" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="Dişi"/>
-                                                    <segment title="Erkek"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbo-2o-g0o">
-                                                <rect key="frame" x="0.0" y="433" width="414" height="108"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </pickerView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqg-eY-eXh">
-                                                <rect key="frame" x="289" y="565" width="49" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mıknatıs Yutturuldu mu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-Fu-EVg">
-                                                <rect key="frame" x="63" y="565" width="176" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Laktasyon Sayısı" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VIt-kP-HaK">
-                                                <rect key="frame" x="45" y="635" width="332" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-Lc-32L">
+                                                <rect key="frame" x="42.5" y="40" width="329.5" height="1118"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Küpe No" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fsX-Dn-SPo">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tasma No" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KgO-bg-fwt" userLabel="leashNumber">
+                                                        <rect key="frame" x="0.0" y="66" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Doğum Tarihi" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gah-Ha-HKd" userLabel="dateOfBirth">
+                                                        <rect key="frame" x="0.0" y="132" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qQf-td-xQG" userLabel="Gender">
+                                                        <rect key="frame" x="0.0" y="198" width="329.5" height="32"/>
+                                                        <segments>
+                                                            <segment title="Dişi"/>
+                                                            <segment title="Erkek"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="genderControlTapped:" destination="Y6W-OH-hqX" eventType="valueChanged" id="m98-Bl-zif"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="isim" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8D-Qb-OgO" userLabel="cowName">
+                                                        <rect key="frame" x="0.0" y="261" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grup no" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vg4-wA-kqw" userLabel="groupNo">
+                                                        <rect key="frame" x="0.0" y="327" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbo-2o-g0o" userLabel="cowBreed">
+                                                        <rect key="frame" x="0.0" y="393" width="329.5" height="216"/>
+                                                    </pickerView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="lkx-Zz-7ox">
+                                                        <rect key="frame" x="0.0" y="641" width="329.5" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mıknatıs Yutturuldu mu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-Fu-EVg" userLabel="magnet">
+                                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqg-eY-eXh">
+                                                                <rect key="frame" x="280.5" y="0.0" width="51" height="31"/>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Laktasyon Sayısı" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VIt-kP-HaK" userLabel="numberOfLactations">
+                                                        <rect key="frame" x="0.0" y="704" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Son Buzağılama Tarihi" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0q8-4E-f3x" userLabel="lastCalvingDate">
+                                                        <rect key="frame" x="0.0" y="770" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kuruya Çıkma Tarihi" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oge-NY-aBG" userLabel="dryOffDate">
+                                                        <rect key="frame" x="0.0" y="836" width="329.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tz0-wx-irr" userLabel="reproductiveStatus">
+                                                        <rect key="frame" x="0.0" y="902" width="329.5" height="216"/>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ozg-Lc-32L" firstAttribute="centerX" secondItem="vFT-JN-EoM" secondAttribute="centerX" id="h27-kb-TfM"/>
+                                            <constraint firstItem="ozg-Lc-32L" firstAttribute="top" secondItem="vFT-JN-EoM" secondAttribute="top" constant="40" id="wz9-DW-mq8"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="trailing" secondItem="1Ae-Ox-fku" secondAttribute="trailing" id="Cgw-fc-fvT"/>
+                                    <constraint firstItem="fPF-A9-MCL" firstAttribute="bottom" secondItem="KJR-qj-a9J" secondAttribute="bottom" id="FN2-FO-G2s"/>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="leading" secondItem="1Ae-Ox-fku" secondAttribute="leading" id="FY4-PJ-TFi"/>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="height" secondItem="KJR-qj-a9J" secondAttribute="height" priority="250" id="JiL-2n-pPn"/>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="top" secondItem="1Ae-Ox-fku" secondAttribute="top" id="LNR-bO-aVv"/>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="width" secondItem="KJR-qj-a9J" secondAttribute="width" id="Mu2-ky-WyW"/>
+                                    <constraint firstItem="fPF-A9-MCL" firstAttribute="leading" secondItem="KJR-qj-a9J" secondAttribute="leading" id="S4a-bE-Mad"/>
+                                    <constraint firstItem="fPF-A9-MCL" firstAttribute="top" secondItem="KJR-qj-a9J" secondAttribute="top" id="azf-Hb-SNo"/>
+                                    <constraint firstItem="fPF-A9-MCL" firstAttribute="trailing" secondItem="KJR-qj-a9J" secondAttribute="trailing" id="evY-kh-6Q7"/>
                                     <constraint firstItem="vFT-JN-EoM" firstAttribute="bottom" secondItem="1Ae-Ox-fku" secondAttribute="bottom" id="jor-7V-pbx"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="1Ae-Ox-fku"/>
@@ -106,6 +129,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="ScrollView" destination="JYo-eG-ORx" id="SKl-E5-Tif"/>
+                        <outlet property="breedPicker" destination="Mbo-2o-g0o" id="agO-52-e7N"/>
+                        <outlet property="cowName" destination="k8D-Qb-OgO" id="0yr-7G-cvH"/>
+                        <outlet property="dateOfBirth" destination="gah-Ha-HKd" id="pez-nT-OX3"/>
+                        <outlet property="earringNumber" destination="fsX-Dn-SPo" id="jT8-uF-KfA"/>
+                        <outlet property="genderControl" destination="qQf-td-xQG" id="41E-WS-mYe"/>
+                        <outlet property="groupNo" destination="Vg4-wA-kqw" id="f8X-p0-NxU"/>
+                        <outlet property="leashNumberEditText" destination="KgO-bg-fwt" id="veo-W1-h6s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

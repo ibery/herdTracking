@@ -10,7 +10,6 @@ import RealmSwift
 
 class CowViewModel {
     let realm = try! Realm()
-    var alert = Funcs()
     var cows : Results<CowModel>?
     var status = false
 
@@ -18,10 +17,10 @@ class CowViewModel {
     func addCow (cow : CowModel){
         
         if checkIfThereIsCow(earRing: cow.earTag){
-            alert.alerts(title: C.title, message: C.messageThereIsCow)
+            UIWindow.showAlert(title: Constants.title, message: Constants.messageThereIsCow)
         }else{
             if checkIfThereIsColler(leashNumber: cow.leashNumber){
-                alert.alerts(title: C.title, message: C.MessageTehereIsCollar)
+                UIWindow.showAlert(title: Constants.title, message: Constants.MessageTehereIsCollar)
             }else{
                 do{
                     try realm.write{
@@ -29,7 +28,7 @@ class CowViewModel {
                     }
                 }catch{
                     print("Error saving cow\(error.localizedDescription)")
-                    alert.alerts(title: C.title, message: C.filedToRegister)
+                    UIWindow.showAlert(title: Constants.title, message: Constants.filedToRegister)
                 }
             }
 

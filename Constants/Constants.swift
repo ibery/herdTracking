@@ -7,7 +7,7 @@
 
 
 
-struct C {
+struct Constants {
     static let messageThereIsCow = "Eklemek istediğiniz Küpe numarası daha önceden eklenmiş !"
     static let MessageTehereIsCollar = "Eklemek istediğiniz Tasma  numarası daha önceden eklenmiş !"
     static let title = " Uyarı !"
