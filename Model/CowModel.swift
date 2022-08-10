@@ -26,5 +26,7 @@ class CowModel : Object {
     @Persisted var reproductiveStatus: ReproductiveStatus?
     let inseminations = List<InseminationModel>()
     
+   
+    
 }
 

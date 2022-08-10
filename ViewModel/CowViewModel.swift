@@ -12,7 +12,7 @@ class CowViewModel {
     let realm = try! Realm()
     var cows : Results<CowModel>?
     var status = false
-
+    
     
     func addCowControl (cow : CowModel){
         
@@ -23,12 +23,13 @@ class CowViewModel {
                 if checkIfThereIsColler(leashNumber: checkIfTehereIsLeashNumber){
                     UIWindow.showAlert(title: Constants.title, message: Constants.MessageTehereIsCollar)
                 }else{
-                    addCow(cow: cow)
+                    cowTextFieldControl(cow: cow)
+                    
                 }
             }else{
-                addCow(cow: cow)
+                cowTextFieldControl(cow: cow)
             }
-
+            
         }
     }
     
@@ -44,18 +45,28 @@ class CowViewModel {
     }
     
     func cowTextFieldControl(cow : CowModel){
-        kupe
-        dogum tarihi
-        hayvan ırkı
-        cinsiyet
+        
+        if cow.earTag == nil{
+            UIWindow.showAlert(title: Constants.title, message: Constants.earRing)
+        }else{
+            if cow.dateOfBirth == nil{
+                UIWindow.showAlert(title: Constants.title, message: Constants.birthOfDate)
+            }else{
+                if cow.gender == nil {
+                    UIWindow.showAlert(title: Constants.title, message: Constants.gender)
+                }else{
+                    addCow(cow: cow)
+                }
+            }
+        }
         
     }
     
-     func checkIfThereIsCow ( earRing : String) -> Bool {
+    func checkIfThereIsCow ( earRing : String) -> Bool {
         
         let cow = realm.objects(CowModel.self)
         status = false
-
+        
         for c in cow {
             if c.earTag == earRing {
                 status = true

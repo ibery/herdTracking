@@ -22,6 +22,7 @@ class AddCowViewController : BaseViewController {
 
     
     // MARK: - Properties
+    var cowViewModel = CowViewModel()
     var cowModel = CowModel()
     let datePicker = UIDatePicker()
     var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
@@ -82,9 +83,8 @@ class AddCowViewController : BaseViewController {
     // MARK: - Actions
 
     @IBAction func saveCow(_ sender: UIButton) {
-        if earringNumber.text == nil {
-            UIWindow.showAlert(title: Constants.title, message: Constants.earRing)
-        }
+        
+        cowViewModel.cowTextFieldControl(cow: <#T##CowModel#>)
     }
     
     
