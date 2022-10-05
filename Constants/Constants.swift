@@ -16,4 +16,12 @@ struct Constants {
     static let birthOfDate = "Doğum Tarihi Boş Bırakılamaz !"
     static let gender = "Cinsiyet Boş Bırakılamaz !"
     
+    struct CollectionViewCell {
+        static let cell = "manuCollectionViewCell"
+    }
+    
+    struct CollectionView{
+        static let homeCollectionViewCell = "MenuCollectionViewCell"
+    }
+    
 }
