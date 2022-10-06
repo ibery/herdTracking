@@ -10,6 +10,9 @@ import UIKit
 enum TabBarItems: Int {
     case home
     case myWorks
+    case addCow
+    case notification
+    case feed
     
     var title: String{
         switch self {
@@ -17,6 +20,12 @@ enum TabBarItems: Int {
             return "Home"
         case .myWorks:
             return "My Works"
+        case .addCow:
+            return "Add Cow"
+        case .notification:
+            return "Notifications"
+        case .feed:
+            return "Feed"
         }
     }
     
@@ -26,6 +35,12 @@ enum TabBarItems: Int {
             return Images.barn.image
         case .myWorks:
             return Images.myWorks.image
+        case .addCow:
+            return Images.cowAdd.image
+        case .notification:
+            return Images.notification.image
+        case .feed:
+            return Images.feed.image
         }
     }
     

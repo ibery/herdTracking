@@ -11,6 +11,9 @@ enum Images: Int{
     case cow
     case barn
     case myWorks
+    case cowAdd
+    case notification
+    case feed
     
     
     var imageName: String {
@@ -21,6 +24,12 @@ enum Images: Int{
             return "barn"
         case .myWorks:
             return "myWorks"
+        case .cowAdd:
+            return "plus"
+        case .notification:
+            return "notification"
+        case .feed:
+            return "feed"
         
         }
     }

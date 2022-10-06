@@ -15,7 +15,5 @@ class InseminationModel : Object {
     @objc dynamic var bullName : String = ""
     @objc dynamic var inseminationDate : String = ""
     var parentCow = LinkingObjects(fromType: CowModel.self, property: "inseminations")
-    
-    
-    
+        
 }

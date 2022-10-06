@@ -12,6 +12,9 @@ enum Storyboard : Int {
     case home
     case myWorks
     case splash
+    case addCow
+    case notification
+    case feed
     
     
     var name : String {
@@ -22,6 +25,12 @@ enum Storyboard : Int {
             return "MyWorks"
         case .splash:
             return "Splash"
+        case .addCow:
+            return "AddCow"
+        case .notification:
+            return "Notification"
+        case .feed:
+            return "Feed"
         }
         
     }
