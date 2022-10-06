@@ -24,4 +24,12 @@ struct Constants {
         static let homeCollectionViewCell = "MenuCollectionViewCell"
     }
     
+    struct TableView{
+        static let menuTableViewCell = "MenuTableViewCell"
+    }
+    
+    struct TableViewCell{
+        static let menuTableViewCell = "MenuCell"
+    }
+    
 }

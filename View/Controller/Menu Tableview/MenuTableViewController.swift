@@ -12,6 +12,8 @@ class MenuTableViewController : BaseViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var menuTableView: UITableView!
     
     // MARK: - Life cycle
     override func viewDidLoad() {

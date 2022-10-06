@@ -8,7 +8,12 @@
 import UIKit
 
 class MenuTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var ImageCell: UIImageView!
+    @IBOutlet weak var earTagLabel: UILabel!
+    @IBOutlet weak var cowNameLabel: UILabel!
+    @IBOutlet weak var reproductiveStatusLabel: UILabel!
+    @IBOutlet weak var dayCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

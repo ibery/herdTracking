@@ -38,6 +38,10 @@
                             <constraint firstItem="4Ey-Nu-tOP" firstAttribute="top" secondItem="ZKl-u9-cTm" secondAttribute="bottom" constant="10" id="xMI-9a-0BC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="4Ey-Nu-tOP" id="tJo-Mj-hYZ"/>
+                        <outlet property="searchTextField" destination="ZKl-u9-cTm" id="bpi-WR-jFo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
