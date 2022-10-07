@@ -15,6 +15,7 @@ enum Storyboard : Int {
     case addCow
     case notification
     case feed
+    case menu
     
     
     var name : String {
@@ -31,6 +32,8 @@ enum Storyboard : Int {
             return "Notification"
         case .feed:
             return "Feed"
+        case .menu:
+            return "MenuTableView"
         }
         
     }

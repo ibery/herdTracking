@@ -14,10 +14,13 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     // MARK: - Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var pieView: PieChartView!
-    var pieChart = PieChartView() // pie graphs
+    private var pieChart = PieChartView() // pie graphs
     
-  let collectionViewItemArray = ["erkekler","tohumlanabilir","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","tumHayvanlar"]
-  
+    
+    
+    
+    private let collectionViewItemArray = ["erkekler","tohumlanabilir","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","tumHayvanlar"]
+    
     
     
     // MARK: - Life cycle
@@ -31,9 +34,9 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      
+        navigationController?.navigationBar.isHidden = true
         setupPieChart()
-
+        
     }
     
     
@@ -47,7 +50,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         //pieView.rotationEnabled = false
         //pieView.isUserInteractionEnabled = false
         
-       // pieView.legend.enabled = false
+        // pieView.legend.enabled = false
         
         var entries: [PieChartDataEntry] = Array()
         entries.append(PieChartDataEntry(value: 50.0,label: "Gebe"))
@@ -61,7 +64,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         entries.append(PieChartDataEntry(value: 80.0,label: "Erkekler"))
         
         let dataSet = PieChartDataSet(entries: entries , label: "")
-       
+        
         let c1 = NSUIColor(hex: 0x3A015C)
         let c2 = NSUIColor(hex: 0x4F0147)
         let c3 = NSUIColor(hex: 0x35012C)
@@ -84,7 +87,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     //MARK: - Methods
     
 }
- 
+
 extension HomeViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewItemArray.count
@@ -106,9 +109,13 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
         return CGSize(width: width, height: height)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+            guard let viewController = self.getViewController(fromStoryboard: .menu, type: MenuTableViewController.self) else {return}
+            
+            viewController.filter = collectionViewItemArray[indexPath.row]
+            self.navigationController?.show(viewController, sender: nil)
+        }
     
     
 }
