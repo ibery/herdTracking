@@ -21,7 +21,7 @@ enum ReproductiveStatus: Int , PersistableEnum {
     var name : String {
         switch self{
         case .yasiKucuk:
-            return "Yaşı Küçük"
+            return "Buzağı"
         case .Taze:
             return "Taze"
         case .Tohumlanmış:
@@ -45,3 +45,4 @@ enum ReproductiveStatus: Int , PersistableEnum {
         return name
     }
 }
+
