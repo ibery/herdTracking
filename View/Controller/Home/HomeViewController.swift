@@ -46,11 +46,12 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     func setupPieChart(){
         pieView.chartDescription.enabled = false
         pieView.drawHoleEnabled = false
+        
         pieView.rotationAngle = 0
-        //pieView.rotationEnabled = false
+       // pieView.rotationEnabled = false
         //pieView.isUserInteractionEnabled = false
         
-        // pieView.legend.enabled = false
+      //   pieView.legend.enabled = false
         
         var entries: [PieChartDataEntry] = Array()
         entries.append(PieChartDataEntry(value: 50.0,label: "Gebe"))

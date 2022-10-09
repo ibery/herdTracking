@@ -27,7 +27,7 @@ class CowViewModel {
         }
         
         if status{
-            UIWindow.showAlert(title: Constants.title, message: Constants.messageThereIsCow)
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
         }else{
             checkIfThereIsColler(cowColler: cowCheck)
         }
@@ -46,7 +46,7 @@ class CowViewModel {
             }
         }
         if status{
-            UIWindow.showAlert(title: Constants.title, message: Constants.MessageTehereIsCollar)
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
         }else{
             cowTextFieldControl(cowTextField : cowColler)
         }
@@ -55,13 +55,13 @@ class CowViewModel {
     private func cowTextFieldControl(cowTextField : CowModel){
         
         if cowTextField.earTag == ""{
-            UIWindow.showAlert(title: Constants.title, message: Constants.earRing)
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earRing)
         }else{
             if cowTextField.dateOfBirth == ""{
-                UIWindow.showAlert(title: Constants.title, message: Constants.birthOfDate)
+                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
             }else{
                 if cowTextField.gender == "" {
-                    UIWindow.showAlert(title: Constants.title, message: Constants.gender)
+                    UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.gender)
                 }else{
                     addCow(cowAdd : cowTextField)
                 }
@@ -76,7 +76,7 @@ class CowViewModel {
             }
         }catch{
             print("Error saving cow\(error.localizedDescription)")
-            UIWindow.showAlert(title: Constants.title, message: Constants.filedToRegister)
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
         }
     }
     
