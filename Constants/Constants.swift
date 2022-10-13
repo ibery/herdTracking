@@ -19,20 +19,23 @@ struct Constants {
     }
 
     
-    struct CollectionViewCell {
+    struct CollectionView{
+        static let homeCollectionView = "MenuCollectionViewCell"
         static let cell = "manuCollectionViewCell"
     }
     
-    struct CollectionView{
-        static let homeCollectionViewCell = "MenuCollectionViewCell"
-    }
-    
     struct TableView{
-        static let menuTableViewCell = "MenuTableViewCell"
+        static let menuTableView = "MenuTableViewCell"
+        static let cell = "MenuCell"
     }
     
-    struct TableViewCell{
-        static let menuTableViewCell = "MenuCell"
+ 
+    
+    struct Arrays{
+       static var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
+     //   var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
+        // dizi veri tabanına kayıt edilecek ırklar veri tabanından çekilecek
+       static var genderArray = ["Dişi","Erkek"]
     }
     
 }

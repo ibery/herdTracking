@@ -25,7 +25,7 @@ class MenuTableViewController : BaseViewController {
         super.viewDidLoad()
         menuTableView.delegate = self
         menuTableView.dataSource = self
-        self.menuTableView.register(UINib(nibName: Constants.TableView.menuTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.TableViewCell.menuTableViewCell)
+        self.menuTableView.register(UINib(nibName: Constants.TableView.menuTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.cell)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,13 +51,22 @@ extension MenuTableViewController : UITableViewDelegate , UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCell.menuTableViewCell , for: indexPath) as? MenuTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.cell , for: indexPath) as? MenuTableViewCell else {return UITableViewCell()}
      //   cell.ImageCell.image = UIImage(named: cows[indexPath.row])
         cell.cowNameLabel.text = cows[indexPath.row].cowName
         cell.earTagLabel.text = cows[indexPath.row].earTag
         cell.reproductiveStatusLabel.text = cows[indexPath.row].reproductiveStatus?.name
         cell.dayCountLabel.text = ""
         return cell 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}
+        viewController.cow = cows[indexPath.row]
+        self.navigationController?.show(viewController, sender: nil)
+        
+//        guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}
+//        self.navigationController?.show(viewController, sender: nil)
     }
     
     

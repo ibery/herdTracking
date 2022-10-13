@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 class InseminationModel : Object {
-    
+    // tohumlamanın id si olacak mı 
     @objc dynamic var cowTag : String = ""
     @objc dynamic var inseminatedPerson : String = ""
     @objc dynamic var bullName : String = ""

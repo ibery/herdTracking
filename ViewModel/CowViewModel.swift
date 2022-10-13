@@ -80,4 +80,8 @@ class CowViewModel {
         }
     }
     
+    func tableViewFilter(){
+        
+    }
+    
 }

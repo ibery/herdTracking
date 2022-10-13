@@ -23,10 +23,10 @@ class AddCowViewController : BaseViewController {
     
     var cowViewModel = CowViewModel()
     let datePicker = UIDatePicker()
-    var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
-    var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
+//    var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
+ //   var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
     // dizi veri tabanına kayıt edilecek ırklar veri tabanından çekilecek
-    var genderArray = ["Dişi","Erkek"]
+//    var genderArray = ["Dişi","Erkek"]
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let reproductiveStatusPickerView = UIPickerView()
@@ -37,12 +37,16 @@ class AddCowViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
-        createBreeedPickerView()
-        createGenderPickerView()
-        createReproductiveStatusPicderView()
-        gender.text = genderArray[0]
-        cowBreed.text = cowBreedArray[0]
-        reproductiveStatus.text = reproductiveStatusArray[0]
+//        createBreeedPickerView()
+//        createGenderPickerView()
+//        createReproductiveStatusPicderView()
+        createPickerView(textField: gender, pickerView: genderPickerView)
+        createPickerView(textField: reproductiveStatus, pickerView: reproductiveStatusPickerView)
+        createPickerView(textField: cowBreed, pickerView: breedPickerView)
+        gender.text = Constants.Arrays.genderArray[0]
+        cowBreed.text = Constants.Arrays.cowBreedArray[0]
+        reproductiveStatus.text = ReproductiveStatus(rawValue: 0)!.name
+    
         
     }
     
@@ -66,32 +70,38 @@ class AddCowViewController : BaseViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         datePicker.preferredDatePickerStyle = .wheels
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneButtonClicked))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(cancelButtonClicked))
-        toolbar.setItems([doneButton,.flexibleSpace() ,cancelButton], animated: true)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneButtonClicked))
+        toolbar.setItems([cancelButton,.flexibleSpace() ,doneButton], animated: true)
         dateOfBirth.inputAccessoryView = toolbar
         dateOfBirth.inputView = datePicker
         datePicker.datePickerMode = .date
     }
     
-    func createBreeedPickerView(){
-        cowBreed.inputView = breedPickerView
-        breedPickerView.delegate = self
-        breedPickerView.dataSource = self
+    func createPickerView(textField : UITextField , pickerView : UIPickerView){
+        textField.inputView = pickerView
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
-    func createGenderPickerView(){
-        gender.inputView = genderPickerView
-        genderPickerView.delegate = self
-        genderPickerView.dataSource = self
-        
-    }
-    
-    func createReproductiveStatusPicderView(){
-        reproductiveStatus.inputView = reproductiveStatusPickerView
-        reproductiveStatusPickerView.delegate = self
-        reproductiveStatusPickerView.dataSource = self
-    }
+//    func createBreeedPickerView(){
+//        cowBreed.inputView = breedPickerView
+//        breedPickerView.delegate = self
+//        breedPickerView.dataSource = self
+//    }
+//
+//    func createGenderPickerView(){
+//        gender.inputView = genderPickerView
+//        genderPickerView.delegate = self
+//        genderPickerView.dataSource = self
+//
+//    }
+//
+//    func createReproductiveStatusPicderView(){
+//        reproductiveStatus.inputView = reproductiveStatusPickerView
+//        reproductiveStatusPickerView.delegate = self
+//        reproductiveStatusPickerView.dataSource = self
+//    }
     
     // MARK: - Actions
     
@@ -136,29 +146,44 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerView == breedPickerView ? cowBreedArray.count : genderArray.count
+        if pickerView == breedPickerView{
+            return Constants.Arrays.cowBreedArray.count
+        }else if pickerView == genderPickerView{
+            return Constants.Arrays.genderArray.count
+        }else {
+            //return reproductiveStatusArray.count
+            return ReproductiveStatus.allCases.count
+        }
+     //   return pickerView == breedPickerView ? cowBreedArray.count : genderArray.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerView == breedPickerView ? cowBreedArray[row] : genderArray[row]
+        
+        if pickerView == breedPickerView{
+            return Constants.Arrays.cowBreedArray[row]
+        }else if pickerView == genderPickerView{
+            return Constants.Arrays.genderArray[row]
+        }else {
+            return "\(ReproductiveStatus(rawValue: row)!.name)"
+        }
+       // return pickerView == breedPickerView ? cowBreedArray[row] : genderArray[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == breedPickerView{
-            cowBreed.text = cowBreedArray[row]
+            cowBreed.text = Constants.Arrays.cowBreedArray[row]
             cowBreed.resignFirstResponder()
         }else if pickerView == genderPickerView{
-            gender.text = genderArray[row]
+            gender.text = Constants.Arrays.genderArray[row]
             gender.resignFirstResponder()
         }else if pickerView == reproductiveStatusPickerView{
-            reproductiveStatus.text = reproductiveStatusArray[row]
+            reproductiveStatus.text = "\(ReproductiveStatus(rawValue: row)!.name)"
             reproductiveStatus.resignFirstResponder()
         }
         
     }
-    
     
 }
 

@@ -29,7 +29,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         pieChart.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: Constants.CollectionView.homeCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionViewCell.cell)
+        self.collectionView.register(UINib(nibName: Constants.CollectionView.homeCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cell)
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,7 +95,7 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionViewCell.cell, for: indexPath) as? MenuCollectionViewCell else{return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cell, for: indexPath) as? MenuCollectionViewCell else{return UICollectionViewCell()}
         cell.collectionImage.image = UIImage(named: collectionViewItemArray[indexPath.row])
         cell.collectionLabel.text = collectionViewItemArray[indexPath.row]
         
