@@ -33,10 +33,14 @@ class LocaleService {
 //        }
 //    }
     
-    func updateCow(cow : CowModel , name : String){
+    func updateCow(cow : CowModel , name : String , earTag : String , dateOfBirth : String ,cowBreed : String , gender : String){
         do{
             try realm.write{
                 cow.cowName = name
+                cow.earTag = earTag
+                cow.dateOfBirth = dateOfBirth
+                cow.cowBreed = cowBreed
+                cow.gender = gender
             }
         }catch{
             print(error)

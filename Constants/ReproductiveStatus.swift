@@ -10,32 +10,36 @@ import RealmSwift
 
 enum ReproductiveStatus: Int , PersistableEnum {
     case yasiKucuk
+    case duve
     case Taze
-    case Tohumlanmış
+    case Tohumlanmıs
     case Boş
-    case Gebelik_Kontrolü
-    case Abort
     case Kuruda
+    case Gebe
+    case Yakın_Gebe
     case Kesimlik
     
     var name : String {
         switch self{
         case .yasiKucuk:
-            return "Buzağı"
+            return "Buzağı-Dana"
+        case.duve :
+            return "Düve"
         case .Taze:
             return "Taze"
-        case .Tohumlanmış:
+        case .Tohumlanmıs:
             return "Tohumlanmış"
         case .Boş:
             return "Boş"
-        case .Gebelik_Kontrolü:
-            return "Gebelik Kontrolü"
-        case .Abort:
-            return "Abort"
         case .Kuruda:
             return "Kuruda"
+        case.Gebe:
+            return "Gebe"
+        case.Yakın_Gebe:
+            return "Yakın Gebe"
         case.Kesimlik:
             return "Kesimlik"
+            
         }
         
     }

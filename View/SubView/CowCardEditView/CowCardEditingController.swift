@@ -34,7 +34,6 @@ class CowCardEditingController : UIView , NibInitializable {
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let datePicker = UIDatePicker()
-
     
       
     // MARK: - Initializers
@@ -45,8 +44,6 @@ class CowCardEditingController : UIView , NibInitializable {
            super.init(coder: coder)
            self.initiliaze(withNibName: self.nibName, self.postInitialize)
            setup()
-          
-           
        }
           
        override init(frame: CGRect) {
@@ -90,7 +87,21 @@ class CowCardEditingController : UIView , NibInitializable {
     // MARK: - Actions
     
     @IBAction func saveButton(_ sender: Any) {
-        LocaleService.shared.updateCow(cow: (delegate?.getTextField())!, name: cowNameEditingTextField.text!)
+        
+        if let delegate = delegate {
+            if earTagEditingTextField.text == "" {
+                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earRing)
+            }else{
+                if dateOfBirthEditingTextField.text == ""{
+                    UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
+                }else{
+                    LocaleService.shared.updateCow(cow: delegate.getTextField(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
+                    UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successfullUpdate)
+                    delegateViewFunc()
+                }
+            }
+            
+        }
     }
     
     @IBAction func cancelButton(_ sender: Any) {

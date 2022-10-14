@@ -116,6 +116,13 @@ class AddCowViewController : BaseViewController {
         cowModel.cowBreed = cowBreed.text
         cowModel.gender = gender.text ?? ""
         cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
+         
+        // ekleme işlemi başarılı ise alt satırlar yapılacka
+        
+
+        // Toast mesaj gibi otomatik kapanan mesaj ekelenecek
+        
+        
     }
     
     //MARK: - Methods

@@ -19,7 +19,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     
     
     
-    private let collectionViewItemArray = ["erkekler","tohumlanabilir","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","tumHayvanlar"]
+   
     
     
     
@@ -30,6 +30,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: Constants.CollectionView.homeCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cell)
+      
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,18 +87,18 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     
     
     //MARK: - Methods
-    
+
 }
 
 extension HomeViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionViewItemArray.count
+        return Constants.Arrays.collectionViewItemArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cell, for: indexPath) as? MenuCollectionViewCell else{return UICollectionViewCell()}
-        cell.collectionImage.image = UIImage(named: collectionViewItemArray[indexPath.row])
-        cell.collectionLabel.text = collectionViewItemArray[indexPath.row]
+        cell.collectionImage.image = UIImage(named: Constants.Arrays.collectionViewItemArray[indexPath.row])
+        cell.collectionLabel.text = Constants.Arrays.collectionViewItemArray[indexPath.row]
         
         
         return cell
@@ -111,10 +112,10 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
     }
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            
+             
             guard let viewController = self.getViewController(fromStoryboard: .menu, type: MenuTableViewController.self) else {return}
             
-            viewController.filter = collectionViewItemArray[indexPath.row]
+            viewController.filter = Constants.Arrays.collectionViewItemArray[indexPath.row]
             self.navigationController?.show(viewController, sender: nil)
         }
     
