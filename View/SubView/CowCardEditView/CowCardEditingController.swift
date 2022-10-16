@@ -18,7 +18,7 @@ protocol CloseViewProtocol {
 class CowCardEditingController : UIView , NibInitializable {
     
     
-
+    
     // MARK: - Properties
     
     @IBOutlet var mainView: UIView!
@@ -35,25 +35,25 @@ class CowCardEditingController : UIView , NibInitializable {
     let genderPickerView = UIPickerView()
     let datePicker = UIDatePicker()
     
-      
+    
     // MARK: - Initializers
-
+    
     
     required init?(coder: NSCoder ) {
-           
-           super.init(coder: coder)
-           self.initiliaze(withNibName: self.nibName, self.postInitialize)
-           setup()
-       }
-          
-       override init(frame: CGRect) {
-           super.init(frame: frame)
-           
-           self.initiliaze(withNibName: self.nibName, self.postInitialize)
-           
-       }
-          
-       private func postInitialize(_ view: UIView) {}
+        
+        super.init(coder: coder)
+        self.initiliaze(withNibName: self.nibName, self.postInitialize)
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.initiliaze(withNibName: self.nibName, self.postInitialize)
+        
+    }
+    
+    private func postInitialize(_ view: UIView) {}
     
     override func layoutSubviews() {
         setTextField()
@@ -72,7 +72,7 @@ class CowCardEditingController : UIView , NibInitializable {
         pickerView.dataSource = self
     }
     
-    func createDatePicker(){
+    private func createDatePicker(){
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         datePicker.preferredDatePickerStyle = .wheels
@@ -83,7 +83,7 @@ class CowCardEditingController : UIView , NibInitializable {
         dateOfBirthEditingTextField.inputView = datePicker
         datePicker.datePickerMode = .date
     }
-   
+    
     // MARK: - Actions
     
     @IBAction func saveButton(_ sender: Any) {
@@ -109,7 +109,7 @@ class CowCardEditingController : UIView , NibInitializable {
     }
     
     // MARK: - Methods
-
+    
     
     func delegateViewFunc () {
         if let delegate = delegate {
@@ -127,7 +127,7 @@ class CowCardEditingController : UIView , NibInitializable {
         dateOfBirthEditingTextField.text = editingCow.dateOfBirth
         cowBreedEditingTextFiedl.text = editingCow.cowBreed
         genderEditingTextfield.text = editingCow.gender
-
+        
     }
     
     @objc func doneButtonClicked(){
@@ -147,14 +147,14 @@ class CowCardEditingController : UIView , NibInitializable {
 }
 
 extension CowCardEditingController: UIPickerViewDataSource , UIPickerViewDelegate{
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-
+        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-      
+        
         return pickerView == breedPickerView ? Constants.Arrays.cowBreedArray.count : Constants.Arrays.genderArray.count
         
     }

@@ -29,7 +29,7 @@ class CowCardViewController : BaseViewController {
     
     
     var cow : CowModel = CowModel()
-    var cowCardEditing = CowCardEditingController()
+//    var cowCardEditing = CowCardEditingController()
     
     
     
@@ -40,9 +40,7 @@ class CowCardViewController : BaseViewController {
         setupProperties()
         cowEditingView.isHidden = true
         cowEditingView.delegate = self
-        
-        
-        
+        print(cow.cowName)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,9 +68,9 @@ class CowCardViewController : BaseViewController {
         noteImage.isUserInteractionEnabled = true
         
         syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syringeImageClick)))
-        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spermsImageClick)))
-        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthImageClick)))
-        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noteImageClick)))
+        spermsImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spermsImageClick)))
+        birthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthImageClick)))
+        noteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noteImageClick)))
         
         
         
@@ -95,6 +93,9 @@ class CowCardViewController : BaseViewController {
     }
     
     @objc func spermsImageClick(){
+        guard let viewController = self.getViewController(fromStoryboard: .inseminations , type: AddInseminationsViewController.self) else {return}
+        viewController.cow = cow
+        self.navigationController?.show(viewController, sender: nil)
         
     }
     
@@ -112,13 +113,11 @@ class CowCardViewController : BaseViewController {
 
 extension CowCardViewController : CloseViewProtocol{
     func getTextField() -> CowModel {
-        print("get text func çalıştı")
         return self.cow
     }
     
     func closeView() {
         cowEditingView.isHidden = true
-        print("delegate çalıştı")
     }
     
     

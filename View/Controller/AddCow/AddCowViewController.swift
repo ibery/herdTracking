@@ -112,9 +112,11 @@ class AddCowViewController : BaseViewController {
         cowModel.leashNumber = leashNumberEditText.text ?? ""
         cowModel.dateOfBirth = dateOfBirth.text ?? ""
         cowModel.cowName = cowName.text ?? ""
-        cowModel.groupNo = reproductiveStatus.text ?? ""
-        cowModel.cowBreed = cowBreed.text
+        cowModel.reproductiveStatus = Constants.repro
+        cowModel.cowBreed = cowBreed.text ?? ""
         cowModel.gender = gender.text ?? ""
+        
+        
         cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
          
         // ekleme işlemi başarılı ise alt satırlar yapılacka
@@ -187,6 +189,7 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
             gender.resignFirstResponder()
         }else if pickerView == reproductiveStatusPickerView{
             reproductiveStatus.text = "\(ReproductiveStatus(rawValue: row)!.name)"
+            Constants.repro = ReproductiveStatus(rawValue: row)!
             reproductiveStatus.resignFirstResponder()
         }
         

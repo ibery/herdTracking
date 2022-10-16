@@ -29,7 +29,9 @@ struct Constants {
     
     struct TableView{
         static let menuTableView = "MenuTableViewCell"
-        static let cell = "MenuCell"
+        static let menuCell = "MenuCell"
+        static let inseminationsCell = "inseminationsCell"
+        static let inseminationsTableView = "AddInseminationsTableViewCell"
     }
     
     
@@ -41,6 +43,10 @@ struct Constants {
         static var genderArray = ["Dişi","Erkek"]
         
         static let collectionViewItemArray = ["tumHayvanlar","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","erkekler"]
+        
+        static let inseminationsArray = ["Gebe","Boş","Beklemede"]
     }
+    
+    static var repro : ReproductiveStatus = ReproductiveStatus()
     
 }

@@ -14,10 +14,10 @@ class CowModel : Object {
     @Persisted var earTag : String = ""
     @Persisted var dateOfBirth : String = ""
     @Persisted var leashNumber : String?
-    @Persisted var gender : String
+    @Persisted var gender : String = ""
     @Persisted var cowName : String?
     @Persisted var groupNo : String?
-    @Persisted var cowBreed : String?
+    @Persisted var cowBreed : String = ""
     @Persisted var magnet : Bool?
     @Persisted var numberOfLactations : Int?
     @Persisted var lastCalvingDate : Date?

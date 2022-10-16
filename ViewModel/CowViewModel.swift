@@ -91,27 +91,27 @@ class CowViewModel {
         case Constants.Arrays.collectionViewItemArray[2]:
             return inseminatedCow()
         case Constants.Arrays.collectionViewItemArray[3]:
-            return cow
+            return pregnancyControl()
         case Constants.Arrays.collectionViewItemArray[4]:
-            return cow
+            return emptyCow()
         case Constants.Arrays.collectionViewItemArray[5]:
-            return cow
+            return pregnant()
         case Constants.Arrays.collectionViewItemArray[6]:
-            return cow
+            return advancedPregnant()
         case Constants.Arrays.collectionViewItemArray[7]:
-            return cow
+            return dryOffCow()
         case Constants.Arrays.collectionViewItemArray[8]:
-            return cow
+            return cow // sigortalı
         case Constants.Arrays.collectionViewItemArray[9]:
-            return cow
+            return slaughterCow()
         case Constants.Arrays.collectionViewItemArray[10]:
-            return cow
+            return zeroThreeMonths()
         case Constants.Arrays.collectionViewItemArray[11]:
-            return cow
+            return threeTwelveMonths()
         case Constants.Arrays.collectionViewItemArray[12]:
-            return cow
+            return heiferFilter()
         case Constants.Arrays.collectionViewItemArray[13]:
-            return cow
+            return males()
             
         default:
             return cow
@@ -119,8 +119,14 @@ class CowViewModel {
         
     }
     
-    func males(){
-        
+    func males()->[CowModel]{
+        cow.removeAll()
+        for c in cows{
+            if c.gender == "Erkek"{
+                cow.append(c)
+            }
+        }
+        return cow
     }
     
     func heiferFilter()-> [CowModel]{
@@ -160,8 +166,35 @@ class CowViewModel {
     }
     
     func pregnancyControl() ->[CowModel]{
+        cow.removeAll()
+        for c in forFilter(status: ReproductiveStatus.Tohumlanmıs){
+            for i in c.inseminations {
+                if NumberOfDays.dateDayCount(date: i.inseminationDate, format: "dd.MM.yy") > 39 {
+                    cow.append(c)
+                }
+            }
+        }
         return cow
-        
+    }
+    
+    func zeroThreeMonths()-> [CowModel]{
+        cow.removeAll()
+        for c in cows{
+            if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 91{
+                cow.append(c)
+            }
+        }
+        return cow
+    }
+    
+    func threeTwelveMonths() -> [CowModel]{
+        cow.removeAll()
+        for c in cows{
+            if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") > 90 && NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 360{
+                cow.append(c)
+            }
+        }
+        return cow
     }
     
     
@@ -170,9 +203,7 @@ class CowViewModel {
         for c in cows{
             if c.reproductiveStatus == status{
                 cow.append(c)
-                
-                
-                
+               
             }
         }
         return cow

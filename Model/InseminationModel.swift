@@ -9,11 +9,11 @@ import UIKit
 import RealmSwift
 
 class InseminationModel : Object {
-    // tohumlamanın id si olacak mı 
-    @objc dynamic var cowTag : String = ""
+    
     @objc dynamic var inseminatedPerson : String = ""
-    @objc dynamic var bullName : String = ""
+    @objc dynamic var inseminationsBullName : String = ""
     @objc dynamic var inseminationDate : String = ""
+    @objc dynamic var inseminationsStatus : String = ""
     var parentCow = LinkingObjects(fromType: CowModel.self, property: "inseminations")
-        
+    
 }

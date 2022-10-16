@@ -17,6 +17,7 @@ enum Storyboard : Int {
     case feed
     case menu
     case card
+    case inseminations
     
     
     var name : String {
@@ -37,6 +38,8 @@ enum Storyboard : Int {
             return "MenuTableView"
         case.card:
             return "CowCard"
+        case.inseminations:
+            return "AddInseminations"
         }
         
     }

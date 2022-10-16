@@ -15,23 +15,13 @@ class LocaleService {
     
     lazy var realm = try! Realm()
     var cowsResults : Results<CowModel>?
+    var inseminationsResults : Results<InseminationModel>?
     var cow  = CowModel()
-    
+    var inseminations = InseminationModel()
     func fetchCows ()-> Results<CowModel>{
         let cows = realm.objects(CowModel.self)
         return cows
     }
-    
-//    func updateCow (id : ObjectId , earTag : String , cowName : String , dateOfbirth : String ,cowBreed : String , gender : String){
-//        try! realm.write {
-//            // Use .modified to only update the provided values.
-//            // Note that the "name" property will remain the same
-//            // for the person with primary key "id" 123.
-//            realm.create(CowModel.self,
-//                         value: ["_id": cow._id, "earTag": earTag , "cowName" : cowName ,"dateOfBirth" : dateOfbirth , "cowBreed" : cowBreed , "gender" : gender ],
-//                         update: .modified)
-//        }
-//    }
     
     func updateCow(cow : CowModel , name : String , earTag : String , dateOfBirth : String ,cowBreed : String , gender : String){
         do{
@@ -45,6 +35,23 @@ class LocaleService {
         }catch{
             print(error)
         }
+    }
+    
+    func fetchInseminations()-> Results<InseminationModel>{
+        let inseminations = realm.objects(InseminationModel.self)
+        return inseminations
+    }
+    
+    func addInseminations(cow: CowModel , newInsemination : InseminationModel){
+      
+            try! realm.write{
+                cow.inseminations.append(newInsemination)
+            }
+        
+    }
+    
+    func updateInseminations(cow : CowModel, inseminatedPerson : String , bullName : String , inseminationDate : String ){
+        
     }
     
 }
