@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 protocol CloseInseminationViewProtocol{
     func closeInseminationView()
@@ -27,12 +28,16 @@ class InseminationsAddController : UIView ,NibInitializable {
     let datePicker = UIDatePicker()
     var nibName: String = "InseminationsAddView"
     var delegate : CloseInseminationViewProtocol?
-    var addInseminations : InseminationModel = InseminationModel()
-    var cow = CowModel()
-    
-    
+    lazy var inseminationViewModel = InseminationViewModel()
+    var bullViewModel = BullViewModel()
+    var personViewModel = PersonViewModel()
+    let bullNamePickerView = UIPickerView()
+    let personNamePickerView = UIPickerView()
+
     
     // MARK: - Initializers
+    
+    
     
     required init?(coder : NSCoder){
         super.init(coder: coder)
@@ -67,20 +72,32 @@ class InseminationsAddController : UIView ,NibInitializable {
         
     }
     
+    private func createPickerView(textField : UITextField , pickerView : UIPickerView){
+        textField.inputView = pickerView
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
+    
     // MARK: - Actions
     
     @IBAction func saveButton(_ sender: UIButton) {
         
         // burası guard lanacak
+        
+        let addInseminations = InseminationModel()
         addInseminations.inseminationDate = inseminationsDateTextField.text!
         addInseminations.inseminatedPerson = inseminationsPersonTextField.text!
         addInseminations.inseminationsBullName = inseminationsBullTextField.text!
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
+        print("burası \(addInseminations.inseminationsBullName)")
         if let delegate = delegate {
-            LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+         //   LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+         
+            inseminationViewModel.addInsemination(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
         }
-        
+    
         delegateCloseInseminationsView()
+        Constants.tableView.reloadData()
         
     }
     
@@ -109,5 +126,26 @@ class InseminationsAddController : UIView ,NibInitializable {
             delegate.closeInseminationView()
         }
     }
+}
+
+extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == bullNamePickerView{
+            return bullViewModel.fetchBull().count
+        }else{
+            return personViewModel.fetchPerson().count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPerson()[row].inseminatedPersonName
+    }
+    
+    
 }
 

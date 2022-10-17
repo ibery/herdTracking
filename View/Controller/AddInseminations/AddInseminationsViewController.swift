@@ -15,16 +15,18 @@ class AddInseminationsViewController : BaseViewController {
     @IBOutlet weak var inseminationsTableView: UITableView!
     private var addButton = UIBarButtonItem()
     @IBOutlet weak var inseminationsAddView: InseminationsAddController!
+    var inseminationViewModel = InseminationViewModel()
     
     
     var cow = CowModel()
-    var inseminations = LocaleService.shared.fetchInseminations()
+    lazy var inseminations = inseminationViewModel.fetchInsemination()
     var inseminationsAddController = InseminationsAddController()
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Constants.tableView = inseminationsTableView
         inseminationsTableView.delegate = self
         inseminationsTableView.dataSource = self
         inseminationsAddView.delegate = self
@@ -82,6 +84,7 @@ extension AddInseminationsViewController : UITableViewDelegate , UITableViewData
 
 extension AddInseminationsViewController : CloseInseminationViewProtocol{
     func addInseminationsDelegate() -> CowModel {
+        
         return self.cow
     }
     

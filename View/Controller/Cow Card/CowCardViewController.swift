@@ -56,12 +56,13 @@ class CowCardViewController : BaseViewController {
     }
     
     func setupProperties(){
-        earTagLabel.text = cow.earTag
-      //ageLabe.text = şimdiki tarih - doğum tarihi
-        grupLabel.text = cow.groupNo
-        nameLabel.text = cow.cowName
-        reproductiveStatusLabel.text = cow.reproductiveStatus?.name
-        leashNumberLabel.text = cow.leashNumber
+     //   guard let cow = cow else {return}
+        earTagLabel.text = "Küpe : \(cow.earTag)"
+        ageLabel.text = "Yaş : \(String(NumberOfDays.dateDayCount(date: cow.dateOfBirth, format: "dd.MM.yy")))"
+        grupLabel.text = "Grup No : \(cow.groupNo)"
+        nameLabel.text = "Adı : \(cow.cowName)"
+        reproductiveStatusLabel.text = "Üreme Durumu : \(cow.reproductiveStatus?.name)"
+        leashNumberLabel.text = "Tasma No : \( cow.leashNumber)"
         syringeImage.isUserInteractionEnabled = true
         spermsImage.isUserInteractionEnabled = true
         birthImage.isUserInteractionEnabled = true

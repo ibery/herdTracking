@@ -5,20 +5,24 @@
 //  Created by Narkoz on 9.05.2022.
 //
 
+import UIKit
+
 
 
 struct Constants {
     struct Alert{
-        static let messageThereIsCow = "Eklemek istediğiniz Küpe numarası daha önceden eklenmiş !"
-        static let MessageTehereIsCollar = "Eklemek istediğiniz Tasma  numarası daha önceden eklenmiş !"
-        static let title = " Uyarı !"
-        static let filedToRegister = "Kayıt edilemedi !"
-        static let earRing = "Küpe Numarası Boş Bırakılamaz !"
-        static let birthOfDate = "Doğum Tarihi Boş Bırakılamaz !"
-        static let gender = "Cinsiyet Boş Bırakılamaz !"
-        static let successfullUpdate = "Başarı ile güncellendi !"
-        static let successful = "Başarı ile kayıt edildi !"
-        static let successTitle = "Başarılı !"
+        static let messageThereIsCow = "Eklemek istediğiniz Küpe numarası daha önceden eklenmiş!"
+        static let MessageTehereIsCollar = "Eklemek istediğiniz Tasma  numarası daha önceden eklenmiş!"
+        static let title = " Uyarı!"
+        static let filedToRegister = "Kayıt edilemedi!"
+        static let earRing = "Küpe Numarası Boş Bırakılamaz!"
+        static let birthOfDate = "Doğum Tarihi Boş Bırakılamaz!"
+        static let gender = "Cinsiyet Boş Bırakılamaz!"
+        static let successfullUpdate = "Başarı ile güncellendi!"
+        static let successful = "Başarı ile kayıt edildi!"
+        static let successTitle = "Başarılı!"
+        static let inseminationsPerson = "Bu tohumlayıcı daha önce eklenmiş!"
+        static let bull = "Bu boğa daha önce eklenmiş!"
     }
     
     
@@ -47,6 +51,7 @@ struct Constants {
         static let inseminationsArray = ["Gebe","Boş","Beklemede"]
     }
     
-    static var repro : ReproductiveStatus = ReproductiveStatus()
+    static var repro = ReproductiveStatus()
+    static var tableView = UITableView()
     
 }

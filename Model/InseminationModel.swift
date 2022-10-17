@@ -10,6 +10,7 @@ import RealmSwift
 
 class InseminationModel : Object {
     
+    @objc dynamic var inseminationEarTag : String = ""
     @objc dynamic var inseminatedPerson : String = ""
     @objc dynamic var inseminationsBullName : String = ""
     @objc dynamic var inseminationDate : String = ""

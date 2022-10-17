@@ -68,18 +68,9 @@ class CowViewModel {
             }
         }
     }
-    
+    // BURASI LOCALE SERVİCE DEN ÇEKİLECEK
     private func addCow(cowAdd : CowModel){
-        do{
-            try realm.write{
-                realm.add(cowAdd)
-                
-                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
-            }
-        }catch{
-            print("Error saving cow\(error.localizedDescription)")
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
-        }
+        LocaleService.shared.addCow(cow: cowAdd)
     }
     
     func tableViewFilter(filter : String)-> [CowModel]{
@@ -119,6 +110,7 @@ class CowViewModel {
         
     }
     
+    // func lar private olacak 
     func males()->[CowModel]{
         cow.removeAll()
         for c in cows{

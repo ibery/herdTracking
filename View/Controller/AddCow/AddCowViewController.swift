@@ -30,6 +30,7 @@ class AddCowViewController : BaseViewController {
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let reproductiveStatusPickerView = UIPickerView()
+    let cowModel = CowModel()
     
     
     // MARK: - Life cycle
@@ -78,7 +79,7 @@ class AddCowViewController : BaseViewController {
         datePicker.datePickerMode = .date
     }
     
-    func createPickerView(textField : UITextField , pickerView : UIPickerView){
+      private func createPickerView(textField : UITextField , pickerView : UIPickerView){
         textField.inputView = pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -106,17 +107,14 @@ class AddCowViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func saveCow(_ sender: UIButton) {
-        
-        let cowModel = CowModel()
+  
         cowModel.earTag = earringNumber.text ?? ""
         cowModel.leashNumber = leashNumberEditText.text ?? ""
         cowModel.dateOfBirth = dateOfBirth.text ?? ""
         cowModel.cowName = cowName.text ?? ""
-        cowModel.reproductiveStatus = Constants.repro
         cowModel.cowBreed = cowBreed.text ?? ""
         cowModel.gender = gender.text ?? ""
-        
-        
+        // cowmodel picker dışında kullanılabilir mi araştır
         cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
          
         // ekleme işlemi başarılı ise alt satırlar yapılacka
@@ -189,7 +187,7 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
             gender.resignFirstResponder()
         }else if pickerView == reproductiveStatusPickerView{
             reproductiveStatus.text = "\(ReproductiveStatus(rawValue: row)!.name)"
-            Constants.repro = ReproductiveStatus(rawValue: row)!
+            cowModel.reproductiveStatus = ReproductiveStatus(rawValue: row)!
             reproductiveStatus.resignFirstResponder()
         }
         
