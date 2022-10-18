@@ -40,12 +40,44 @@ class BaseViewController : UIViewController  {
     }
     
     func addSideMenuButton(){
-        let sideMenuButton = UIBarButtonItem(image: Images.sideMenu.image, style: .plain, target: self , action: #selector(sideMenuButtonTapped))
+//        let sideMenuButton = UIBarButtonItem(image: Images.sideMenu.image, style: .plain, target: self , action: #selector(sideMenuButtonTapped))
+//
+//        self.navigationItem.leftBarButtonItem = sideMenuButton
         
-        self.navigationItem.leftBarButtonItem = sideMenuButton
+        let usersItem = UIAction(title: "Sperma Ekle", image: UIImage(systemName: "person.fill")) { (action) in
+
+                print("Users action was tapped")
+           }
+
+           let addUserItem = UIAction(title: "Tohumlayıcı Ekle", image: UIImage(systemName: "person.badge.plus")) { (action) in
+
+               print("Add User action was tapped")
+           }
+
+           let removeUserItem = UIAction(title: "Sürüden Çıkan Hayvanlar", image: UIImage(systemName: "person.fill.xmark.rtl")) { (action) in
+                print("Remove User action was tapped")
+           }
+
+           let menu = UIMenu(title: "Ayarlar", options: .displayInline, children: [usersItem , addUserItem , removeUserItem])
+
+        
+        let plusAction = UIAction(title: "plusAction"){ (action) in
+            print("Plus Action action was tapped ")
+        }
+        
+        let navItems = [UIBarButtonItem(image:  UIImage(systemName: "plus"),  menu: menu) ]
+
+     
+
+        self.navigationItem.leftBarButtonItems = navItems
+        
     }
     
-    @objc func sideMenuButtonTapped(){
-        
-    }
+//    @objc func sideMenuButtonTapped(){
+//        
+//    }
+    
+
 }
+
+

@@ -53,6 +53,7 @@ class AddCowViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.addSideMenuButton()
     }
     
     // MARK: - Setup

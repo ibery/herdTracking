@@ -1,13 +1,13 @@
 //
-//  MyWorksViewController.swift
+//  SideMenuViewController.swift
 //  Herd Tracking
 //
-//  Created by Narkoz on 9.05.2022.
+//  Created by ibrahim eryılmaz on 18.10.2022.
 //
 
 import UIKit
 
-class MyWorksViewController: BaseViewController {
+class SideMenuViewController : BaseViewController {
     
     
     // MARK: - Properties
@@ -20,7 +20,7 @@ class MyWorksViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addSideMenuButton()
+        
     }
     
     

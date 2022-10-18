@@ -21,8 +21,9 @@
                                 <rect key="frame" x="-7" y="-41" width="428" height="978"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-rN-e1A" userLabel="ContainerView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-rN-e1A" userLabel="ContainerView">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="978"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lightBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EvP-JK-G9e">
                                                 <rect key="frame" x="7" y="41" width="414" height="896"/>
@@ -66,14 +67,6 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="leading" secondItem="v1L-So-ojE" secondAttribute="leading" id="5I4-9X-ZYy"/>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="top" secondItem="v1L-So-ojE" secondAttribute="top" id="Wo6-xr-tc2"/>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="trailing" secondItem="v1L-So-ojE" secondAttribute="trailing" id="gMD-TR-Twu"/>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="bottom" secondItem="v1L-So-ojE" secondAttribute="bottom" id="iMK-rO-Yx7"/>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="width" secondItem="WEL-gW-UQt" secondAttribute="width" id="r0l-jy-Rsy"/>
-                                    <constraint firstItem="9ez-rN-e1A" firstAttribute="height" secondItem="WEL-gW-UQt" secondAttribute="height" id="sB7-ds-9K2"/>
-                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="v1L-So-ojE"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="WEL-gW-UQt"/>
                             </scrollView>

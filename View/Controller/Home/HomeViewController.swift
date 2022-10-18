@@ -32,6 +32,8 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
       //  navigationController?.navigationBar.isHidden = true
         setupPieChart()
         
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +83,8 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         
         pieView.data = PieChartData(dataSet: dataSet)
     }
+    
+
     
     // MARK: - Actions
     
