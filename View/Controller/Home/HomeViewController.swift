@@ -17,12 +17,6 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     private var pieChart = PieChartView() // pie graphs
     
     
-    
-    
-   
-    
-    
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +29,14 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        navigationController?.navigationBar.isHidden = true
+      //  navigationController?.navigationBar.isHidden = true
         setupPieChart()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addSideMenuButton()
     }
     
     

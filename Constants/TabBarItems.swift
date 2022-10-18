@@ -52,4 +52,32 @@ enum TabBarItems: Int {
         return UITabBarItem(title: title, image: image, tag: tag)
     }
     
+    var viewController : UINavigationController{
+        let viewController : UIViewController
+        
+        switch self {
+        case .home:
+            guard let homeViewcontroller = Storyboard.home.viewController else {return UINavigationController()}
+            viewController = homeViewcontroller
+            
+        case .myWorks:
+            guard let myWorksViewController = Storyboard.myWorks.viewController else {return UINavigationController()}
+            viewController = myWorksViewController
+        case .addCow:
+            guard let addCowViewController = Storyboard.addCow.viewController else {return UINavigationController()}
+            viewController = addCowViewController
+        case .notification:
+            guard let notificationViewController = Storyboard.notification.viewController else {return UINavigationController()}
+            viewController = notificationViewController
+        case .feed:
+            guard let feedViewController = Storyboard.feed.viewController else {return UINavigationController()}
+            viewController = feedViewController
+        }
+        
+        let navigationController = UINavigationController(rootViewController:viewController)
+        navigationController.tabBarItem = self.tabBarItem
+        
+        return navigationController
+    }
+    
 }

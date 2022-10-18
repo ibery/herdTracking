@@ -54,6 +54,12 @@ class InseminationsAddController : UIView ,NibInitializable {
     
     override func layoutSubviews() {
         createDatePicker()
+        createPickerView(textField: inseminationsPersonTextField, pickerView: personNamePickerView)
+        createPickerView(textField: inseminationsBullTextField, pickerView: bullNamePickerView)
+        inseminationsBullTextField.text = bullViewModel.fetchBull()[0].bullName
+        inseminationsPersonTextField.text = personViewModel.fetchPerson()[0].inseminatedPersonName
+        
+        
     }
     
     // MARK: - Setup

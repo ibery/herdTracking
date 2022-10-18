@@ -14,7 +14,7 @@ enum Images: Int{
     case cowAdd
     case notification
     case feed
-    
+    case sideMenu
     
     var imageName: String {
         switch self {
@@ -30,6 +30,8 @@ enum Images: Int{
             return "notification"
         case .feed:
             return "feed"
+        case.sideMenu:
+            return "sideMenu"
         
         }
     }

@@ -39,4 +39,13 @@ class BaseViewController : UIViewController  {
         return viewController
     }
     
+    func addSideMenuButton(){
+        let sideMenuButton = UIBarButtonItem(image: Images.sideMenu.image, style: .plain, target: self , action: #selector(sideMenuButtonTapped))
+        
+        self.navigationItem.leftBarButtonItem = sideMenuButton
+    }
+    
+    @objc func sideMenuButtonTapped(){
+        
+    }
 }
