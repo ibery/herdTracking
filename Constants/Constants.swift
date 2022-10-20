@@ -23,6 +23,7 @@ struct Constants {
         static let successTitle = "Başarılı!"
         static let inseminationsPerson = "Bu tohumlayıcı daha önce eklenmiş!"
         static let bull = "Bu boğa daha önce eklenmiş!"
+        static let personTextField = "Tohumlayıcı adı boş bırakılamaz!"
     }
     
     
@@ -36,6 +37,10 @@ struct Constants {
         static let menuCell = "MenuCell"
         static let inseminationsCell = "inseminationsCell"
         static let inseminationsTableView = "AddInseminationsTableViewCell"
+        static let showPersonTableView = "PersonCell"
+        static let showPersonTableViewCell = "ShowPersonTableViewCell"
+        static let showBullTableView = "ShowBullTableViewCell"
+        static let showBullTableViewCell = "BullCell"
     }
     
     

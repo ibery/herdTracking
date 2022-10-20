@@ -15,6 +15,7 @@ class MenuTableViewController : BaseViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var menuTableView: UITableView!
     
+    var cowViewModel = CowViewModel()
     
     // Burası cowViewModel den çekilecek
     var cows = LocaleService.shared.fetchCows()

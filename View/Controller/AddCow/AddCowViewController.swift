@@ -5,6 +5,7 @@
 //  Created by Narkoz on 21.07.2022.
 //
 
+import RealmSwift
 import UIKit
 
 class AddCowViewController : BaseViewController {
@@ -23,10 +24,11 @@ class AddCowViewController : BaseViewController {
     
     var cowViewModel = CowViewModel()
     let datePicker = UIDatePicker()
-//    var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
- //   var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
+    lazy var realm = try! Realm()
+    //    var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
+    //   var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
     // dizi veri tabanına kayıt edilecek ırklar veri tabanından çekilecek
-//    var genderArray = ["Dişi","Erkek"]
+    //    var genderArray = ["Dişi","Erkek"]
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let reproductiveStatusPickerView = UIPickerView()
@@ -38,16 +40,16 @@ class AddCowViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
-//        createBreeedPickerView()
-//        createGenderPickerView()
-//        createReproductiveStatusPicderView()
+        //        createBreeedPickerView()
+        //        createGenderPickerView()
+        //        createReproductiveStatusPicderView()
         createPickerView(textField: gender, pickerView: genderPickerView)
         createPickerView(textField: reproductiveStatus, pickerView: reproductiveStatusPickerView)
         createPickerView(textField: cowBreed, pickerView: breedPickerView)
         gender.text = Constants.Arrays.genderArray[0]
         cowBreed.text = Constants.Arrays.cowBreedArray[0]
         reproductiveStatus.text = ReproductiveStatus(rawValue: 0)!.name
-    
+        
         
     }
     
@@ -80,47 +82,79 @@ class AddCowViewController : BaseViewController {
         datePicker.datePickerMode = .date
     }
     
-      private func createPickerView(textField : UITextField , pickerView : UIPickerView){
+    private func createPickerView(textField : UITextField , pickerView : UIPickerView){
         textField.inputView = pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
     }
     
-//    func createBreeedPickerView(){
-//        cowBreed.inputView = breedPickerView
-//        breedPickerView.delegate = self
-//        breedPickerView.dataSource = self
-//    }
-//
-//    func createGenderPickerView(){
-//        gender.inputView = genderPickerView
-//        genderPickerView.delegate = self
-//        genderPickerView.dataSource = self
-//
-//    }
-//
-//    func createReproductiveStatusPicderView(){
-//        reproductiveStatus.inputView = reproductiveStatusPickerView
-//        reproductiveStatusPickerView.delegate = self
-//        reproductiveStatusPickerView.dataSource = self
-//    }
+    //    func createBreeedPickerView(){
+    //        cowBreed.inputView = breedPickerView
+    //        breedPickerView.delegate = self
+    //        breedPickerView.dataSource = self
+    //    }
+    //
+    //    func createGenderPickerView(){
+    //        gender.inputView = genderPickerView
+    //        genderPickerView.delegate = self
+    //        genderPickerView.dataSource = self
+    //
+    //    }
+    //
+    //    func createReproductiveStatusPicderView(){
+    //        reproductiveStatus.inputView = reproductiveStatusPickerView
+    //        reproductiveStatusPickerView.delegate = self
+    //        reproductiveStatusPickerView.dataSource = self
+    //    }
     
     // MARK: - Actions
     
     @IBAction func saveCow(_ sender: UIButton) {
-  
+        
         cowModel.earTag = earringNumber.text ?? ""
         cowModel.leashNumber = leashNumberEditText.text ?? ""
         cowModel.dateOfBirth = dateOfBirth.text ?? ""
         cowModel.cowName = cowName.text ?? ""
         cowModel.cowBreed = cowBreed.text ?? ""
         cowModel.gender = gender.text ?? ""
-        // cowmodel picker dışında kullanılabilir mi araştır
+        cowModel.reproductiveStatus = Constants.repro
+        
         cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
-         
+       
+        
+        //        do{
+        //            try! realm.write{
+        //
+        //                cowModel.earTag = earringNumber.text ?? ""
+        //                cowModel.leashNumber = leashNumberEditText.text ?? ""
+        //                cowModel.dateOfBirth = dateOfBirth.text ?? ""
+        //                cowModel.cowName = cowName.text ?? ""
+        //                cowModel.cowBreed = cowBreed.text ?? ""
+        //                cowModel.gender = gender.text ?? ""
+        //                cowModel.reproductiveStatus = Constants.repro
+        //                realm.add(cowModel)
+        //                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
+        //
+        //            }
+        //        }catch{
+        //            print("Error saving cow\(error.localizedDescription)")
+        //            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
+        //        }
+        
+        
+        
+        //       cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
+        
+        //        cowModel.earTag = ""
+        //        cowModel.leashNumber = ""
+        //        cowModel.dateOfBirth = ""
+        //        cowModel.cowName = ""
+        //        cowModel.cowBreed = ""
+        //        cowModel.gender  = ""
+        
         // ekleme işlemi başarılı ise alt satırlar yapılacka
         
-
+        
         // Toast mesaj gibi otomatik kapanan mesaj ekelenecek
         
         
@@ -147,9 +181,9 @@ class AddCowViewController : BaseViewController {
 }
 
 extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-
+        
         return 1
     }
     
@@ -162,7 +196,7 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
             //return reproductiveStatusArray.count
             return ReproductiveStatus.allCases.count
         }
-     //   return pickerView == breedPickerView ? cowBreedArray.count : genderArray.count
+        //   return pickerView == breedPickerView ? cowBreedArray.count : genderArray.count
         
     }
     
@@ -175,7 +209,7 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
         }else {
             return "\(ReproductiveStatus(rawValue: row)!.name)"
         }
-       // return pickerView == breedPickerView ? cowBreedArray[row] : genderArray[row]
+        // return pickerView == breedPickerView ? cowBreedArray[row] : genderArray[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -188,7 +222,8 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
             gender.resignFirstResponder()
         }else if pickerView == reproductiveStatusPickerView{
             reproductiveStatus.text = "\(ReproductiveStatus(rawValue: row)!.name)"
-            cowModel.reproductiveStatus = ReproductiveStatus(rawValue: row)!
+            //      cowModel.reproductiveStatus = ReproductiveStatus(rawValue: row)!
+            Constants.repro = ReproductiveStatus(rawValue: row)!
             reproductiveStatus.resignFirstResponder()
         }
         

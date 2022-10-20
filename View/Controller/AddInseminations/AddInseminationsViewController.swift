@@ -15,12 +15,12 @@ class AddInseminationsViewController : BaseViewController {
     @IBOutlet weak var inseminationsTableView: UITableView!
     private var addButton = UIBarButtonItem()
     @IBOutlet weak var inseminationsAddView: InseminationsAddController!
-    var inseminationViewModel = InseminationViewModel()
+ //   var inseminationViewModel = InseminationViewModel()
     
     
     var cow = CowModel()
-    lazy var inseminations = inseminationViewModel.fetchInsemination()
-    var inseminationsAddController = InseminationsAddController()
+//    lazy var inseminations = inseminationViewModel.fetchInsemination()
+ //   var inseminationsAddController = InseminationsAddController()
     
     // MARK: - Life cycle
     
@@ -32,10 +32,8 @@ class AddInseminationsViewController : BaseViewController {
         inseminationsAddView.delegate = self
         inseminationsAddView.isHidden = true
         self.inseminationsTableView.register(UINib(nibName: Constants.TableView.inseminationsTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.inseminationsCell)
-        setupScreen()
-//        print("inseminations")
-//        print(cow.cowName)
-//        print("inseminations count = \(inseminations.count)")
+        setupButton()
+        print(cow.cowName)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,8 +44,8 @@ class AddInseminationsViewController : BaseViewController {
     
     
     // MARK: - Setup
-    func setupScreen(){
-        
+    func setupButton(){
+
         addButton = UIBarButtonItem(image: UIImage(systemName: "plus"),  style: .plain, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItems = [addButton]
     }
@@ -65,6 +63,8 @@ class AddInseminationsViewController : BaseViewController {
 
 extension AddInseminationsViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("bir")
+     //   return cow.inseminations.count != 0  ? cow.inseminations.count : 1
         return cow.inseminations.count
     }
     

@@ -99,7 +99,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sperms" translatesAutoresizingMaskIntoConstraints="NO" id="qhD-FI-JeW">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sperms" translatesAutoresizingMaskIntoConstraints="NO" id="qhD-FI-JeW">
                                         <rect key="frame" x="16" y="411" width="132" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -149,10 +149,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Sperms" width="256" height="256"/>
         <image name="cow" width="2778" height="2778"/>
         <image name="lightBackground" width="662" height="662"/>
         <image name="notes" width="256" height="256"/>
-        <image name="sperms" width="256" height="256"/>
         <image name="stork" width="256" height="256"/>
         <image name="syringe" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">

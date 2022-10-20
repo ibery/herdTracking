@@ -1,13 +1,13 @@
 //
-//  SideMenuViewController.swift
+//  ShowBullViewController.swift
 //  Herd Tracking
 //
-//  Created by ibrahim eryılmaz on 18.10.2022.
+//  Created by ibrahim eryılmaz on 19.10.2022.
 //
 
 import UIKit
 
-class SideMenuViewController : BaseViewController {
+class ShowBullViewController : BaseViewController {
     
     
     // MARK: - Properties

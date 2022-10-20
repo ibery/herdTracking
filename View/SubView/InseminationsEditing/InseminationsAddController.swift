@@ -57,7 +57,7 @@ class InseminationsAddController : UIView ,NibInitializable {
         createPickerView(textField: inseminationsPersonTextField, pickerView: personNamePickerView)
         createPickerView(textField: inseminationsBullTextField, pickerView: bullNamePickerView)
         inseminationsBullTextField.text = bullViewModel.fetchBull()[0].bullName
-        inseminationsPersonTextField.text = personViewModel.fetchPerson()[0].inseminatedPersonName
+        inseminationsPersonTextField.text = personViewModel.fetchPersonViewModel()[0].inseminatedPersonName
         
         
     }
@@ -143,13 +143,13 @@ extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSo
         if pickerView == bullNamePickerView{
             return bullViewModel.fetchBull().count
         }else{
-            return personViewModel.fetchPerson().count
+            return personViewModel.fetchPersonViewModel().count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPerson()[row].inseminatedPersonName
+        return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPersonViewModel()[row].inseminatedPersonName
     }
     
     

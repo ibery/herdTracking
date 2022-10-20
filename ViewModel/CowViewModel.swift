@@ -11,7 +11,7 @@ import RealmSwift
 class CowViewModel {
     lazy var realm = try! Realm()
     //   var cowsResults : Results<CowModel>?
-    var cows = LocaleService.shared.fetchCows()
+//    var cows = LocaleService.shared.fetchCows()
     var cow = [CowModel]()
     var status = false
     
@@ -19,7 +19,7 @@ class CowViewModel {
     func checkIfThereIsCow (cowCheck : CowModel)  {
         status = false
         
-        for c in cows {
+        for c in fetchCowViewModel() {
             if c.earTag == cowCheck.earTag {
                 status = true
                 break
@@ -33,12 +33,11 @@ class CowViewModel {
         }
     }
     
-    
     private func checkIfThereIsColler ( cowColler : CowModel)  {
         status = false
         
         if cowColler.leashNumber != "" {
-            for c in cows{
+            for c in fetchCowViewModel(){
                 if c.leashNumber == cowColler.leashNumber {
                     status = true
                     break
@@ -63,14 +62,18 @@ class CowViewModel {
                 if cowTextField.gender == "" {
                     UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.gender)
                 }else{
-                    addCow(cowAdd : cowTextField)
+                    addCowViewModel(cowAdd : cowTextField)
                 }
             }
         }
     }
     // BURASI LOCALE SERVİCE DEN ÇEKİLECEK
-    private func addCow(cowAdd : CowModel){
+    private func addCowViewModel(cowAdd : CowModel){
         LocaleService.shared.addCow(cow: cowAdd)
+    }
+    
+    private func fetchCowViewModel()-> Results<CowModel>{
+        return LocaleService.shared.fetchCows()
     }
     
     func tableViewFilter(filter : String)-> [CowModel]{
@@ -113,7 +116,7 @@ class CowViewModel {
     // func lar private olacak 
     func males()->[CowModel]{
         cow.removeAll()
-        for c in cows{
+        for c in fetchCowViewModel(){
             if c.gender == "Erkek"{
                 cow.append(c)
             }
@@ -171,7 +174,7 @@ class CowViewModel {
     
     func zeroThreeMonths()-> [CowModel]{
         cow.removeAll()
-        for c in cows{
+        for c in fetchCowViewModel(){
             if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 91{
                 cow.append(c)
             }
@@ -181,7 +184,7 @@ class CowViewModel {
     
     func threeTwelveMonths() -> [CowModel]{
         cow.removeAll()
-        for c in cows{
+        for c in fetchCowViewModel(){
             if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") > 90 && NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 360{
                 cow.append(c)
             }
@@ -192,7 +195,7 @@ class CowViewModel {
     
     func forFilter (status : ReproductiveStatus) -> [CowModel]{
         cow.removeAll()
-        for c in cows{
+        for c in fetchCowViewModel(){
             if c.reproductiveStatus == status{
                 cow.append(c)
                
@@ -201,8 +204,5 @@ class CowViewModel {
         return cow
     }
     
-    
-    
-
-    
+ 
 }

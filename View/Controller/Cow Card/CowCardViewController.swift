@@ -37,10 +37,11 @@ class CowCardViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
-        setupProperties()
+        
         cowEditingView.isHidden = true
         cowEditingView.delegate = self
         print(cow.cowName)
+        setupProperties()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +57,7 @@ class CowCardViewController : BaseViewController {
     }
     
     func setupProperties(){
+        // Burası guard lanacak
      //   guard let cow = cow else {return}
         earTagLabel.text = "Küpe : \(cow.earTag)"
         ageLabel.text = "Yaş : \(String(NumberOfDays.dateDayCount(date: cow.dateOfBirth, format: "dd.MM.yy")))"

@@ -40,44 +40,50 @@ class BaseViewController : UIViewController  {
     }
     
     func addSideMenuButton(){
-//        let sideMenuButton = UIBarButtonItem(image: Images.sideMenu.image, style: .plain, target: self , action: #selector(sideMenuButtonTapped))
-//
-//        self.navigationItem.leftBarButtonItem = sideMenuButton
-        
-        let usersItem = UIAction(title: "Sperma Ekle", image: UIImage(systemName: "person.fill")) { (action) in
-
-                print("Users action was tapped")
-           }
-
-           let addUserItem = UIAction(title: "Tohumlayıcı Ekle", image: UIImage(systemName: "person.badge.plus")) { (action) in
-
-               print("Add User action was tapped")
-           }
-
-           let removeUserItem = UIAction(title: "Sürüden Çıkan Hayvanlar", image: UIImage(systemName: "person.fill.xmark.rtl")) { (action) in
-                print("Remove User action was tapped")
-           }
-
-           let menu = UIMenu(title: "Ayarlar", options: .displayInline, children: [usersItem , addUserItem , removeUserItem])
 
         
-        let plusAction = UIAction(title: "plusAction"){ (action) in
-            print("Plus Action action was tapped ")
+        let addBullButton = UIAction(title: "Sperma Ekle (Boğa)", image: UIImage(named: Images.erkekler.imageName)) { (action) in
+            
+            print("Users action was tapped")
         }
         
+        let addInseminationPersonButton = UIAction(title: "Tohumlayıcı Ekle", image: UIImage(systemName: "person.fill.badge.plus")) { (action) in
+        
+            guard let viewController = Storyboard.person.viewController else {return }
+            self.navigationController?.show(viewController, sender: nil)
+        }
+        
+        let removeCowButton = UIAction(title: "Sürüden Çıkan Hayvanlar", image: UIImage(systemName: "person.fill.xmark.rtl")) { (action) in
+            print("Remove User action was tapped")
+        }
+        
+        let createFilter = UIAction(title : "Filitre Yap" , image: UIImage(systemName: "magnifyingglass")) { (action) in
+            print(" Filitre yap basıldı ")
+        }
+        
+        
+        let menu = UIMenu(title: "Ayarlar", options: .displayInline, children: [addBullButton , addInseminationPersonButton , removeCowButton,createFilter])
+        
+        
+        //        let plusAction = UIAction(title: "plusAction"){ (action) in
+        //            print("Plus Action action was tapped ")
+        //        }
+        
         let navItems = [UIBarButtonItem(image:  UIImage(systemName: "plus"),  menu: menu) ]
-
-     
-
+        
+        
+        
         self.navigationItem.leftBarButtonItems = navItems
         
     }
     
-//    @objc func sideMenuButtonTapped(){
-//        
-//    }
     
-
+    
+    //    @objc func sideMenuButtonTapped(){
+    //
+    //    }
+    
+    
 }
 
 

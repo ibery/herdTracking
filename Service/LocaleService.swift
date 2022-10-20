@@ -41,6 +41,7 @@ class LocaleService {
                 realm.add(cow)
                 
                 UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
+           
             }
         }catch{
             print("Error saving cow\(error.localizedDescription)")
@@ -90,7 +91,7 @@ class LocaleService {
             }
         }catch{
             // bu alert değişecek
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.inseminationsPerson)
+            print(error)
         }
     }
     
@@ -100,8 +101,14 @@ class LocaleService {
         return person
     }
     
-    func updatePerson(){
-        
+    func updatePerson(person : PersonModel , personName : String){
+        do{
+            try realm.write{
+                person.inseminatedPersonName = personName
+            }
+        }catch{
+            print(error)
+        }
     }
     
     func addBull(bull : BullModel){
