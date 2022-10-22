@@ -9,6 +9,8 @@ import UIKit
 
 class ShowBullTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var bullBreed: UILabel!
+    @IBOutlet weak var bullName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

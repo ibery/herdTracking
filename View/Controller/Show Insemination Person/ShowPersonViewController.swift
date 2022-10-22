@@ -25,7 +25,7 @@ class ShowPersonViewController : BaseViewController {
         super.viewDidLoad()
         showPersonTableView.delegate = self
         showPersonTableView.dataSource = self
-        self.showPersonTableView.register(UINib(nibName: Constants.TableView.showPersonTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.TableView.showPersonTableView)
+        self.showPersonTableView.register(UINib(nibName: Constants.TableView.showPersonTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.showPersonTableViewCell)
         setupPersonButton()
     }
     
@@ -38,7 +38,7 @@ class ShowPersonViewController : BaseViewController {
     
     // MARK: - Setup
     
-    func setupPersonButton(){
+    private func setupPersonButton(){
         addPersonButton = UIBarButtonItem(image: UIImage(systemName: "plus"),  style: .plain, target: self, action: #selector(addPersonButtonTapped))
         navigationItem.rightBarButtonItems = [addPersonButton]
     }
@@ -101,7 +101,7 @@ extension ShowPersonViewController : UITableViewDelegate , UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.showPersonTableView, for: indexPath) as? ShowPersonTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.showPersonTableViewCell, for: indexPath) as? ShowPersonTableViewCell else {return UITableViewCell()}
         
         cell.inseminationNameLabel.text = personViewModel.fetchPersonViewModel()[indexPath.row].inseminatedPersonName
         

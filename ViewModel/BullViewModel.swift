@@ -27,9 +27,20 @@ class BullViewModel {
     
     // MARK: - Methods
     
-    func addBull(){
-        // daha önce eklenip eklenmediği kontrol edilecek sonra kayıt edilecek
-        LocaleService.shared.addBull(bull: bull)
+    func addBull(bull : BullModel){
+        var status = false
+        for i in fetchBull(){
+            if i.bullName == bull.bullName{
+                status = true
+                break
+            }
+        }
+        if status{
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.bull)
+        }else{
+            LocaleService.shared.addBull(bull: bull)
+        }
+        
     }
     
     func fetchBull()-> Results<BullModel>{

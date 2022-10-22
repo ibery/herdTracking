@@ -29,11 +29,7 @@ class MenuTableViewController : BaseViewController {
         menuTableView.delegate = self
         menuTableView.dataSource = self
         self.menuTableView.register(UINib(nibName: Constants.TableView.menuTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.menuCell)
-        
-//        for c in cows{
-//            var array =  c.inseminations
-//            print("inekarray = \(array[0])")
-//        }
+
         
     }
     

@@ -24,16 +24,13 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: Constants.CollectionView.homeCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cell)
-      
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      //  navigationController?.navigationBar.isHidden = true
+        //  navigationController?.navigationBar.isHidden = true
         setupPieChart()
-        
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,10 +47,9 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         pieView.drawHoleEnabled = false
         
         pieView.rotationAngle = 0
-       // pieView.rotationEnabled = false
+        // pieView.rotationEnabled = false
         //pieView.isUserInteractionEnabled = false
-        
-      //   pieView.legend.enabled = false
+        //   pieView.legend.enabled = false
         
         var entries: [PieChartDataEntry] = Array()
         entries.append(PieChartDataEntry(value: 50.0,label: "Gebe"))
@@ -84,13 +80,13 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         pieView.data = PieChartData(dataSet: dataSet)
     }
     
-
+    
     
     // MARK: - Actions
     
     
     //MARK: - Methods
-
+    
 }
 
 extension HomeViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
@@ -102,8 +98,6 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cell, for: indexPath) as? MenuCollectionViewCell else{return UICollectionViewCell()}
         cell.collectionImage.image = UIImage(named: Constants.Arrays.collectionViewItemArray[indexPath.row])
         cell.collectionLabel.text = Constants.Arrays.collectionViewItemArray[indexPath.row]
-        
-        
         return cell
     }
     
@@ -114,13 +108,13 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
         return CGSize(width: width, height: height)
     }
     
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-             
-            guard let viewController = self.getViewController(fromStoryboard: .menu, type: MenuTableViewController.self) else {return}
-            
-            viewController.filter = Constants.Arrays.collectionViewItemArray[indexPath.row]
-            self.navigationController?.show(viewController, sender: nil)
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewController = self.getViewController(fromStoryboard: .menu, type: MenuTableViewController.self) else {return}
+        
+        viewController.filter = Constants.Arrays.collectionViewItemArray[indexPath.row]
+        self.navigationController?.show(viewController, sender: nil)
+    }
     
     
 }

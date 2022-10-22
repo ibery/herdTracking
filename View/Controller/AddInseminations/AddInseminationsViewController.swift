@@ -75,8 +75,8 @@ extension AddInseminationsViewController : UITableViewDelegate , UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.inseminationsCell , for : indexPath) as? AddInseminationsTableViewCell else {return UITableViewCell()}
         
         cell.inseminationsDate.text = cow.inseminations[indexPath.row].inseminationDate
-        cell.inseminationsBull.text = "\(cow.inseminations[indexPath.row].inseminationsBullName?.bullName)"
-        cell.inseminationsPerson.text = "\(cow.inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName)"
+        cell.inseminationsBull.text = "\(String(describing: cow.inseminations[indexPath.row].inseminationsBullName?.bullName))"
+        cell.inseminationsPerson.text = "\(String(describing: cow.inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName))"
         cell.inseminationsResult.text = cow.inseminations[indexPath.row].inseminationsStatus
    //     cell.cellView.layer.borderWidth = 2
         return cell
@@ -86,7 +86,6 @@ extension AddInseminationsViewController : UITableViewDelegate , UITableViewData
 
 extension AddInseminationsViewController : CloseInseminationViewProtocol{
     func addInseminationsDelegate() -> CowModel {
-        
         return self.cow
     }
     

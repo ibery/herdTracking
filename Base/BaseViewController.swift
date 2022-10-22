@@ -44,6 +44,8 @@ class BaseViewController : UIViewController  {
         
         let addBullButton = UIAction(title: "Sperma Ekle (Boğa)", image: UIImage(named: Images.erkekler.imageName)) { (action) in
             
+            guard let viewController = Storyboard.bull.viewController else {return}
+            self.navigationController?.show(viewController, sender: nil)
             print("Users action was tapped")
         }
         
