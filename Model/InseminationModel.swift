@@ -10,11 +10,12 @@ import RealmSwift
 
 class InseminationModel : Object {
     
-    @objc dynamic var inseminationEarTag : String = ""
-    @objc dynamic var inseminatedPerson : String = ""
-    @objc dynamic var inseminationsBullName : String = ""
-    @objc dynamic var inseminationDate : String = ""
-    @objc dynamic var inseminationsStatus : String = ""
-    var parentCow = LinkingObjects(fromType: CowModel.self, property: "inseminations")
+    @Persisted var inseminationEarTag : String = ""
+    @Persisted var inseminatedPerson : PersonModel?
+    @Persisted var inseminationsBullName : BullModel?
+    @Persisted var inseminationDate : String = ""
+    @Persisted var inseminationsStatus : String = ""
+  //  var parentCow = LinkingObjects(fromType: CowModel.self , property: "inseminations")
+  
     
 }

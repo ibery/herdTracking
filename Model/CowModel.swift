@@ -11,20 +11,38 @@ import RealmSwift
 class CowModel : Object {
     
     @Persisted(primaryKey: true) var _id: ObjectId
-    @objc dynamic var earTag : String = ""
-    @objc dynamic var dateOfBirth : String = ""
-    @objc dynamic var leashNumber : String?
-    @objc dynamic var gender : String = ""
-    @objc dynamic var cowName : String?
-    @objc dynamic var groupNo : String?
-    @objc dynamic var cowBreed : String = ""
-    @objc dynamic var magnet : Bool = false
-    @objc dynamic var numberOfLactations : Int = 0
-    @objc dynamic var lastCalvingDate : Date?
-    @objc dynamic var insurance : Bool = false
-    @objc dynamic var dryOffDate : Date?
+    @Persisted var earTag : String = ""
+    @Persisted var dateOfBirth : String = ""
+    @Persisted var leashNumber : String?
+    @Persisted var gender : String = ""
+    @Persisted var cowName : String?
+    @Persisted var groupNo : String?
+    @Persisted var cowBreed : String = ""
+    @Persisted var magnet : Bool?
+    @Persisted var numberOfLactations : Int?
+    @Persisted var lastCalvingDate : Date?
+    @Persisted var insurance : Bool?
+    @Persisted var dryOffDate : Date?
     @Persisted var reproductiveStatus: ReproductiveStatus?
-    var inseminations = List<InseminationModel>()
+    @Persisted var inseminations = List<InseminationModel>()
+    
+    convenience init(earTag : String, dateOfBirth : String, leashNumber : String?, gender : String, groupNo : String?, cowBreed : String,  magnet : Bool, numberOfLactations : Int?, lastCalvingDate : Date?, insurance : Bool?, dryOffDate : Date? , reproductiveStatus: ReproductiveStatus? ){
+        self.init()
+        self.earTag = earTag
+        self.dateOfBirth = dateOfBirth
+        self.leashNumber = leashNumber
+        self.gender = gender
+        self.cowName = cowName
+        self.groupNo = groupNo
+        self.cowBreed = cowBreed
+        self.magnet = magnet
+        self.numberOfLactations = numberOfLactations
+        self.lastCalvingDate = lastCalvingDate
+        self.insurance = insurance
+        self.dryOffDate = dryOffDate
+        self.reproductiveStatus = reproductiveStatus
+       
+    }
     
    
 }

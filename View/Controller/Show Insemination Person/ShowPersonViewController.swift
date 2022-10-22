@@ -108,15 +108,23 @@ extension ShowPersonViewController : UITableViewDelegate , UITableViewDataSource
         var successCount = 0
         var failCount : Int  = 0
         
+//        for i in inseminationViewModel.fetchInsemination(){
+//
+//            if i.inseminationsStatus == "Başarılı" && i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row].inseminatedPersonName {
+//                successCount += 1
+//            }
+//            if i.inseminationsStatus == "Başarısız" && i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row].inseminatedPersonName{
+//                failCount += 1
+//            }
+//        }
         for i in inseminationViewModel.fetchInsemination(){
-            
-            if i.inseminationsStatus == "Başarılı" && i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row].inseminatedPersonName {
+            if i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row] && i.inseminationsStatus == "Başarılı"{
                 successCount += 1
-            }
-            if i.inseminationsStatus == "Başarısız" && i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row].inseminatedPersonName{
-                failCount += 1
-            }
+            }else if i.inseminatedPerson == personViewModel.fetchPersonViewModel()[indexPath.row] && i.inseminationsStatus == "Başarısız" {
+
+            failCount += 1
         }
+    }
         cell.failCountLabel.text = String(failCount)
         cell.successCountLabel.text = String(successCount)
         cell.failCountLabel.text = String(failCount)

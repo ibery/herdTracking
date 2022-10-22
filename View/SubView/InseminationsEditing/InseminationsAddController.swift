@@ -56,10 +56,21 @@ class InseminationsAddController : UIView ,NibInitializable {
         createDatePicker()
         createPickerView(textField: inseminationsPersonTextField, pickerView: personNamePickerView)
         createPickerView(textField: inseminationsBullTextField, pickerView: bullNamePickerView)
-        inseminationsBullTextField.text = bullViewModel.fetchBull()[0].bullName
-        inseminationsPersonTextField.text = personViewModel.fetchPersonViewModel()[0].inseminatedPersonName
+   //     inseminationsBullTextField.text = bullViewModel.fetchBull()[0].bullName
+   //     inseminationsPersonTextField.text = personViewModel.fetchPersonViewModel()[0].inseminatedPersonName
         
-        
+        if bullViewModel.fetchBull().count == 0 {
+            inseminationsBullTextField.isEnabled = false
+            inseminationsBullTextField.placeholder = "Anasayfadan Boğa Ekle"
+        }else{
+            bullViewModel.fetchBull()[0].bullName
+        }
+        if personViewModel.fetchPersonViewModel().count == 0{
+            inseminationsPersonTextField.isEnabled = false
+            inseminationsPersonTextField.placeholder = "Anasayfadan Tohumlayıcı Ekle"
+        }else{
+            personViewModel.fetchPersonViewModel()[0]
+        }
     }
     
     // MARK: - Setup
@@ -92,14 +103,16 @@ class InseminationsAddController : UIView ,NibInitializable {
         
         let addInseminations = InseminationModel()
         addInseminations.inseminationDate = inseminationsDateTextField.text!
-        addInseminations.inseminatedPerson = inseminationsPersonTextField.text!
-        addInseminations.inseminationsBullName = inseminationsBullTextField.text!
+        addInseminations.inseminatedPerson = Constants.inseminationPerson
+        addInseminations.inseminationsBullName = Constants.bullName
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
         print("burası \(addInseminations.inseminationsBullName)")
         if let delegate = delegate {
          //   LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
-         
-            inseminationViewModel.addInsemination(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+            
+       //     inseminationViewModel.addInsemination(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+            LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+            
         }
     
         delegateCloseInseminationsView()
@@ -149,7 +162,10 @@ extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        Constants.bullName = bullViewModel.fetchBull()[row]
+        Constants.inseminationPerson = personViewModel.fetchPersonViewModel()[row]
         return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPersonViewModel()[row].inseminatedPersonName
+       
     }
     
     

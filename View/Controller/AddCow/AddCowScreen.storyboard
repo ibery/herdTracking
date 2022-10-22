@@ -68,7 +68,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
                                                         <connections>
-                                                            <action selector="saveCow:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5zw-7K-zkn"/>
+                                                            <action selector="saveCow:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1TD-4w-PMC"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

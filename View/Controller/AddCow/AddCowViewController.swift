@@ -25,14 +25,10 @@ class AddCowViewController : BaseViewController {
     var cowViewModel = CowViewModel()
     let datePicker = UIDatePicker()
     lazy var realm = try! Realm()
-    //    var cowBreedArray = ["Holstein","Simental","Montbeliarde","Jersey","Angus","Hereford","Montofon","Sarole","Limusin"]
-    //   var reproductiveStatusArray = ["Buzağı","Boş","Taze","Tohumlanmış","Gebelik Kontrolü","Abort","Kuruda","Kesimlik"]
-    // dizi veri tabanına kayıt edilecek ırklar veri tabanından çekilecek
-    //    var genderArray = ["Dişi","Erkek"]
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let reproductiveStatusPickerView = UIPickerView()
-    let cowModel = CowModel()
+    
     
     
     // MARK: - Life cycle
@@ -40,9 +36,6 @@ class AddCowViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
-        //        createBreeedPickerView()
-        //        createGenderPickerView()
-        //        createReproductiveStatusPicderView()
         createPickerView(textField: gender, pickerView: genderPickerView)
         createPickerView(textField: reproductiveStatus, pickerView: reproductiveStatusPickerView)
         createPickerView(textField: cowBreed, pickerView: breedPickerView)
@@ -87,30 +80,17 @@ class AddCowViewController : BaseViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
     }
-    
-    //    func createBreeedPickerView(){
-    //        cowBreed.inputView = breedPickerView
-    //        breedPickerView.delegate = self
-    //        breedPickerView.dataSource = self
-    //    }
-    //
-    //    func createGenderPickerView(){
-    //        gender.inputView = genderPickerView
-    //        genderPickerView.delegate = self
-    //        genderPickerView.dataSource = self
-    //
-    //    }
-    //
-    //    func createReproductiveStatusPicderView(){
-    //        reproductiveStatus.inputView = reproductiveStatusPickerView
-    //        reproductiveStatusPickerView.delegate = self
-    //        reproductiveStatusPickerView.dataSource = self
-    //    }
-    
+
     // MARK: - Actions
     
+//    func cowCheckStatus() -> Bool{
+//        return cowViewModel.checkIfThereIsCow(cowCheck: createdCow())
+//    }
+    
     @IBAction func saveCow(_ sender: UIButton) {
-        
+
+    //    cowViewModel.checkIfThereIsCow(cowCheck: createdCow())
+        let cowModel = CowModel()
         cowModel.earTag = earringNumber.text ?? ""
         cowModel.leashNumber = leashNumberEditText.text ?? ""
         cowModel.dateOfBirth = dateOfBirth.text ?? ""
@@ -118,40 +98,19 @@ class AddCowViewController : BaseViewController {
         cowModel.cowBreed = cowBreed.text ?? ""
         cowModel.gender = gender.text ?? ""
         cowModel.reproductiveStatus = Constants.repro
+        cowViewModel.addCowViewModel(cowAdd: cowModel)
         
-        cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
-       
-        
-        //        do{
-        //            try! realm.write{
-        //
-        //                cowModel.earTag = earringNumber.text ?? ""
-        //                cowModel.leashNumber = leashNumberEditText.text ?? ""
-        //                cowModel.dateOfBirth = dateOfBirth.text ?? ""
-        //                cowModel.cowName = cowName.text ?? ""
-        //                cowModel.cowBreed = cowBreed.text ?? ""
-        //                cowModel.gender = gender.text ?? ""
-        //                cowModel.reproductiveStatus = Constants.repro
-        //                realm.add(cowModel)
-        //                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
-        //
-        //            }
-        //        }catch{
-        //            print("Error saving cow\(error.localizedDescription)")
-        //            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
-        //        }
-        
-        
-        
-        //       cowViewModel.checkIfThereIsCow(cowCheck: cowModel)
-        
-        //        cowModel.earTag = ""
-        //        cowModel.leashNumber = ""
-        //        cowModel.dateOfBirth = ""
-        //        cowModel.cowName = ""
-        //        cowModel.cowBreed = ""
-        //        cowModel.gender  = ""
-        
+        if !Constants.cowStatus{
+            earringNumber.text = ""
+            leashNumberEditText.text = ""
+            dateOfBirth.text = ""
+            cowName.text = ""
+            cowBreed.text = Constants.Arrays.cowBreedArray[0]
+            gender.text = Constants.Arrays.genderArray[0]
+            reproductiveStatus.text = "\(ReproductiveStatus(rawValue: 0)!.name)"
+            
+        }
+
         // ekleme işlemi başarılı ise alt satırlar yapılacka
         
         
@@ -162,6 +121,16 @@ class AddCowViewController : BaseViewController {
     
     //MARK: - Methods
     
+//    func createdCow()-> CowModel{
+//        cowModel.earTag = earringNumber.text ?? ""
+//        cowModel.leashNumber = leashNumberEditText.text ?? ""
+//        cowModel.dateOfBirth = dateOfBirth.text ?? ""
+//        cowModel.cowName = cowName.text ?? ""
+//        cowModel.cowBreed = cowBreed.text ?? ""
+//        cowModel.gender = gender.text ?? ""
+//        cowModel.reproductiveStatus = Constants.repro
+//        return cowModel
+//    }
     
     @objc func doneButtonClicked(){
         

@@ -64,8 +64,10 @@ class AddInseminationsViewController : BaseViewController {
 extension AddInseminationsViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("bir")
+        print("\(cow.inseminations.count)")
      //   return cow.inseminations.count != 0  ? cow.inseminations.count : 1
         return cow.inseminations.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,8 +75,8 @@ extension AddInseminationsViewController : UITableViewDelegate , UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.inseminationsCell , for : indexPath) as? AddInseminationsTableViewCell else {return UITableViewCell()}
         
         cell.inseminationsDate.text = cow.inseminations[indexPath.row].inseminationDate
-        cell.inseminationsBull.text = cow.inseminations[indexPath.row].inseminationsBullName
-        cell.inseminationsPerson.text = cow.inseminations[indexPath.row].inseminatedPerson
+        cell.inseminationsBull.text = "\(cow.inseminations[indexPath.row].inseminationsBullName?.bullName)"
+        cell.inseminationsPerson.text = "\(cow.inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName)"
         cell.inseminationsResult.text = cow.inseminations[indexPath.row].inseminationsStatus
    //     cell.cellView.layer.borderWidth = 2
         return cell

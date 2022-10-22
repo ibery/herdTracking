@@ -35,20 +35,31 @@ class LocaleService {
     // MARK: - Methods
     
     
+    //    func addCow(cow : CowModel){
+    //        do{
+    //            try realm.write{
+    //                realm.add(cow)
+    //
+    //                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
+    //
+    //            }
+    //        }catch{
+    //            print("Error saving cow\(error.localizedDescription)")
+    //            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
+    //        }
+    //
+    //    }
+    
     func addCow(cow : CowModel){
-        do{
-            try realm.write{
+        print("L1")
+            try! realm.write{
+                print("L2")
                 realm.add(cow)
-                
-                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
-           
+                print("L3")
             }
-        }catch{
-            print("Error saving cow\(error.localizedDescription)")
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
-        }
-        
+        print("L4")
     }
+    
     
     func fetchCows ()-> Results<CowModel>{
         let cows = realm.objects(CowModel.self)

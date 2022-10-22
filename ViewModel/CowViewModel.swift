@@ -16,60 +16,89 @@ class CowViewModel {
     var status = false
     
     
-    func checkIfThereIsCow (cowCheck : CowModel)  {
-        status = false
+ //   func checkIfThereIsCow (cowCheck : CowModel) {
         
-        for c in fetchCowViewModel() {
-            if c.earTag == cowCheck.earTag {
-                status = true
-                break
-            }
-        }
         
-        if status{
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
-        }else{
-            checkIfThereIsColler(cowColler: cowCheck)
-        }
-    }
+//        for c in fetchCowViewModel() {
+//            var status = false
+//            if c.earTag == cowCheck.earTag {
+//                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+//                status = true
+//                break
+//            }else if c.leashNumber == cowCheck.leashNumber{
+//                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
+//                status = true
+//                break
+//            }
+//        }
+//        if !status{
+//
+//        }
+//    }
     
-    private func checkIfThereIsColler ( cowColler : CowModel)  {
-        status = false
-        
-        if cowColler.leashNumber != "" {
-            for c in fetchCowViewModel(){
-                if c.leashNumber == cowColler.leashNumber {
-                    status = true
-                    break
-                }
-            }
-        }
-        if status{
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
-        }else{
-            cowTextFieldControl(cowTextField : cowColler)
-        }
-    }
+//    private func checkIfThereIsColler ( cowColler : CowModel)->Bool  {
+//        status = false
+//
+//        if cowColler.leashNumber != "" {
+//            for c in fetchCowViewModel(){
+//                if c.leashNumber == cowColler.leashNumber {
+//                    status = true
+//                    break
+//                }
+//            }
+//        }
+//        if status{
+//            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
+//            return false
+//        }else{
+//
+//        //     cowTextFieldControl(cowTextField : cowColler)
+//
+//           return true
+//        }
+//    }
     
     private func cowTextFieldControl(cowTextField : CowModel){
         
         if cowTextField.earTag == ""{
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earRing)
+            Constants.cowStatus = true
         }else{
             if cowTextField.dateOfBirth == ""{
                 UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
+                Constants.cowStatus = true
             }else{
                 if cowTextField.gender == "" {
                     UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.gender)
+                    Constants.cowStatus = true
                 }else{
-                    addCowViewModel(cowAdd : cowTextField)
+           //        addCowViewModel(cowAdd : cowTextField)
+                    LocaleService.shared.addCow(cow: cowTextField)
+                    UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
+                    
                 }
             }
         }
     }
     // BURASI LOCALE SERVİCE DEN ÇEKİLECEK
-    private func addCowViewModel(cowAdd : CowModel){
-        LocaleService.shared.addCow(cow: cowAdd)
+    
+    
+    func addCowViewModel(cowAdd : CowModel){
+        Constants.cowStatus = false
+        for i in fetchCowViewModel(){
+            if i.earTag == cowAdd.earTag{
+                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+                Constants.cowStatus = true
+                break
+            }else if i.leashNumber == cowAdd.leashNumber && cowAdd.leashNumber != ""{
+                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
+                Constants.cowStatus = true
+                break
+            }
+        }
+        if !Constants.cowStatus{
+            cowTextFieldControl(cowTextField: cowAdd)
+        }
     }
     
     private func fetchCowViewModel()-> Results<CowModel>{

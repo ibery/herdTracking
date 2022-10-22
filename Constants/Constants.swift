@@ -58,5 +58,8 @@ struct Constants {
     
     static var repro = ReproductiveStatus()
     static var tableView = UITableView()
+    static var bullName = BullModel()
+    static var inseminationPerson = PersonModel()
+    static var cowStatus = false 
     
 }

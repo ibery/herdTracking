@@ -11,8 +11,8 @@ import RealmSwift
 class BullModel : Object{
     
     // MARK: - Properties
-    @objc dynamic var bullName : String = ""
-    @objc dynamic var bullBreed : String = ""
+    @objc dynamic var bullName : String?
+    @objc dynamic var bullBreed : String?
 
     // MARK: - Initializers
     
