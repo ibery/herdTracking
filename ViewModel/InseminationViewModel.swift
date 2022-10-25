@@ -26,7 +26,7 @@ class InseminationViewModel {
     
     
     // MARK: - Methods
-    func addInsemination(cow : CowModel , newInsemination : InseminationModel){
+    func addInseminationViewModel(cow : CowModel , newInsemination : InseminationModel){
         LocaleService.shared.addInseminations(cow: cow, newInsemination: inseminationsModel)
     }
     

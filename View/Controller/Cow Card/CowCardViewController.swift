@@ -20,10 +20,11 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var reproductiveStatusLabel: UILabel!
     @IBOutlet weak var leashNumberLabel: UILabel!
-    @IBOutlet weak var syringeImage: UIImageView!
-    @IBOutlet weak var spermsImage: UIImageView!
-    @IBOutlet weak var birthImage: UIImageView!
-    @IBOutlet weak var noteImage: UIImageView!
+//    @IBOutlet weak var syringeImage: UIImageView!
+//    @IBOutlet weak var spermsImage: UIImageView!
+//    @IBOutlet weak var birthImage: UIImageView!
+//    @IBOutlet weak var noteImage: UIImageView!
+    @IBOutlet weak var cowCardMenuCollectionView: UICollectionView!
     @IBOutlet weak var cowProfileImage: UIImageView!
     
     
@@ -40,8 +41,18 @@ class CowCardViewController : BaseViewController {
         
         cowEditingView.isHidden = true
         cowEditingView.delegate = self
-        print(cow.cowName)
-        setupProperties()
+        cowCardMenuCollectionView.delegate = self
+        cowCardMenuCollectionView.dataSource = self
+        self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
+ //       setupProperties()
+        
+ 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let indexPath:IndexPath = IndexPath(row: 0, section: 0)
+            cowCardMenuCollectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,28 +67,26 @@ class CowCardViewController : BaseViewController {
         navigationItem.rightBarButtonItems = [editButton]
     }
     
-    func setupProperties(){
-        // Burası guard lanacak
-     //   guard let cow = cow else {return}
-        earTagLabel.text = "Küpe : \(cow.earTag)"
-        ageLabel.text = "Yaş : \(String(NumberOfDays.dateDayCount(date: cow.dateOfBirth, format: "dd.MM.yy")))"
-        grupLabel.text = "Grup No : \(cow.groupNo)"
-        nameLabel.text = "Adı : \(cow.cowName)"
-        reproductiveStatusLabel.text = "Üreme Durumu : \(cow.reproductiveStatus?.name)"
-        leashNumberLabel.text = "Tasma No : \( cow.leashNumber)"
-        syringeImage.isUserInteractionEnabled = true
-        spermsImage.isUserInteractionEnabled = true
-        birthImage.isUserInteractionEnabled = true
-        noteImage.isUserInteractionEnabled = true
-        
-        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syringeImageClick)))
-        spermsImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spermsImageClick)))
-        birthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthImageClick)))
-        noteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noteImageClick)))
-        
-        
-        
-    }
+//    func setupProperties(){
+//        // Burası guard lanacak
+//     //   guard let cow = cow else {return}
+//        earTagLabel.text = "Küpe : \(cow.earTag)"
+//        ageLabel.text = "Yaş : \(String(NumberOfDays.dateDayCount(date: cow.dateOfBirth, format: "dd.MM.yy")))"
+//        grupLabel.text = "Grup No : \(cow.groupNo)"
+//        nameLabel.text = "Adı : \(cow.cowName)"
+//        reproductiveStatusLabel.text = "Üreme Durumu : \(cow.reproductiveStatus?.name)"
+//        leashNumberLabel.text = "Tasma No : \( cow.leashNumber)"
+//        syringeImage.isUserInteractionEnabled = true
+//        spermsImage.isUserInteractionEnabled = true
+//        birthImage.isUserInteractionEnabled = true
+//        noteImage.isUserInteractionEnabled = true
+//
+//        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syringeImageClick)))
+//        spermsImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spermsImageClick)))
+//        birthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthImageClick)))
+//        noteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noteImageClick)))
+//
+//    }
     
     // MARK: - Actions
     
@@ -86,15 +95,9 @@ class CowCardViewController : BaseViewController {
     @objc func editTapped(){
        // düzenlemeyer güncellenecek
         cowEditingView.isHidden = false
-       
-       
-        
     }
     
-    @objc func syringeImageClick (){
-        
-    }
-    
+
     @objc func spermsImageClick(){
         guard let viewController = self.getViewController(fromStoryboard: .inseminations , type: AddInseminationsViewController.self) else {return}
         viewController.cow = cow
@@ -102,12 +105,8 @@ class CowCardViewController : BaseViewController {
         
     }
     
-    @objc func birthImageClick(){
-        
-    }
-    
-    @objc func noteImageClick(){
-        
+    func firstItemSelect(){
+ 
     }
     
     
@@ -126,4 +125,35 @@ extension CowCardViewController : CloseViewProtocol{
     
 }
     
+extension CowCardViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Constants.Arrays.cowCardMenuCollectionViewItemArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cowCardMenuCell, for: indexPath) as? CowCardMenuCollectionViewCell else {return UICollectionViewCell()}
+        cell.menuLabel.text = Constants.Arrays.cowCardMenuCollectionViewItemArray[indexPath.row]
+        cell.menuCellView.isHidden = true
+        
+        
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.frame.width - 16.0 * 2
+                let height: CGFloat = 300.0
+                
+    return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        
+    }
+    
+
+}
+
+
 

@@ -33,7 +33,6 @@ class PersonViewModel{
         
         for i in fetchPersonViewModel(){
             if i.inseminatedPersonName == person.inseminatedPersonName{
-                print("\(i.inseminatedPersonName ) : \(person.inseminatedPersonName)")
                 status = true
                 break
             }

@@ -15,16 +15,13 @@ protocol CloseInseminationViewProtocol{
 }
 
 class InseminationsAddController : UIView ,NibInitializable {
-    
-    
-    
+      
     // MARK: - Properties
     
     @IBOutlet weak var inseminationsDateTextField: UITextField!
     @IBOutlet weak var inseminationsBullTextField: UITextField!
     @IBOutlet weak var inseminationsPersonTextField: UITextField!
- 
-    
+  
     let datePicker = UIDatePicker()
     var nibName: String = "InseminationsAddView"
     var delegate : CloseInseminationViewProtocol?
@@ -33,7 +30,7 @@ class InseminationsAddController : UIView ,NibInitializable {
     var personViewModel = PersonViewModel()
     let bullNamePickerView = UIPickerView()
     let personNamePickerView = UIPickerView()
-
+    
     
     // MARK: - Initializers
     
@@ -56,20 +53,19 @@ class InseminationsAddController : UIView ,NibInitializable {
         createDatePicker()
         createPickerView(textField: inseminationsPersonTextField, pickerView: personNamePickerView)
         createPickerView(textField: inseminationsBullTextField, pickerView: bullNamePickerView)
-   //     inseminationsBullTextField.text = bullViewModel.fetchBull()[0].bullName
-   //     inseminationsPersonTextField.text = personViewModel.fetchPersonViewModel()[0].inseminatedPersonName
-     //   print("insemination name : \(personViewModel.fetchPersonViewModel()[0].inseminatedPersonName)")
         if bullViewModel.fetchBull().count == 0 {
             inseminationsBullTextField.isEnabled = false
             inseminationsBullTextField.placeholder = "Anasayfadan Boğa Ekle"
         }else{
             inseminationsBullTextField.text =  bullViewModel.fetchBull()[0].bullName
+            inseminationsBullTextField.placeholder = "Boğa Seçiniz"
         }
         if personViewModel.fetchPersonViewModel().count == 0{
             inseminationsPersonTextField.isEnabled = false
             inseminationsPersonTextField.placeholder = "Anasayfadan Tohumlayıcı Ekle"
         }else{
             inseminationsPersonTextField.text = personViewModel.fetchPersonViewModel()[0].inseminatedPersonName
+            inseminationsPersonTextField.placeholder = "Tohumlayıcı Seçiniz"
         }
     }
     
@@ -98,33 +94,35 @@ class InseminationsAddController : UIView ,NibInitializable {
     // MARK: - Actions
     
     @IBAction func saveButton(_ sender: UIButton) {
-        
-        // burası guard lanacak
-        
         let addInseminations = InseminationModel()
+       
         addInseminations.inseminationDate = inseminationsDateTextField.text!
-        
-        
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
-        print("burası \(addInseminations.inseminationsBullName)")
-        if personViewModel.fetchPersonViewModel().count != 0{
-            addInseminations.inseminatedPerson = Constants.inseminationPerson
-        }
-        if bullViewModel.fetchBull().count != 0{
-            addInseminations.inseminationsBullName = Constants.bullName
-        }
-        
-        if let delegate = delegate {
-         //   LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+      
+        if inseminationsDateTextField.text == ""{
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.inseminationDate)
+        }else{
+            if personViewModel.fetchPersonViewModel().count != 0{
+                for i in personViewModel.fetchPersonViewModel(){
+                    if i.inseminatedPersonName == inseminationsPersonTextField.text{
+                        addInseminations.inseminatedPerson = i
+                    }
+                }
+            }
+            if bullViewModel.fetchBull().count != 0{
+                for i in bullViewModel.fetchBull(){
+                    if i.bullName == inseminationsBullTextField.text{
+                        addInseminations.inseminationsBullName = i
+                    }
+                }
+            }
+            if let delegate = delegate {
+                LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+            }
+            delegateCloseInseminationsView()
+            Constants.tableView.reloadData()
             
-       //     inseminationViewModel.addInsemination(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
-            
-            LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
-            
         }
-    
-        delegateCloseInseminationsView()
-        Constants.tableView.reloadData()
         
     }
     
@@ -134,8 +132,8 @@ class InseminationsAddController : UIView ,NibInitializable {
     
     // MARK: - Methods
     
-   @objc func cancelClicked(){
-       self.inseminationsDateTextField.resignFirstResponder()
+    @objc func cancelClicked(){
+        self.inseminationsDateTextField.resignFirstResponder()
     }
     
     @objc func doneClicked(){
@@ -170,12 +168,35 @@ extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        pickerView.isEnab
+        
         print("insemination count : \(personViewModel.fetchPersonViewModel().count)")
-        Constants.bullName = bullViewModel.fetchBull()[row]
-        Constants.inseminationPerson = personViewModel.fetchPersonViewModel()[row]
+        
+        //        if bullViewModel.fetchBull().count != 0 {
+        //            Constants.bullName = bullViewModel.fetchBull()[row]
+        //            return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPersonViewModel()[row].inseminatedPersonName
+        //        }
+        //        if personViewModel.fetchPersonViewModel().count != 0{
+        //            Constants.inseminationPerson = personViewModel.fetchPersonViewModel()[row]
+        //            return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPersonViewModel()[row].inseminatedPersonName
+        //        }
         return pickerView == bullNamePickerView ? bullViewModel.fetchBull()[row].bullName : personViewModel.fetchPersonViewModel()[row].inseminatedPersonName
-       
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == bullNamePickerView {
+            if let bullname = bullViewModel.fetchBull()[row].bullName{
+                inseminationsBullTextField.text =  "\(bullname)"
+            }
+            Constants.bullName = bullViewModel.fetchBull()[row]
+            inseminationsBullTextField.resignFirstResponder()
+        }else{
+            if let personName = personViewModel.fetchPersonViewModel()[row].inseminatedPersonName{
+                inseminationsPersonTextField.text = "\(personName)"
+            }
+            Constants.inseminationPerson = personViewModel.fetchPersonViewModel()[row]
+            inseminationsPersonTextField.resignFirstResponder()
+        }
     }
     
     

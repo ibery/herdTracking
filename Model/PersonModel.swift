@@ -12,7 +12,7 @@ import RealmSwift
 class PersonModel : Object {
     
     // MARK: - Properties
-    @objc dynamic var inseminatedPersonName : String = ""
+    @objc dynamic var inseminatedPersonName : String?
 
     // MARK: - Initializers
     

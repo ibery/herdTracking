@@ -25,12 +25,15 @@ struct Constants {
         static let bull = "Bu boğa daha önce eklenmiş!"
         static let personTextField = "Tohumlayıcı adı boş bırakılamaz!"
         static let bullTextField = "Boğa adı boş bırakılamaz!"
+        static let inseminationDate = "Tohumlama tarihi boş bırakılamaz!"
     }
     
     
     struct CollectionView{
         static let homeCollectionView = "MenuCollectionViewCell"
         static let cell = "manuCollectionViewCell"
+        static let cowCardMenuCollectionView = "CowCardMenuCollectionViewCell"
+        static let cowCardMenuCell = "CowCardMenuCollectionViewCell"
     }
     
     struct TableView{
@@ -53,6 +56,8 @@ struct Constants {
         static var genderArray = ["Dişi","Erkek"]
         
         static let collectionViewItemArray = ["tumHayvanlar","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","erkekler"]
+        
+        static let cowCardMenuCollectionViewItemArray = ["Genel Bilgiler","Tohumlama Bilgileri","Doğum Bilgileri","Aşı Bilgileri","Not Bilgileri","Diğer Bilgiler"]
         
         static let inseminationsArray = ["Gebe","Boş","Beklemede"]
     }

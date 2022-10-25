@@ -15,12 +15,9 @@ class AddInseminationsViewController : BaseViewController {
     @IBOutlet weak var inseminationsTableView: UITableView!
     private var addButton = UIBarButtonItem()
     @IBOutlet weak var inseminationsAddView: InseminationsAddController!
- //   var inseminationViewModel = InseminationViewModel()
-    
     
     var cow = CowModel()
-//    lazy var inseminations = inseminationViewModel.fetchInsemination()
- //   var inseminationsAddController = InseminationsAddController()
+
     
     // MARK: - Life cycle
     
@@ -38,14 +35,14 @@ class AddInseminationsViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        
     }
     
     
     
     // MARK: - Setup
     func setupButton(){
-
+        
         addButton = UIBarButtonItem(image: UIImage(systemName: "plus"),  style: .plain, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItems = [addButton]
     }
@@ -63,11 +60,7 @@ class AddInseminationsViewController : BaseViewController {
 
 extension AddInseminationsViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("bir")
-        print("\(cow.inseminations.count)")
-     //   return cow.inseminations.count != 0  ? cow.inseminations.count : 1
         return cow.inseminations.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,13 +68,15 @@ extension AddInseminationsViewController : UITableViewDelegate , UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.inseminationsCell , for : indexPath) as? AddInseminationsTableViewCell else {return UITableViewCell()}
         
         cell.inseminationsDate.text = cow.inseminations[indexPath.row].inseminationDate
-        cell.inseminationsBull.text = "\(String(describing: cow.inseminations[indexPath.row].inseminationsBullName?.bullName))"
-        cell.inseminationsPerson.text = "\(String(describing: cow.inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName))"
+        
+        if let bull = cow.inseminations[indexPath.row].inseminationsBullName?.bullName {cell.inseminationsBull.text = bull }
+        if let person = cow.inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName {cell.inseminationsPerson.text = person}
+        
         cell.inseminationsResult.text = cow.inseminations[indexPath.row].inseminationsStatus
-   //     cell.cellView.layer.borderWidth = 2
+        //     cell.cellView.layer.borderWidth = 2
         return cell
     }
-      
+    
 }
 
 extension AddInseminationsViewController : CloseInseminationViewProtocol{
