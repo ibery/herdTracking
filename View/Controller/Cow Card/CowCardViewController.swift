@@ -12,8 +12,15 @@ class CowCardViewController : BaseViewController {
     
     
     // MARK: - Properties
+    @IBOutlet weak var generalInformationsView: GeneralInformationsController!
+    @IBOutlet weak var inseminationInformationsView: InseminationInformationsController!
+    @IBOutlet weak var birthInformationsView: BirthInformationController!
+    
+    
+    
     private var editButton = UIBarButtonItem()
     @IBOutlet weak var cowEditingView: CowCardEditingController!
+    
     @IBOutlet weak var earTagLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var grupLabel: UILabel!
@@ -113,7 +120,16 @@ class CowCardViewController : BaseViewController {
     
 }
 
-extension CowCardViewController : CloseViewProtocol{
+extension CowCardViewController : CloseViewProtocol , getCowProtocolGeneral , getCowInseminationInformationProtocol{
+    func getCowGeneral() -> CowModel {
+        return cow
+    }
+    
+    func getCowInseminationInformation() -> CowModel {
+        return cow
+    }
+    
+ 
     func getTextField() -> CowModel {
         return self.cow
     }
@@ -124,20 +140,18 @@ extension CowCardViewController : CloseViewProtocol{
     
     
 }
+
     
 extension CowCardViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Constants.Arrays.cowCardMenuCollectionViewItemArray.count
+        return Views.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cowCardMenuCell, for: indexPath) as? CowCardMenuCollectionViewCell else {return UICollectionViewCell()}
-        cell.menuLabel.text = Constants.Arrays.cowCardMenuCollectionViewItemArray[indexPath.row]
-        cell.menuCellView.isHidden = true
-        
-        
-        
+        cell.menuLabel.text = Views(rawValue: indexPath.row)?.name
+      
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -148,10 +162,33 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         
+        let views = Views(rawValue: indexPath.row)
+        
+        switch views {
+        case .general:
+           return generalInformationsView.isHidden = false
+        case .inseminations:
+            return inseminationInformationsView.isHidden = false
+        case .birth:
+            return birthInformationsView.isHidden = false 
+        case .pregnancyControl:
+            return 
+        case .none:
+            <#code#>
+        case .some(.vaccine):
+            <#code#>
+        case .some(.note):
+            <#code#>
+        case .some(.other):
+            <#code#>
+        }
+         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
 
 }
 

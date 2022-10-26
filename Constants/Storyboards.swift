@@ -21,8 +21,6 @@ enum Storyboard : Int {
     case person
     case bull
     
-   
-    
     
     var name : String {
         switch self{

@@ -164,6 +164,7 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
         }else {
             //return reproductiveStatusArray.count
             return ReproductiveStatus.allCases.count
+            
         }
         //   return pickerView == breedPickerView ? cowBreedArray.count : genderArray.count
         
