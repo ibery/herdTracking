@@ -101,7 +101,7 @@ class CowViewModel {
         }
     }
     
-    private func fetchCowViewModel()-> Results<CowModel>{
+     func fetchCowViewModel()-> Results<CowModel>{
         return LocaleService.shared.fetchCows()
     }
     

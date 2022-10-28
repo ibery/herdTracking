@@ -40,12 +40,13 @@ class CowCardViewController : BaseViewController {
     
     var cow : CowModel = CowModel()
 //    var cowCardEditing = CowCardEditingController()
-    
+   
     
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("bir")
         setupScreen()
         
         cowEditingView.isHidden = true
@@ -56,8 +57,8 @@ class CowCardViewController : BaseViewController {
         generalInformationsView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
  //       setupProperties()
-        
- 
+       
+        print("collection view ")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,7 +166,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let views = Views(rawValue: indexPath.row)
-        print("indexpaht2 row : \(indexPath.row)")
+        print("collection view 1")
         switch views {
         case .general:
             return generalInformationsView.isHidden = false
@@ -188,7 +189,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
         
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let views = Views(rawValue: indexPath.row)
-        print("indexpaht3 row : \(indexPath.row)")
+        
         switch views {
         case .general:
             return generalInformationsView.isHidden = true

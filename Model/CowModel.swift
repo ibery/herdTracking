@@ -25,6 +25,9 @@ class CowModel : Object {
     @Persisted var dryOffDate : Date?
     @Persisted var reproductiveStatus: ReproductiveStatus?
     @Persisted var inseminations = List<InseminationModel>()
+    @Persisted var birthList = List<BirthModel>()
+    @Persisted var noteList = List<NoteModel>()
+    @Persisted var vaccineList = List<VaccineListModel>()
     
     convenience init(earTag : String, dateOfBirth : String, leashNumber : String?, gender : String, groupNo : String?, cowBreed : String,  magnet : Bool, numberOfLactations : Int?, lastCalvingDate : Date?, insurance : Bool?, dryOffDate : Date? , reproductiveStatus: ReproductiveStatus? ){
         self.init()

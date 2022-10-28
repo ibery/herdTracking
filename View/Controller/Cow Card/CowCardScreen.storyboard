@@ -106,7 +106,7 @@
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-jI-wZ5" userLabel="BirthInformation" customClass="BirthInformationController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-jI-wZ5" userLabel="BirthInformation" customClass="BirthListController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
