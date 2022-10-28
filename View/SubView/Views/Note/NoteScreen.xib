@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteViewController" customModule="Herd_Tracking" customModuleProvider="target">
+            <connections>
+                <outlet property="addNoteTextField" destination="MkM-iq-Gag" id="L4N-Vr-Wb9"/>
+                <outlet property="noteDateTextField" destination="tMA-AG-rhS" id="Z5e-Ve-w91"/>
+                <outlet property="noteTableView" destination="sF3-5g-1yG" id="8FX-aa-0t0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="727"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CB5-HQ-Ldp">
+                    <rect key="frame" x="172.5" y="152" width="69" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Not Tarihi Seçiniz" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tMA-AG-rhS">
+                    <rect key="frame" x="20" y="54" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sF3-5g-1yG">
+                    <rect key="frame" x="0.0" y="188" width="414" height="539"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Not Ekleyin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MkM-iq-Gag">
+                    <rect key="frame" x="20" y="103" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MkM-iq-Gag" secondAttribute="trailing" constant="20" id="4e2-pY-K7U"/>
+                <constraint firstItem="CB5-HQ-Ldp" firstAttribute="top" secondItem="MkM-iq-Gag" secondAttribute="bottom" constant="15" id="5TF-cq-fER"/>
+                <constraint firstItem="MkM-iq-Gag" firstAttribute="top" secondItem="tMA-AG-rhS" secondAttribute="bottom" constant="15" id="9SA-BF-ugE"/>
+                <constraint firstItem="tMA-AG-rhS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AEL-7a-fw5"/>
+                <constraint firstItem="CB5-HQ-Ldp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M4d-dp-gxT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tMA-AG-rhS" secondAttribute="trailing" constant="20" id="MGm-Lg-5GG"/>
+                <constraint firstItem="tMA-AG-rhS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Msu-YB-J44"/>
+                <constraint firstItem="sF3-5g-1yG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="RYW-bJ-5sV"/>
+                <constraint firstItem="sF3-5g-1yG" firstAttribute="top" secondItem="CB5-HQ-Ldp" secondAttribute="bottom" constant="5" id="e3W-9d-cfq"/>
+                <constraint firstItem="sF3-5g-1yG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jAw-Yy-7mA"/>
+                <constraint firstItem="MkM-iq-Gag" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="qyv-vr-fPf"/>
+                <constraint firstItem="sF3-5g-1yG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rIF-mk-ClY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="295.6521739130435" y="168.41517857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

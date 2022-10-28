@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-protocol getCowProtocolGeneral{
-    func getCowGeneral()-> CowModel
-}
+
 
 class GeneralInformationsController : UIView , NibInitializable {
    
@@ -25,7 +23,7 @@ class GeneralInformationsController : UIView , NibInitializable {
     @IBOutlet weak var ageLabel: UILabel!
     
     var nibName: String = "GeneralInformationsScreen"
-    var delegate : getCowProtocolGeneral?
+    var delegate : GetCowAndViewProtocol?
     private let cowModel = CowModel()
     
     
@@ -53,12 +51,12 @@ class GeneralInformationsController : UIView , NibInitializable {
     
     override func layoutSubviews() {
         if let delegate = delegate {
-            earTagLabel.text = delegate.getCowGeneral().earTag
-            reproductiveStatusLabel.text = delegate.getCowGeneral().reproductiveStatus?.name
-            nameLabel.text = delegate.getCowGeneral().cowName
-            leashNumberLabel.text = delegate.getCowGeneral().leashNumber
-            groupLabel.text = delegate.getCowGeneral().groupNo
-            ageLabel.text = String( NumberOfDays.dateDayCount(date: delegate.getCowGeneral().dateOfBirth, format: "dd.MM.yy"))
+            earTagLabel.text = delegate.getCow().earTag
+            reproductiveStatusLabel.text = delegate.getCow().reproductiveStatus?.name
+            nameLabel.text = delegate.getCow().cowName
+            leashNumberLabel.text = delegate.getCow().leashNumber
+            groupLabel.text = delegate.getCow().groupNo ?? "-"
+            ageLabel.text = String( "\(NumberOfDays.dateDayCount(date: delegate.getCow().dateOfBirth, format: "dd.MM.yy")) Gün")
            
         }
     }

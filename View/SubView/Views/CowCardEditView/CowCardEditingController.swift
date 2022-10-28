@@ -10,10 +10,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-protocol CloseViewProtocol {
-    func closeView()
-    func getTextField() -> CowModel
-}
+
 
 class CowCardEditingController : UIView , NibInitializable {
     
@@ -28,7 +25,7 @@ class CowCardEditingController : UIView , NibInitializable {
     @IBOutlet weak var cowBreedEditingTextFiedl: UITextField!
     @IBOutlet weak var genderEditingTextfield: UITextField!
     
-    var delegate:CloseViewProtocol?
+    var delegate:CowCardEditingProtocol?
     var nibName: String = "CowCardEditingViewScreen"
     var editingCow : CowModel = CowModel()
     let breedPickerView = UIPickerView()
@@ -95,7 +92,7 @@ class CowCardEditingController : UIView , NibInitializable {
                 if dateOfBirthEditingTextField.text == ""{
                     UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
                 }else{
-                    LocaleService.shared.updateCow(cow: delegate.getTextField(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
+                    LocaleService.shared.updateCow(cow: delegate.cowCardEditinCow(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
                     UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successfullUpdate)
                     delegateViewFunc()
                 }
@@ -113,14 +110,14 @@ class CowCardEditingController : UIView , NibInitializable {
     
     func delegateViewFunc () {
         if let delegate = delegate {
-            delegate.closeView()
+            delegate.closeCowCardEditingView()
             
         }
     }
     
     func setTextField (){
         if let delegate = delegate {
-            editingCow = delegate.getTextField()
+            editingCow = delegate.cowCardEditinCow()
         }
         earTagEditingTextField.text = editingCow.earTag
         cowNameEditingTextField.text = editingCow.cowName

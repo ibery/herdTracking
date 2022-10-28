@@ -15,10 +15,12 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var generalInformationsView: GeneralInformationsController!
     @IBOutlet weak var inseminationInformationsView: InseminationInformationsController!
     @IBOutlet weak var birthInformationsView: BirthInformationController!
-    
-    
-    
+    @IBOutlet weak var vaccineView: VaccineViewController!
+    @IBOutlet weak var noteView: NoteViewController!
+    @IBOutlet weak var pregnancyControlView: PregnancyControlViewController!
+    @IBOutlet weak var otherView: OtherViewController!
     private var editButton = UIBarButtonItem()
+
     @IBOutlet weak var cowEditingView: CowCardEditingController!
     
     @IBOutlet weak var earTagLabel: UILabel!
@@ -50,6 +52,8 @@ class CowCardViewController : BaseViewController {
         cowEditingView.delegate = self
         cowCardMenuCollectionView.delegate = self
         cowCardMenuCollectionView.dataSource = self
+        inseminationInformationsView.delegate = self
+        generalInformationsView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
  //       setupProperties()
         
@@ -59,12 +63,13 @@ class CowCardViewController : BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         let indexPath:IndexPath = IndexPath(row: 0, section: 0)
             cowCardMenuCollectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        
         
     }
 
@@ -105,39 +110,35 @@ class CowCardViewController : BaseViewController {
     }
     
 
-    @objc func spermsImageClick(){
-        guard let viewController = self.getViewController(fromStoryboard: .inseminations , type: AddInseminationsViewController.self) else {return}
-        viewController.cow = cow
-        self.navigationController?.show(viewController, sender: nil)
-        
-    }
+//    @objc func spermsImageClick(){
+//        guard let viewController = self.getViewController(fromStoryboard: .inseminations , type: AddInseminationsViewController.self) else {return}
+//        viewController.cow = cow
+//        self.navigationController?.show(viewController, sender: nil)
+//
+//    }
     
-    func firstItemSelect(){
- 
-    }
+//    func firstItemSelect(){
+//
+//    }
     
     
     
 }
 
-extension CowCardViewController : CloseViewProtocol , getCowProtocolGeneral , getCowInseminationInformationProtocol{
-    func getCowGeneral() -> CowModel {
+extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol {
+
+    func cowCardEditinCow()-> CowModel{
         return cow
     }
     
-    func getCowInseminationInformation() -> CowModel {
-        return cow
-    }
-    
- 
-    func getTextField() -> CowModel {
-        return self.cow
-    }
-    
-    func closeView() {
+    func closeCowCardEditingView() {
         cowEditingView.isHidden = true
     }
     
+    func getCow() -> CowModel {
+        return cow
+    }
+
     
 }
 
@@ -151,7 +152,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cowCardMenuCell, for: indexPath) as? CowCardMenuCollectionViewCell else {return UICollectionViewCell()}
         cell.menuLabel.text = Views(rawValue: indexPath.row)?.name
-      
+        print("indexpaht1 row : \(indexPath.row)")
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -164,31 +165,50 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let views = Views(rawValue: indexPath.row)
-        
+        print("indexpaht2 row : \(indexPath.row)")
         switch views {
         case .general:
-           return generalInformationsView.isHidden = false
+            return generalInformationsView.isHidden = false
         case .inseminations:
             return inseminationInformationsView.isHidden = false
         case .birth:
-            return birthInformationsView.isHidden = false 
+            return birthInformationsView.isHidden = false
         case .pregnancyControl:
-            return 
-        case .none:
-            <#code#>
-        case .some(.vaccine):
-            <#code#>
-        case .some(.note):
-            <#code#>
-        case .some(.other):
-            <#code#>
+            return pregnancyControlView.isHidden = false
+        case .vaccine:
+            return vaccineView.isHidden = false
+        case .note:
+            return noteView.isHidden = false
+        case .other:
+            return otherView.isHidden = false
+        case .none: break
+
         }
-         
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        <#code#>
+        let views = Views(rawValue: indexPath.row)
+        print("indexpaht3 row : \(indexPath.row)")
+        switch views {
+        case .general:
+            return generalInformationsView.isHidden = true
+        case .inseminations:
+            return inseminationInformationsView.isHidden = true
+        case .birth:
+            return birthInformationsView.isHidden = true
+        case .pregnancyControl:
+            return pregnancyControlView.isHidden = true
+        case .vaccine:
+            return vaccineView.isHidden = true
+        case .note:
+            return noteView.isHidden = true
+        case .other:
+            return otherView.isHidden = true
+        case .none: break
+
+        }
     }
+
 
 }
 

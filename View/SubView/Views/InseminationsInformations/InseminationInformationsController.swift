@@ -8,25 +8,22 @@
 import Foundation
 import UIKit
 
-protocol getCowInseminationInformationProtocol{
-    func getCowInseminationInformation() -> CowModel
-}
-
 class InseminationInformationsController : UIView ,NibInitializable {
     
     
     // MARK: - Properties
     
     
+    @IBOutlet weak var addInseminationView: InseminationsAddController!
     @IBOutlet weak var inseminationInformationsTableView: UITableView!
     var nibName: String = "InseminationInformaitonsScreen"
-    var delegate : getCowInseminationInformationProtocol?
-    private let cowModel = CowModel()
-   
+    var delegate : GetCowAndViewProtocol?
+//    var delegateView : showViewProtocol?
+    //  private let cowModel = CowModel()
+    
     
     
     // MARK: - Initializers
-    
     
     
     required init?(coder: NSCoder ) {
@@ -50,12 +47,18 @@ class InseminationInformationsController : UIView ,NibInitializable {
     override func layoutSubviews() {
         inseminationInformationsTableView.delegate = self
         inseminationInformationsTableView.dataSource = self
+        addInseminationView.delegate = self
+        self.inseminationInformationsTableView.register(UINib(nibName: Constants.TableView.inseminationsTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.inseminationsCell)
         
     }
     
     
     // MARK: - Actions
+    @IBAction func addInsemination(_ sender: UIButton) {
+      
+        addInseminationView.isHidden = false
     
+    }
     
     // MARK: - Methods
     
@@ -65,21 +68,37 @@ class InseminationInformationsController : UIView ,NibInitializable {
 extension InseminationInformationsController : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let delegate = delegate{
-            return delegate.getCowInseminationInformation().inseminations.count
+            return delegate.getCow().inseminations.count
+        }else{
+            return 0
+            
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.inseminationsCell, for: indexPath) as? AddInseminationsTableViewCell else {return UITableViewCell()}
         if let delegate = delegate{
-            cell.inseminationsBull.text = delegate.getCowInseminationInformation().inseminations[indexPath.row].inseminationsBullName?.bullName
-            cell.inseminationsDate.text = delegate.getCowInseminationInformation().inseminations[indexPath.row].inseminationDate
-            cell.inseminationsPerson.text = delegate.getCowInseminationInformation().inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName
-            cell.inseminationsResult.text = delegate.getCowInseminationInformation().inseminations[indexPath.row].inseminationsStatus
+            cell.inseminationsBull.text = delegate.getCow().inseminations[indexPath.row].inseminationsBullName?.bullName
+            cell.inseminationsDate.text = delegate.getCow().inseminations[indexPath.row].inseminationDate
+            cell.inseminationsPerson.text = delegate.getCow().inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName
+            cell.inseminationsResult.text = delegate.getCow().inseminations[indexPath.row].inseminationsStatus
         }
-       return cell
+        return cell
     }
-    
-    
+ 
 }
 
+extension InseminationInformationsController : CloseInseminationViewProtocol{
+    func addInseminationsDelegate() -> CowModel {
+        guard let delegate = delegate?.getCow() else {return CowModel()}
+        return delegate
+    }
+    
+    func closeInseminationView() {
+        addInseminationView.isHidden = true
+        inseminationInformationsTableView.reloadData()
+    }
+    
+
+    
+}

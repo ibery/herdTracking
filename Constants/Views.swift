@@ -24,7 +24,7 @@ enum Views : Int , CaseIterable {
         case .inseminations:
             return "Tohumlama Bilgileri"
         case .birth:
-            return "Doğum Bilgileri"
+            return "Doğum Yaptır"
         case.pregnancyControl:
             return "Gebelik Kontrolü"
         case .vaccine:

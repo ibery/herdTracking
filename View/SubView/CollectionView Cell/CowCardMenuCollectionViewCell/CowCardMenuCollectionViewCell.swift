@@ -22,6 +22,7 @@ class CowCardMenuCollectionViewCell: UICollectionViewCell {
 
           self.menuLabel.textColor = isSelected ? .red : .black
           self.menuCellView.isHidden = isSelected ? false : true
+         
       }
     }
 

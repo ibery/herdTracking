@@ -18,9 +18,18 @@ class BirthInformationController : UIView , NibInitializable {
     
     // MARK: - Properties
    
-    var nibName: String = "BirthInformationController"
+    var nibName: String = "BirthInformationScreen"
     var delegate : getCowBirthInformationProtocol?
+    @IBOutlet weak var BirthDateTextField: UITextField!
+    @IBOutlet weak var typeOfBirthTextFiedl: UITextField!
+    @IBOutlet weak var calfEarTagTextField: UITextField!
+    @IBOutlet weak var calfNameTextField: UITextField!
+    @IBOutlet weak var twinsSwitch: UISwitch!
+    @IBOutlet weak var calfGender: UITextField!
     
+    @IBOutlet weak var secondCalfEarTag: UITextField!
+    @IBOutlet weak var secondCalfName: UITextField!
+    @IBOutlet weak var secondCalfGender: UITextField!
     
     // MARK: - Initializers
     
@@ -51,6 +60,8 @@ class BirthInformationController : UIView , NibInitializable {
     
     // MARK: - Actions
     
+    @IBAction func giveBirth(_ sender: Any) {
+    }
     private func setup(){}
     
     // MARK: - Methods

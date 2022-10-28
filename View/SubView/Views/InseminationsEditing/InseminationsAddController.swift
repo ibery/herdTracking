@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 import RealmSwift
 
-protocol CloseInseminationViewProtocol{
-    func closeInseminationView()
-    func addInseminationsDelegate () -> CowModel
-}
+//protocol CloseInseminationViewProtocol{
+//    func closeInseminationView()
+//    func addInseminationsDelegate () -> CowModel
+//}
+
 
 class InseminationsAddController : UIView ,NibInitializable {
       
@@ -95,7 +96,7 @@ class InseminationsAddController : UIView ,NibInitializable {
     
     @IBAction func saveButton(_ sender: UIButton) {
         let addInseminations = InseminationModel()
-       
+        print("kupe no : \(delegate?.addInseminationsDelegate().earTag)")
         addInseminations.inseminationDate = inseminationsDateTextField.text!
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
       

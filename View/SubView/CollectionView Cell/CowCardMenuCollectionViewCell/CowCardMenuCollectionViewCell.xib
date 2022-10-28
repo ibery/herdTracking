@@ -23,11 +23,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-7f-xxB">
-                        <rect key="frame" x="10" y="35.5" width="149" height="4"/>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-7f-xxB">
+                        <rect key="frame" x="10" y="33.5" width="149" height="3"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="4" id="Tb6-N4-gTW"/>
+                            <constraint firstAttribute="height" constant="3" id="Tb6-N4-gTW"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -35,7 +35,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="rnt-po-UZ2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Dun-Qf-ltA"/>
-                <constraint firstItem="ck3-7f-xxB" firstAttribute="top" secondItem="rnt-po-UZ2" secondAttribute="bottom" constant="5" id="Gtf-kA-UJb"/>
+                <constraint firstItem="ck3-7f-xxB" firstAttribute="top" secondItem="rnt-po-UZ2" secondAttribute="bottom" constant="3" id="Gtf-kA-UJb"/>
                 <constraint firstAttribute="trailing" secondItem="rnt-po-UZ2" secondAttribute="trailing" constant="10" id="e5s-iP-L59"/>
                 <constraint firstAttribute="trailing" secondItem="ck3-7f-xxB" secondAttribute="trailing" constant="10" id="gZn-vv-AnS"/>
                 <constraint firstItem="ck3-7f-xxB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="woc-rJ-yF3"/>

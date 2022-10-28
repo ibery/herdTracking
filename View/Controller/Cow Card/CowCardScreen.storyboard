@@ -21,11 +21,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dJ-1G-QJM" customClass="CowCardEditingController" customModule="Herd_Tracking" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="247" width="382" height="438"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lightBackground" translatesAutoresizingMaskIntoConstraints="NO" id="JW0-Ew-qgy">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,25 +102,34 @@
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMP-oh-8qu" userLabel="InseminationInfoView" customClass="InseminationInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMP-oh-8qu" userLabel="InseminationInfoView" customClass="InseminationInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-jI-wZ5" userLabel="BirthInformation" customClass="BirthInformationController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-jI-wZ5" userLabel="BirthInformation" customClass="BirthInformationController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-Io-i7w" userLabel="VaccineInformation">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-tX-wl7" customClass="PregnancyControlViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-Io-i7w" userLabel="VaccineInformation" customClass="VaccineViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-ae-XVN" userLabel="NoteInformation">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-ae-XVN" userLabel="NoteInformation" customClass="NoteViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24N-R2-s2Y" userLabel="OtherInformation">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24N-R2-s2Y" userLabel="OtherInformation" customClass="OtherViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dJ-1G-QJM" customClass="CowCardEditingController" customModule="Herd_Tracking" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="247" width="382" height="438"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,9 +156,13 @@
                                     <constraint firstItem="24N-R2-s2Y" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="Zi3-Fz-4Vf"/>
                                     <constraint firstItem="92E-R9-IJj" firstAttribute="top" secondItem="H7G-gX-0Xd" secondAttribute="top" constant="60" id="bPI-VA-mad"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="Dhz-Io-i7w" secondAttribute="bottom" id="eQK-Dv-FkX"/>
+                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="lLp-tX-wl7" secondAttribute="trailing" id="fUl-3e-SUp"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="6PW-jI-wZ5" secondAttribute="trailing" id="iUb-h0-Jq3"/>
+                                    <constraint firstItem="lLp-tX-wl7" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="kRP-x5-0hq"/>
                                     <constraint firstItem="24N-R2-s2Y" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="lWW-Tx-3tF"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="24N-R2-s2Y" secondAttribute="bottom" id="oMz-f1-mHD"/>
+                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="lLp-tX-wl7" secondAttribute="bottom" id="oel-N1-dmV"/>
+                                    <constraint firstItem="lLp-tX-wl7" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="pzn-QI-5Ul"/>
                                     <constraint firstItem="LeK-n3-sHv" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="tG3-0U-J6j"/>
                                     <constraint firstItem="nSr-ae-XVN" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="vxT-kg-33l"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="33G-uU-uo5" secondAttribute="trailing" id="xA6-eo-kiA"/>
@@ -175,6 +183,10 @@
                         <outlet property="earTagLabel" destination="HaM-1p-3Hx" id="4MS-4m-gPp"/>
                         <outlet property="generalInformationsView" destination="LeK-n3-sHv" id="0a1-iR-APq"/>
                         <outlet property="inseminationInformationsView" destination="oMP-oh-8qu" id="oCC-hu-L2F"/>
+                        <outlet property="noteView" destination="nSr-ae-XVN" id="PGI-43-yYB"/>
+                        <outlet property="otherView" destination="24N-R2-s2Y" id="IQE-TN-QvM"/>
+                        <outlet property="pregnancyControlView" destination="lLp-tX-wl7" id="q8f-XY-frz"/>
+                        <outlet property="vaccineView" destination="Dhz-Io-i7w" id="DxN-66-EJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
