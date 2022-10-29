@@ -1,20 +1,20 @@
 //
-//  BirthListController.swift
+//  BirthInfoListController.swift
 //  Herd Tracking
 //
-//  Created by ibrahim eryılmaz on 28.10.2022.
+//  Created by ibrahim eryılmaz on 29.10.2022.
 //
 
 import Foundation
 import UIKit
 
-class BirthListController : UIView ,NibInitializable {
+class BirthInfoListController : UIView , NibInitializable {
     
     // MARK: - Properties
-    @IBOutlet weak var birthTableView: UITableView!
-    @IBOutlet weak var birthInformationView: BirthInformationController!
-    var nibName: String = "BirthListScreen"
-    var delegate : GetCowAndViewProtocol?
+    @IBOutlet weak var birthInfoListTableView: UITableView!
+    @IBOutlet weak var addBirthView: BirthInfoController!
+    
+    var nibName : String = "BirthInfoListScreen"
     
     // MARK: - Initializers
     
@@ -37,29 +37,25 @@ class BirthListController : UIView ,NibInitializable {
     // MARK: - Setup
     
     override func layoutSubviews() {
-        birthTableView.delegate = self
-        birthTableView.dataSource = self
-
+        birthInfoListTableView.dataSource = self
+        birthInfoListTableView.delegate = self
+       
     }
     
     // MARK: - Actions
-    @IBAction func addBirth(_ sender: Any) {
-        birthInformationView.isHidden = false
+    
+    @IBAction func birthSave(_ sender: Any) {
     }
-    
-    
     
     // MARK: - Methods
     
     private func setup(){}
-    
 }
 
-extension BirthListController : UITableViewDataSource , UITableViewDelegate{
+
+extension BirthInfoListController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let count = delegate?.getCow().birthList.count else {return 0}
-//        return count
-        return 6
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

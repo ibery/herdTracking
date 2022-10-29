@@ -106,9 +106,9 @@
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-jI-wZ5" userLabel="BirthInformation" customClass="BirthListController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1Z-eg-FHH" customClass="BirthInfoListController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-tX-wl7" customClass="PregnancyControlViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
@@ -136,20 +136,20 @@
                                 <constraints>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="LeK-n3-sHv" secondAttribute="trailing" id="3VJ-70-gku"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="nSr-ae-XVN" secondAttribute="trailing" id="4LU-Dv-FVr"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="6PW-jI-wZ5" secondAttribute="bottom" id="95V-9p-kYS"/>
                                     <constraint firstItem="LeK-n3-sHv" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="C1A-aW-p38"/>
+                                    <constraint firstItem="h1Z-eg-FHH" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="CAW-dY-E1G"/>
                                     <constraint firstItem="Dhz-Io-i7w" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="CdJ-hX-HjT"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="oMP-oh-8qu" secondAttribute="trailing" id="Edw-ID-2uJ"/>
-                                    <constraint firstItem="6PW-jI-wZ5" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="EoX-G5-o3H"/>
                                     <constraint firstItem="nSr-ae-XVN" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="FjO-Vw-zQr"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="LeK-n3-sHv" secondAttribute="bottom" id="H4a-Mw-Wxw"/>
+                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="h1Z-eg-FHH" secondAttribute="trailing" id="MaQ-T2-jz3"/>
                                     <constraint firstItem="Dhz-Io-i7w" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="Mj4-bk-YPd"/>
                                     <constraint firstItem="oMP-oh-8qu" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="O5W-1S-rrY"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="oMP-oh-8qu" secondAttribute="bottom" id="Uha-gy-sJ0"/>
                                     <constraint firstItem="33G-uU-uo5" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="VfF-Zq-FOH"/>
                                     <constraint firstItem="oMP-oh-8qu" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="W1z-cJ-hUN"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="24N-R2-s2Y" secondAttribute="trailing" id="Wqk-O4-b23"/>
-                                    <constraint firstItem="6PW-jI-wZ5" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="Wzx-WG-q38"/>
+                                    <constraint firstItem="h1Z-eg-FHH" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="Wyh-AS-bcO"/>
                                     <constraint firstItem="92E-R9-IJj" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" constant="16" id="YQc-ha-PS3"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="Dhz-Io-i7w" secondAttribute="trailing" id="Yg5-f1-g4r"/>
                                     <constraint firstItem="33G-uU-uo5" firstAttribute="top" secondItem="92E-R9-IJj" secondAttribute="bottom" constant="17" id="ZgG-t2-LtK"/>
@@ -157,7 +157,7 @@
                                     <constraint firstItem="92E-R9-IJj" firstAttribute="top" secondItem="H7G-gX-0Xd" secondAttribute="top" constant="60" id="bPI-VA-mad"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="Dhz-Io-i7w" secondAttribute="bottom" id="eQK-Dv-FkX"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="lLp-tX-wl7" secondAttribute="trailing" id="fUl-3e-SUp"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="6PW-jI-wZ5" secondAttribute="trailing" id="iUb-h0-Jq3"/>
+                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="h1Z-eg-FHH" secondAttribute="bottom" id="jwO-jx-tBL"/>
                                     <constraint firstItem="lLp-tX-wl7" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="kRP-x5-0hq"/>
                                     <constraint firstItem="24N-R2-s2Y" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="lWW-Tx-3tF"/>
                                     <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="24N-R2-s2Y" secondAttribute="bottom" id="oMz-f1-mHD"/>
@@ -176,7 +176,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="birthInformationsView" destination="6PW-jI-wZ5" id="E1o-fv-8jJ"/>
+                        <outlet property="birthInfoView" destination="h1Z-eg-FHH" id="gQj-r6-Azu"/>
                         <outlet property="cowCardMenuCollectionView" destination="33G-uU-uo5" id="CDM-q3-MaW"/>
                         <outlet property="cowEditingView" destination="4dJ-1G-QJM" id="KvA-2i-k6r"/>
                         <outlet property="cowProfileImage" destination="92E-R9-IJj" id="Cr6-2n-wZy"/>
@@ -208,9 +208,6 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

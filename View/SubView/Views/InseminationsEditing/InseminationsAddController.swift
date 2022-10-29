@@ -96,7 +96,6 @@ class InseminationsAddController : UIView ,NibInitializable {
     
     @IBAction func saveButton(_ sender: UIButton) {
         let addInseminations = InseminationModel()
-        print("kupe no : \(delegate?.addInseminationsDelegate().earTag)")
         addInseminations.inseminationDate = inseminationsDateTextField.text!
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
       
@@ -160,7 +159,7 @@ extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print("insemination count 2 : \(personViewModel.fetchPersonViewModel().count)")
+
         if pickerView == bullNamePickerView{
             return bullViewModel.fetchBull().count
         }else{
@@ -170,7 +169,7 @@ extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        print("insemination count : \(personViewModel.fetchPersonViewModel().count)")
+     
         
         //        if bullViewModel.fetchBull().count != 0 {
         //            Constants.bullName = bullViewModel.fetchBull()[row]

@@ -14,7 +14,10 @@ class CowCardViewController : BaseViewController {
     // MARK: - Properties
     @IBOutlet weak var generalInformationsView: GeneralInformationsController!
     @IBOutlet weak var inseminationInformationsView: InseminationInformationsController!
-    @IBOutlet weak var birthInformationsView: BirthInformationController!
+
+    @IBOutlet weak var birthInfoView: BirthInfoListController!
+    
+    
     @IBOutlet weak var vaccineView: VaccineViewController!
     @IBOutlet weak var noteView: NoteViewController!
     @IBOutlet weak var pregnancyControlView: PregnancyControlViewController!
@@ -48,7 +51,7 @@ class CowCardViewController : BaseViewController {
         super.viewDidLoad()
         print("bir")
         setupScreen()
-        
+        earTagLabel.text = cow.earTag
         cowEditingView.isHidden = true
         cowEditingView.delegate = self
         cowCardMenuCollectionView.delegate = self
@@ -166,14 +169,14 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let views = Views(rawValue: indexPath.row)
-        print("collection view 1")
+        
         switch views {
         case .general:
             return generalInformationsView.isHidden = false
         case .inseminations:
             return inseminationInformationsView.isHidden = false
         case .birth:
-            return birthInformationsView.isHidden = false
+            return birthInfoView.isHidden = false
         case .pregnancyControl:
             return pregnancyControlView.isHidden = false
         case .vaccine:
@@ -196,7 +199,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
         case .inseminations:
             return inseminationInformationsView.isHidden = true
         case .birth:
-            return birthInformationsView.isHidden = true
+            return birthInfoView.isHidden = true
         case .pregnancyControl:
             return pregnancyControlView.isHidden = true
         case .vaccine:

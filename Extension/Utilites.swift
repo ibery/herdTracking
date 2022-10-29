@@ -23,7 +23,10 @@ extension UIWindow {
         } else {
             UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
+        
     }
+    
+    
     
 }
 
