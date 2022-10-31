@@ -7,7 +7,7 @@
 import RealmSwift
 
 class VaccineListModel: Object {
-    @Persisted var vaccineDate : Date?
-    @Persisted var vaccineName : VaccineModel?
+    @Persisted var vaccineDate : String?
+    @Persisted var vaccineName : String?
 }
 

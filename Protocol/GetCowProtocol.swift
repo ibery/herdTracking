@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol GetCowAndViewProtocol {
     func getCow() -> CowModel
@@ -20,3 +21,9 @@ protocol CowCardEditingProtocol{
     func cowCardEditinCow ()-> CowModel
     func closeCowCardEditingView()
 }
+
+protocol BirthProtocol{
+    func fetchCow()->CowModel
+    func closeBirthInfoView()
+}
+

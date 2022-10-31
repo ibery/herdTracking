@@ -19,11 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="647"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Q5-2S-MiN">
+                    <rect key="frame" x="0.0" y="84" width="414" height="563"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F86-D4-u7f" customClass="BirthInfoController" customModule="Herd_Tracking" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="603"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-Lo-FIR">
-                    <rect key="frame" x="379" y="5" width="30" height="30"/>
+                    <rect key="frame" x="374" y="49" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="bcN-zQ-Wp3"/>
-                        <constraint firstAttribute="height" constant="30" id="tjK-27-OcI"/>
+                        <constraint firstAttribute="height" constant="30" id="Nej-1V-gIo"/>
+                        <constraint firstAttribute="width" constant="30" id="gmf-VH-hq2"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="plus"/>
@@ -31,28 +39,20 @@
                         <action selector="birthSave:" destination="-1" eventType="touchUpInside" id="Ctp-Pg-Tvb"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Q5-2S-MiN">
-                    <rect key="frame" x="0.0" y="44" width="414" height="603"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F86-D4-u7f" customClass="BirthInfoController" customModule="Herd_Tracking" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="603"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="1Nq-Lo-FIR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="34l-Qu-fiz"/>
-                <constraint firstItem="5Q5-2S-MiN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="6b8-Ku-w47"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1Nq-Lo-FIR" secondAttribute="trailing" constant="5" id="9bx-hM-Rkt"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="5Q5-2S-MiN" secondAttribute="bottom" id="9nB-de-Yg1"/>
-                <constraint firstItem="F86-D4-u7f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ghv-9K-xhV"/>
-                <constraint firstItem="5Q5-2S-MiN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OIn-Ps-Nmm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="F86-D4-u7f" secondAttribute="bottom" id="Sbp-zn-AXo"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F86-D4-u7f" secondAttribute="trailing" id="XU2-7f-Qfa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Q5-2S-MiN" secondAttribute="trailing" id="rsm-kH-qcI"/>
-                <constraint firstItem="F86-D4-u7f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wwN-R0-BVE"/>
+                <constraint firstItem="1Nq-Lo-FIR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="1CL-3D-kus"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1Nq-Lo-FIR" secondAttribute="trailing" constant="10" id="Ts4-NW-yaT"/>
+                <constraint firstItem="5Q5-2S-MiN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XLM-vL-CsP"/>
+                <constraint firstItem="F86-D4-u7f" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="bLw-Vg-CdR"/>
+                <constraint firstItem="F86-D4-u7f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cIp-DI-waN"/>
+                <constraint firstItem="5Q5-2S-MiN" firstAttribute="top" secondItem="1Nq-Lo-FIR" secondAttribute="bottom" constant="5" id="h6T-Yj-gvS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Q5-2S-MiN" secondAttribute="trailing" id="hUU-Md-B32"/>
+                <constraint firstItem="F86-D4-u7f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lUX-MV-hCy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F86-D4-u7f" secondAttribute="trailing" id="sR1-IQ-suM"/>
+                <constraint firstItem="5Q5-2S-MiN" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sqS-6G-IUC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="203.90625"/>

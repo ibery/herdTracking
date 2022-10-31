@@ -15,48 +15,14 @@ class CowViewModel {
     var cow = [CowModel]()
     var status = false
     
-    
- //   func checkIfThereIsCow (cowCheck : CowModel) {
-        
-        
-//        for c in fetchCowViewModel() {
-//            var status = false
-//            if c.earTag == cowCheck.earTag {
-//                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
-//                status = true
-//                break
-//            }else if c.leashNumber == cowCheck.leashNumber{
-//                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
-//                status = true
-//                break
-//            }
-//        }
-//        if !status{
+//    func updateCowViewModel(cow : CowModel){
+//        LocaleService.shared.updateCow(cow: cow, group: <#T##String?#>, magnet: <#T##Bool?#>, numberOfLactations: <#T##Int#>, lastCalvingDate: <#T##String?#>, insurance: <#T##Bool?#>, dryOffDate: <#T##String?#>, motherOfEarTag: <#T##String?#>, reproductiveStatus: <#T##ReproductiveStatus#>, leashNumber: <#T##String?#>, name: <#T##String#>, earTag: <#T##String#>, dateOfBirth: <#T##String#>, cowBreed: <#T##String#>, gender: <#T##String#>)
 //
-//        }
 //    }
     
-//    private func checkIfThereIsColler ( cowColler : CowModel)->Bool  {
-//        status = false
-//
-//        if cowColler.leashNumber != "" {
-//            for c in fetchCowViewModel(){
-//                if c.leashNumber == cowColler.leashNumber {
-//                    status = true
-//                    break
-//                }
-//            }
-//        }
-//        if status{
-//            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.MessageTehereIsCollar)
-//            return false
-//        }else{
-//
-//        //     cowTextFieldControl(cowTextField : cowColler)
-//
-//           return true
-//        }
-//    }
+    func updateCowViewModel (cow : CowModel ){
+        LocaleService.shared.updateCow(cow: cow)
+    }
     
     private func cowTextFieldControl(cowTextField : CowModel){
         

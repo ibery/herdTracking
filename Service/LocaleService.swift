@@ -51,13 +51,9 @@ class LocaleService {
     //    }
     
     func addCow(cow : CowModel){
-        print("L1")
             try! realm.write{
-                print("L2")
                 realm.add(cow)
-                print("L3")
             }
-        print("L4")
     }
     
     
@@ -66,14 +62,44 @@ class LocaleService {
         return cows
     }
     
-    func updateCow(cow : CowModel , name : String , earTag : String , dateOfBirth : String ,cowBreed : String , gender : String){
+//    func updateCow(cow : CowModel,group : String?,magnet : Bool?,numberOfLactations : Int ,lastCalvingDate : String?,insurance:Bool?,dryOffDate : String?,motherOfEarTag : String?,reproductiveStatus : ReproductiveStatus ,leashNumber : String?, name : String , earTag : String , dateOfBirth : String ,cowBreed : String , gender : String){
+//        do{
+//            try realm.write{
+//                cow.cowName = name
+//                cow.earTag = earTag
+//                cow.dateOfBirth = dateOfBirth
+//                cow.cowBreed = cowBreed
+//                cow.gender = gender
+//                cow.groupNo = group
+//                cow.magnet = magnet
+//                cow.numberOfLactations = numberOfLactations
+//                cow.lastCalvingDate = lastCalvingDate
+//                cow.insurance = insurance
+//                cow.dryOffDate = dryOffDate
+//                cow.motherEarTag = motherOfEarTag
+//                cow.reproductiveStatus = reproductiveStatus
+//            }
+//        }catch{
+//            print(error)
+//        }
+//    }
+    
+    func updateCow(cow : CowModel){
         do{
             try realm.write{
-                cow.cowName = name
-                cow.earTag = earTag
-                cow.dateOfBirth = dateOfBirth
-                cow.cowBreed = cowBreed
-                cow.gender = gender
+                cow.cowName = cow.cowName
+                cow.earTag = cow.earTag
+                cow.dateOfBirth = cow.dateOfBirth
+                cow.cowBreed = cow.cowBreed
+                cow.gender = cow.gender
+                cow.groupNo = cow.groupNo
+                cow.magnet = cow.magnet
+                cow.numberOfLactations = cow.numberOfLactations
+                cow.lastCalvingDate = cow.lastCalvingDate
+                cow.insurance = cow.insurance
+                cow.dryOffDate = cow.dryOffDate
+                cow.motherEarTag = cow.motherEarTag
+                cow.reproductiveStatus = cow.reproductiveStatus
             }
         }catch{
             print(error)

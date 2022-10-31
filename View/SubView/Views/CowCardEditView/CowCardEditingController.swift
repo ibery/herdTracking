@@ -92,7 +92,8 @@ class CowCardEditingController : UIView , NibInitializable {
                 if dateOfBirthEditingTextField.text == ""{
                     UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
                 }else{
-                    LocaleService.shared.updateCow(cow: delegate.cowCardEditinCow(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
+//                    LocaleService.shared.updateCow(cow: delegate.cowCardEditinCow(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
+                    
                     UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successfullUpdate)
                     delegateViewFunc()
                 }

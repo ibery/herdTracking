@@ -26,6 +26,8 @@ struct Constants {
         static let personTextField = "Tohumlayıcı adı boş bırakılamaz!"
         static let bullTextField = "Boğa adı boş bırakılamaz!"
         static let inseminationDate = "Tohumlama tarihi boş bırakılamaz!"
+        static let notPregnancy = "Hayvan Gebe Degil!"
+        static let successCalfing = "Doğum Başarılı Bir Şekilde Kayıt Edildi!"
     }
     
     
@@ -45,6 +47,7 @@ struct Constants {
         static let showPersonTableView = "ShowPersonTableViewCell"
         static let showBullTableView = "ShowBullTableViewCell"
         static let showBullTableViewCell = "BullCell"
+        static let birthListTableViewcell = "BirthCell"
     }
     
     

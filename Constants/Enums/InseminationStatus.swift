@@ -12,6 +12,7 @@ enum InseminationStatus: Int , PersistableEnum {
     case success
     case fail
     case contineu
+    case completed
 
     var name : String {
         switch self{
@@ -21,6 +22,8 @@ enum InseminationStatus: Int , PersistableEnum {
             return "Başarısız"
         case .contineu:
             return "Beklemede"
+        case.completed:
+            return "Doğurdu"
         }
         
     }

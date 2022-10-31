@@ -15,6 +15,7 @@ class BirthInfoListController : UIView , NibInitializable {
     @IBOutlet weak var addBirthView: BirthInfoController!
     
     var nibName : String = "BirthInfoListScreen"
+    var delegate : GetCowAndViewProtocol?
     
     // MARK: - Initializers
     
@@ -39,12 +40,14 @@ class BirthInfoListController : UIView , NibInitializable {
     override func layoutSubviews() {
         birthInfoListTableView.dataSource = self
         birthInfoListTableView.delegate = self
+        addBirthView.delegate = self
        
     }
     
     // MARK: - Actions
     
     @IBAction func birthSave(_ sender: Any) {
+        addBirthView.isHidden = false
     }
     
     // MARK: - Methods
@@ -55,12 +58,38 @@ class BirthInfoListController : UIView , NibInitializable {
 
 extension BirthInfoListController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let delegate = delegate else {return 0}
+        return delegate.getCow().birthList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.birthListTableViewcell, for: indexPath) as? BirthListTableViewCell else {return UITableViewCell()}
+        
+        if let delegate = delegate{
+            cell.birthDateLabel.text = delegate.getCow().birthList[indexPath.row].birthDate
+            cell.firstCalfEarTagLabel.text = delegate.getCow().birthList[indexPath.row].calfOneEarTag
+            cell.secondCalfEarTagLabel.text = delegate.getCow().birthList[indexPath.row].calfTwoEarTag
+            cell.firstCalfGenderLabel.text = delegate.getCow().birthList[indexPath.row].oneCalfGender
+            cell.secondCalfGenderLabel.text = delegate.getCow().birthList[indexPath.row].twoCalfGender  
+        }
+        
+        return cell
     }
+    
+    
+}
+
+extension BirthInfoListController : BirthProtocol{
+    func fetchCow() -> CowModel {
+        guard let delegate = delegate?.getCow() else {return CowModel()}
+        return delegate
+    }
+    
+    func closeBirthInfoView() {
+        addBirthView.isHidden = true
+    }
+    
+    
     
     
 }

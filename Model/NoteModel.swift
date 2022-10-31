@@ -9,7 +9,7 @@ import RealmSwift
 
 class NoteModel : Object {
     
-    @Persisted var noteDate : Date?
+    @Persisted var noteDate : String?
     @Persisted var noteName : String?
 
 }

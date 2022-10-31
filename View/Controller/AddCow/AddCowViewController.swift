@@ -22,12 +22,12 @@ class AddCowViewController : BaseViewController {
     
     // MARK: - Properties
     
-    var cowViewModel = CowViewModel()
-    let datePicker = UIDatePicker()
-    lazy var realm = try! Realm()
-    let breedPickerView = UIPickerView()
-    let genderPickerView = UIPickerView()
-    let reproductiveStatusPickerView = UIPickerView()
+   private var cowViewModel = CowViewModel()
+   private let datePicker = UIDatePicker()
+   private lazy var realm = try! Realm()
+   private let breedPickerView = UIPickerView()
+   private let genderPickerView = UIPickerView()
+   private let reproductiveStatusPickerView = UIPickerView()
     
     
     
@@ -42,8 +42,7 @@ class AddCowViewController : BaseViewController {
         gender.text = Constants.Arrays.genderArray[0]
         cowBreed.text = Constants.Arrays.cowBreedArray[0]
         reproductiveStatus.text = ReproductiveStatus(rawValue: 0)!.name
-        
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -200,5 +199,6 @@ extension AddCowViewController: UIPickerViewDataSource , UIPickerViewDelegate{
     }
     
 }
+
 
 
