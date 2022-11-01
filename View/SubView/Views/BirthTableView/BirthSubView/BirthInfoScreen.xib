@@ -11,15 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BirthInfoController" customModule="Herd_Tracking" customModuleProvider="target">
             <connections>
-                <outlet property="CalfNameTextField" destination="6Tt-Ej-HHZ" id="2Bl-vg-Z8Q"/>
                 <outlet property="birthDateTextField" destination="j0Y-fg-2vY" id="85W-i4-ltu"/>
                 <outlet property="calfEarTagTextField" destination="OJw-P7-dRN" id="ccv-Mb-BFT"/>
-                <outlet property="calfGenderTextFiedl" destination="6Tt-Ej-HHZ" id="BKM-eY-cz1"/>
+                <outlet property="calfGenderTextFiedl" destination="6Tt-Ej-HHZ" id="amo-eD-JYh"/>
+                <outlet property="calfInfoLabel" destination="5S8-kc-sp2" id="tJV-B0-aEf"/>
+                <outlet property="calfNameTextField" destination="YTm-Yx-4ms" id="fcR-bI-Odx"/>
                 <outlet property="formOfCalvingTextField" destination="H5t-QE-6iv" id="yOT-mq-TUP"/>
                 <outlet property="secondCalfEarTagTextField" destination="DQs-5k-qQK" id="HeE-fb-zOo"/>
                 <outlet property="secondCalfGenderTextField" destination="fEk-8x-NmL" id="gD7-xF-3uS"/>
                 <outlet property="secondCalfLabel" destination="5TG-2u-XNT" id="43K-VO-gsF"/>
                 <outlet property="secondCalfNameTextField" destination="cNJ-18-tOr" id="cVw-om-tue"/>
+                <outlet property="twinsLabel" destination="84R-Q5-QzP" id="pai-O7-xwl"/>
                 <outlet property="twinsSwitch" destination="nQH-6X-9Sr" id="RFa-3K-yg3"/>
             </connections>
         </placeholder>
@@ -40,7 +42,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j0Y-fg-2vY">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tarih  Seçiniz" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j0Y-fg-2vY">
                                     <rect key="frame" x="162.5" y="0.0" width="147.5" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -59,7 +61,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5t-QE-6iv">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5t-QE-6iv">
                                     <rect key="frame" x="162.5" y="0.0" width="147.5" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>

@@ -15,14 +15,15 @@ class BirthInfoController : UIView , NibInitializable {
     @IBOutlet weak var formOfCalvingTextField
     : UITextField!
     @IBOutlet weak var calfEarTagTextField: UITextField!
-    @IBOutlet weak var CalfNameTextField: UITextField!
+    @IBOutlet weak var calfNameTextField: UITextField!
     @IBOutlet weak var calfGenderTextFiedl: UITextField!
     @IBOutlet weak var secondCalfEarTagTextField: UITextField!
     @IBOutlet weak var secondCalfNameTextField: UITextField!
     @IBOutlet weak var secondCalfGenderTextField: UITextField!
     @IBOutlet weak var twinsSwitch: UISwitch!
     @IBOutlet weak var secondCalfLabel: UILabel!
-    
+    @IBOutlet weak var twinsLabel: UILabel!
+    @IBOutlet weak var calfInfoLabel: UILabel!
     
     var nibName: String = "BirthInfoScreen"
     var delegate :BirthProtocol?
@@ -30,7 +31,9 @@ class BirthInfoController : UIView , NibInitializable {
     private let formOfCalvingPickerView = UIPickerView()
     private let firstCalfGenderPickerView = UIPickerView()
     private let secondCalfGenderPickerView = UIPickerView()
-    
+    private let birthViewModel = BirthViewModel()
+    private let calfCow = CowModel()
+    private let secondCalf = CowModel()
     
     // MARK: - Initializers
     
@@ -107,10 +110,10 @@ class BirthInfoController : UIView , NibInitializable {
     
     @IBAction func birthSave(_ sender: Any) {
         
-        
-        
         guard let delegate = delegate else {return}
         let cow = delegate.fetchCow()
+        birthViewModel.giveBirth(cow: cow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextFiedl, formOfCalvingTextFiedl: formOfCalvingTextField, birthDateTextFiedl: birthDateTextField, twinsSwitch: twinsSwitch, secondCalfEarTagTextFiedl: secondCalfEarTagTextField, secondCalfNameTextField: secondCalfNameTextField, secondGenderTextField: secondCalfGenderTextField, calfCow: calfCow, calfingDate: birthDateTextField, secondCalfCow: secondCalf)
+        
         
         // burası birthViewModel de yapılacak
     }
@@ -169,6 +172,30 @@ extension BirthInfoController : UIPickerViewDataSource ,UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == formOfCalvingPickerView{
             formOfCalvingTextField.text = FormOfCalving(rawValue: row)!.name
+            if FormOfCalving(rawValue: 1) == FormOfCalving(rawValue: row) || FormOfCalving(rawValue: 2) == FormOfCalving(rawValue: row){
+                calfEarTagTextField.isHidden = true
+                calfNameTextField.isHidden = true
+                calfGenderTextFiedl.isHidden = true
+                twinsLabel.isHidden = true
+                twinsSwitch.isHidden = true
+                calfInfoLabel.isHidden = true
+                secondCalfLabel.isHidden = true
+                if twinsSwitch.isOn {
+                    secondCalfEarTagTextField.isHidden = true
+                    secondCalfNameTextField.isHidden = true
+                    secondCalfGenderTextField.isHidden = true
+                    twinsSwitch.setOn(false, animated: true)
+                }
+
+            }else{
+                calfEarTagTextField.isHidden = false
+                calfNameTextField.isHidden = false
+                calfGenderTextFiedl.isHidden = false
+                twinsLabel.isHidden = false
+                twinsSwitch.isHidden = false
+                calfInfoLabel.isHidden = false
+            }
+
             formOfCalvingTextField.resignFirstResponder()
         }else if pickerView == firstCalfGenderPickerView{
             calfGenderTextFiedl.text = "\(Gender(rawValue: row)!.name)"

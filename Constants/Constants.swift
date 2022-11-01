@@ -28,6 +28,8 @@ struct Constants {
         static let inseminationDate = "Tohumlama tarihi boş bırakılamaz!"
         static let notPregnancy = "Hayvan Gebe Degil!"
         static let successCalfing = "Doğum Başarılı Bir Şekilde Kayıt Edildi!"
+        static let calfingBirthDate = "Buzağılama tarihi boş bırakılamaz!"
+        static let earTagAndDate = "Küpe numarasını yada tarihi boş bırakmayın!"
     }
     
     
