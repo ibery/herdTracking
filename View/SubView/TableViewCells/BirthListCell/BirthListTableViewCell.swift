@@ -11,10 +11,11 @@ class BirthListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var firstCalfEarTagLabel: UILabel!
-    @IBOutlet weak var secondCalfEarTagLabel: UILabel!
+    @IBOutlet weak var secondCalfEarTagLabel: UILabel! 
     @IBOutlet weak var secondEarTag: UILabel!
     @IBOutlet weak var firstCalfGenderLabel: UILabel!
     @IBOutlet weak var secondCalfGenderLabel: UILabel!
+    @IBOutlet weak var secondGenderlabel: UILabel!
     
     
   

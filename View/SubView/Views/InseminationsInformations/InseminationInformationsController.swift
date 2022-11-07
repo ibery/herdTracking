@@ -82,6 +82,7 @@ extension InseminationInformationsController : UITableViewDataSource , UITableVi
             cell.inseminationsDate.text = delegate.getCow().inseminations[indexPath.row].inseminationDate
             cell.inseminationsPerson.text = delegate.getCow().inseminations[indexPath.row].inseminatedPerson?.inseminatedPersonName
             cell.inseminationsResult.text = delegate.getCow().inseminations[indexPath.row].inseminationsStatus
+            
         }
         return cell
     }

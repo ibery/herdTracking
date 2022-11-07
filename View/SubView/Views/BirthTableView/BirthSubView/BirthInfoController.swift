@@ -34,6 +34,7 @@ class BirthInfoController : UIView , NibInitializable {
     private let birthViewModel = BirthViewModel()
     private let calfCow = CowModel()
     private let secondCalf = CowModel()
+    private let birthModel = BirthModel()
     
     // MARK: - Initializers
     
@@ -59,6 +60,9 @@ class BirthInfoController : UIView , NibInitializable {
     
     
     override func layoutSubviews() {
+        
+        guard let delegate = delegate else {return}
+        print("delegate cow : \(delegate.fetchCow().earTag)")
         createDatePicker()
         createPickerView(textField: formOfCalvingTextField , pickerView: formOfCalvingPickerView)
         createPickerView(textField: calfGenderTextFiedl, pickerView: firstCalfGenderPickerView)
@@ -67,6 +71,7 @@ class BirthInfoController : UIView , NibInitializable {
         formOfCalvingTextField.text = FormOfCalving(rawValue: 0)?.name
         calfGenderTextFiedl.text = Gender(rawValue: 0)?.name
         secondCalfGenderTextField.text = Gender(rawValue: 0)?.name
+
         
     }
     
@@ -110,10 +115,17 @@ class BirthInfoController : UIView , NibInitializable {
     
     @IBAction func birthSave(_ sender: Any) {
         
-        guard let delegate = delegate else {return}
-        let cow = delegate.fetchCow()
-        birthViewModel.giveBirth(cow: cow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextFiedl, formOfCalvingTextFiedl: formOfCalvingTextField, birthDateTextFiedl: birthDateTextField, twinsSwitch: twinsSwitch, secondCalfEarTagTextFiedl: secondCalfEarTagTextField, secondCalfNameTextField: secondCalfNameTextField, secondGenderTextField: secondCalfGenderTextField, calfCow: calfCow, calfingDate: birthDateTextField, secondCalfCow: secondCalf)
+        guard let delegate = delegate?.fetchCow() else {return}
+        let cow = delegate
         
+        birthModel.birthDate = birthDateTextField.text
+        birthModel.calfOneEarTag = calfEarTagTextField.text
+        birthModel.oneCalfGender = calfGenderTextFiedl.text
+        birthModel.calfTwoEarTag = secondCalfEarTagTextField.text
+        birthModel.twoCalfGender = secondCalfGenderTextField.text
+        
+        birthViewModel.giveBirth(cow: cow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextFiedl, formOfCalvingTextFiedl: formOfCalvingTextField, birthDateTextFiedl: birthDateTextField, twinsSwitch: twinsSwitch, secondCalfEarTagTextFiedl: secondCalfEarTagTextField, secondCalfNameTextField: secondCalfNameTextField, secondGenderTextField: secondCalfGenderTextField, calfCow: calfCow, calfingDate: birthDateTextField, secondCalfCow: secondCalf, newBirth: birthModel)
+        closeView()
         
         // burası birthViewModel de yapılacak
     }

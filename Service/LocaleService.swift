@@ -34,6 +34,7 @@ class LocaleService {
     
     // MARK: - Methods
     
+  
     
     //    func addCow(cow : CowModel){
     //        do{
@@ -56,54 +57,29 @@ class LocaleService {
             }
     }
     
-    
     func fetchCows ()-> Results<CowModel>{
         let cows = realm.objects(CowModel.self)
         return cows
     }
     
-//    func updateCow(cow : CowModel,group : String?,magnet : Bool?,numberOfLactations : Int ,lastCalvingDate : String?,insurance:Bool?,dryOffDate : String?,motherOfEarTag : String?,reproductiveStatus : ReproductiveStatus ,leashNumber : String?, name : String , earTag : String , dateOfBirth : String ,cowBreed : String , gender : String){
-//        do{
-//            try realm.write{
-//                cow.cowName = name
-//                cow.earTag = earTag
-//                cow.dateOfBirth = dateOfBirth
-//                cow.cowBreed = cowBreed
-//                cow.gender = gender
-//                cow.groupNo = group
-//                cow.magnet = magnet
-//                cow.numberOfLactations = numberOfLactations
-//                cow.lastCalvingDate = lastCalvingDate
-//                cow.insurance = insurance
-//                cow.dryOffDate = dryOffDate
-//                cow.motherEarTag = motherOfEarTag
-//                cow.reproductiveStatus = reproductiveStatus
-//            }
-//        }catch{
-//            print(error)
-//        }
-//    }
-    
-    func updateCow(cow : CowModel){
-        do{
-            try realm.write{
-                cow.cowName = cow.cowName
-                cow.earTag = cow.earTag
-                cow.dateOfBirth = cow.dateOfBirth
-                cow.cowBreed = cow.cowBreed
-                cow.gender = cow.gender
-                cow.groupNo = cow.groupNo
-                cow.magnet = cow.magnet
-                cow.numberOfLactations = cow.numberOfLactations
-                cow.lastCalvingDate = cow.lastCalvingDate
-                cow.insurance = cow.insurance
-                cow.dryOffDate = cow.dryOffDate
-                cow.motherEarTag = cow.motherEarTag
-                cow.reproductiveStatus = cow.reproductiveStatus
+    func birthUpdateCow(cow : CowModel){
+        
+        try! realm.write {
+            cow.reproductiveStatus = Constants.birthCow.reproductiveStatus
+            cow.lastCalvingDate = Constants.birthCow.lastCalvingDate
+            cow.numberOfLactations = Constants.birthCow.numberOfLactations
+            
+            if Constants.formOfCalving == FormOfCalving(rawValue: 2)?.name{
+                guard let status = InseminationStatus(rawValue: 4)?.name else {return}
+                cow.inseminations[Constants.inseminationCount].inseminationsStatus = status
+            }else{
+                guard let status = InseminationStatus(rawValue: 3)?.name else {return}
+                cow.inseminations[Constants.inseminationCount].inseminationsStatus = status
             }
-        }catch{
-            print(error)
+            
         }
+
+
     }
     
     func addInseminations(cow: CowModel , newInsemination : InseminationModel){
@@ -138,15 +114,15 @@ class LocaleService {
         return person
     }
     
-    func updatePerson(person : PersonModel , personName : String){
-        do{
-            try realm.write{
-                person.inseminatedPersonName = personName
-            }
-        }catch{
-            print(error)
-        }
-    }
+//    func updatePerson(person : PersonModel , personName : String){
+//        do{
+//            try realm.write{
+//                person.inseminatedPersonName = personName
+//            }
+//        }catch{
+//            print(error)
+//        }
+//    }
     
     func addBull(bull : BullModel){
         do{
@@ -166,6 +142,12 @@ class LocaleService {
     
     func updateBull(){
         
+    }
+    
+    func addBirth(cow: CowModel , newBirth : BirthModel){
+        try! realm.write{
+            cow.birthList.append(newBirth)
+        }
     }
     
     

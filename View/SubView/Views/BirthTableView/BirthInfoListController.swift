@@ -38,9 +38,12 @@ class BirthInfoListController : UIView , NibInitializable {
     // MARK: - Setup
     
     override func layoutSubviews() {
+        
+        
         birthInfoListTableView.dataSource = self
         birthInfoListTableView.delegate = self
         addBirthView.delegate = self
+        self.birthInfoListTableView.register(UINib(nibName: Constants.TableView.birthListTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.birthListTableViewcell)
        
     }
     
@@ -68,9 +71,18 @@ extension BirthInfoListController : UITableViewDelegate , UITableViewDataSource 
         if let delegate = delegate{
             cell.birthDateLabel.text = delegate.getCow().birthList[indexPath.row].birthDate
             cell.firstCalfEarTagLabel.text = delegate.getCow().birthList[indexPath.row].calfOneEarTag
-            cell.secondCalfEarTagLabel.text = delegate.getCow().birthList[indexPath.row].calfTwoEarTag
             cell.firstCalfGenderLabel.text = delegate.getCow().birthList[indexPath.row].oneCalfGender
-            cell.secondCalfGenderLabel.text = delegate.getCow().birthList[indexPath.row].twoCalfGender  
+            if delegate.getCow().birthList[indexPath.row].calfTwoEarTag == "" {
+                cell.secondGenderlabel.isHidden = true
+                cell.secondEarTag.isHidden = true
+                cell.secondCalfGenderLabel.isHidden = true
+                cell.secondCalfEarTagLabel.isHidden = true
+            }else{
+                cell.secondCalfEarTagLabel.text = delegate.getCow().birthList[indexPath.row].calfTwoEarTag
+                cell.secondCalfGenderLabel.text = delegate.getCow().birthList[indexPath.row].twoCalfGender
+            }
+            
+            
         }
         
         return cell
@@ -82,6 +94,7 @@ extension BirthInfoListController : UITableViewDelegate , UITableViewDataSource 
 extension BirthInfoListController : BirthProtocol{
     func fetchCow() -> CowModel {
         guard let delegate = delegate?.getCow() else {return CowModel()}
+    
         return delegate
     }
     

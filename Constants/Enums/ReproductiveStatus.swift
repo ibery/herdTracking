@@ -44,7 +44,6 @@ enum ReproductiveStatus: Int , PersistableEnum {
         
     }
     
-    
     var reproductiveStatus: String{
         return name
     }

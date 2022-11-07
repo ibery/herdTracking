@@ -20,9 +20,9 @@ class CowViewModel {
 //
 //    }
     
-    func updateCowViewModel (cow : CowModel ){
-        LocaleService.shared.updateCow(cow: cow)
-    }
+//    func updateCowViewModel (cow : CowModel ){
+//        LocaleService.shared.updateCow(cow: cow)
+//    }
     
     private func cowTextFieldControl(cowTextField : CowModel){
         

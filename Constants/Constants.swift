@@ -30,6 +30,9 @@ struct Constants {
         static let successCalfing = "Doğum Başarılı Bir Şekilde Kayıt Edildi!"
         static let calfingBirthDate = "Buzağılama tarihi boş bırakılamaz!"
         static let earTagAndDate = "Küpe numarasını yada tarihi boş bırakmayın!"
+        static let lessthanAge = "Bir yaşından Küçük Hayvan Tohumlanamaz!"
+        static let pragnent = "Hayvan zaten gebe!"
+        static let postpartumOfDay = "Yeni doğum yapan hayvan 20 gün içerisinde tohumlanamaz!"
     }
     
     
@@ -50,6 +53,7 @@ struct Constants {
         static let showBullTableView = "ShowBullTableViewCell"
         static let showBullTableViewCell = "BullCell"
         static let birthListTableViewcell = "BirthCell"
+        static let birthListTableView = "BirthListTableViewCell"
     }
     
     
@@ -71,6 +75,9 @@ struct Constants {
     static var tableView = UITableView()
     static var bullName = BullModel()
     static var inseminationPerson = PersonModel()
-    static var cowStatus = false 
+    static var cowStatus = false
+    static var birthCow = CowModel()
+    static var inseminationCount = -1
+    static var formOfCalving = ""
     
 }

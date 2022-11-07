@@ -49,7 +49,7 @@ class CowCardViewController : BaseViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("bir")
+       
         setupScreen()
         earTagLabel.text = cow.earTag
         cowEditingView.isHidden = true
@@ -57,6 +57,7 @@ class CowCardViewController : BaseViewController {
         cowCardMenuCollectionView.delegate = self
         cowCardMenuCollectionView.dataSource = self
         inseminationInformationsView.delegate = self
+        birthInfoView.delegate = self
         generalInformationsView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
  //       setupProperties()
@@ -156,7 +157,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cowCardMenuCell, for: indexPath) as? CowCardMenuCollectionViewCell else {return UICollectionViewCell()}
         cell.menuLabel.text = Views(rawValue: indexPath.row)?.name
-        print("indexpaht1 row : \(indexPath.row)")
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

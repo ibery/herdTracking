@@ -84,6 +84,7 @@ class InseminationsAddController : UIView ,NibInitializable {
         inseminationsDateTextField.inputView = datePicker
         datePicker.datePickerMode = .date
         
+        
     }
     
     private func createPickerView(textField : UITextField , pickerView : UIPickerView){
@@ -98,31 +99,76 @@ class InseminationsAddController : UIView ,NibInitializable {
         let addInseminations = InseminationModel()
         addInseminations.inseminationDate = inseminationsDateTextField.text!
         addInseminations.inseminationsStatus = InseminationStatus(rawValue: 2)!.name
-      
-        if inseminationsDateTextField.text == ""{
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.inseminationDate)
-        }else{
-            if personViewModel.fetchPersonViewModel().count != 0{
-                for i in personViewModel.fetchPersonViewModel(){
-                    if i.inseminatedPersonName == inseminationsPersonTextField.text{
-                        addInseminations.inseminatedPerson = i
-                    }
+        
+        
+        if personViewModel.fetchPersonViewModel().count != 0{
+            for i in personViewModel.fetchPersonViewModel(){
+                if i.inseminatedPersonName == inseminationsPersonTextField.text{
+                    addInseminations.inseminatedPerson = i
                 }
             }
-            if bullViewModel.fetchBull().count != 0{
-                for i in bullViewModel.fetchBull(){
-                    if i.bullName == inseminationsBullTextField.text{
-                        addInseminations.inseminationsBullName = i
-                    }
-                }
-            }
-            if let delegate = delegate {
-                LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
-            }
-            delegateCloseInseminationsView()
-            Constants.tableView.reloadData()
-            
         }
+        if bullViewModel.fetchBull().count != 0{
+            for i in bullViewModel.fetchBull(){
+                if i.bullName == inseminationsBullTextField.text{
+                    addInseminations.inseminationsBullName = i
+                }
+            }
+        }
+        if let delegate = delegate {
+            print( "insemination controller")
+            inseminationViewModel.addInseminationViewModel(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations, inseminationDateTextField: inseminationsDateTextField)
+         
+            
+            
+            
+            
+            
+//                LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+        }
+        delegateCloseInseminationsView()
+        Constants.tableView.reloadData() // delegate ile yapılacak
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+//        if inseminationsDateTextField.text == ""{
+//            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.inseminationDate)
+//        }else{
+//            if personViewModel.fetchPersonViewModel().count != 0{
+//                for i in personViewModel.fetchPersonViewModel(){
+//                    if i.inseminatedPersonName == inseminationsPersonTextField.text{
+//                        addInseminations.inseminatedPerson = i
+//                    }
+//                }
+//            }
+//            if bullViewModel.fetchBull().count != 0{
+//                for i in bullViewModel.fetchBull(){
+//                    if i.bullName == inseminationsBullTextField.text{
+//                        addInseminations.inseminationsBullName = i
+//                    }
+//                }
+//            }
+//            if let delegate = delegate {
+//
+//                inseminationViewModel.addInseminationViewModel(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations, inseminationDateTextField: inseminationsDateTextField)
+//
+//
+//
+//
+//
+////                LocaleService.shared.addInseminations(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations)
+//            }
+//            delegateCloseInseminationsView()
+//            Constants.tableView.reloadData() // delegate ile yapılacak
+//
+//        }
         
     }
     
