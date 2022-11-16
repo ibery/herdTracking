@@ -20,7 +20,8 @@ class InseminationInformationsController : UIView ,NibInitializable {
     var delegate : GetCowAndViewProtocol?
 //    var delegateView : showViewProtocol?
     //  private let cowModel = CowModel()
-    
+    let datePicker = UIDatePicker()
+    let pregnancyDate = UITextField()
     
     
     // MARK: - Initializers
@@ -63,6 +64,22 @@ class InseminationInformationsController : UIView ,NibInitializable {
     // MARK: - Methods
     
     private func setup(){}
+    
+    @objc func doneButtonClicked(){
+        
+        if let datePickerView = datePicker.inputView as? UIDatePicker {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateString = dateFormatter.string(from: datePickerView.date)
+            pregnancyDate.text = dateString
+            pregnancyDate.resignFirstResponder()
+        }
+    }
+    
+    @objc func cancelButtonClicked(){
+        self.pregnancyDate.resignFirstResponder()
+    }
+    
 }
 
 extension InseminationInformationsController : UITableViewDataSource , UITableViewDelegate{
@@ -86,6 +103,15 @@ extension InseminationInformationsController : UITableViewDataSource , UITableVi
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let delegateCow = delegate?.getCow() else {return}
+        guard let delegate = delegate else {return}
+        delegate.toPage(cow: delegateCow, row: indexPath.row)
+    }
+    
+
  
 }
 
@@ -99,7 +125,9 @@ extension InseminationInformationsController : CloseInseminationViewProtocol{
         addInseminationView.isHidden = true
         inseminationInformationsTableView.reloadData()
     }
-    
-
-    
+   
 }
+
+
+
+

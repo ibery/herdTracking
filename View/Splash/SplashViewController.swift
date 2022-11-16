@@ -28,7 +28,6 @@ class SplashViewController: BaseViewController {
         
         DispatchQueue.main.asyncAfter(deadline:  .now() + 1 ){
             let tabBarController = TabBarController()
-            
             self.show(tabBarController , sender: nil)
         }
     }

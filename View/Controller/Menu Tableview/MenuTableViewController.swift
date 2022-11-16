@@ -72,7 +72,6 @@ extension MenuTableViewController : UITableViewDelegate , UITableViewDataSource 
         
         guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}
         viewController.cow = cowViewModel.fetchCowViewModel()[indexPath.row]
-        print("cow : \(cowViewModel.fetchCowViewModel()[indexPath.row])")
         self.navigationController?.show(viewController, sender: nil)
        
 //        guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}

@@ -11,3 +11,4 @@ class VaccineListModel: Object {
     @Persisted var vaccineName : String?
 }
 
+

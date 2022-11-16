@@ -88,6 +88,8 @@ extension BirthInfoListController : UITableViewDelegate , UITableViewDataSource 
         return cell
     }
     
+
+    
     
 }
 
@@ -99,6 +101,7 @@ extension BirthInfoListController : BirthProtocol{
     }
     
     func closeBirthInfoView() {
+        
         addBirthView.isHidden = true
     }
     

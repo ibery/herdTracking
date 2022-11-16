@@ -29,8 +29,8 @@ class InseminationViewModel {
     // MARK: - Methods
 
     
-    func updateInsemination(){
-        
+    func updateInsemination(cow : CowModel, insemination : InseminationModel , row : Int){
+        LocaleService.shared.updateInseminations(cow: cow, insemination: inseminationsModel, row: row)
     }
     
     func fetchInsemination()-> Results<InseminationModel>{
@@ -43,7 +43,6 @@ class InseminationViewModel {
     }
 
     private func inseminationTextFieldEmpty(cow : CowModel  , inseminationDateText : UITextField ,newInsemination : InseminationModel ){
-        print("0")
         if inseminationDateText.text == ""{
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.inseminationDate)
         }else{
@@ -88,7 +87,9 @@ class InseminationViewModel {
         }else{
             for i in cow.inseminations{
                 if i.inseminationsStatus == "Beklemede" {
-                   print( i.accessibilityElementCount())
+                   print("burası insemination count =  \(i.accessibilityElementCount())")
+                    Constants.inseminationCount += 1
+                
                //     i.inseminationsStatus = "Başarısız"
                     
               //      cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)

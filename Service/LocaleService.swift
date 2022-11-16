@@ -84,6 +84,10 @@ class LocaleService {
     
     func addInseminations(cow: CowModel , newInsemination : InseminationModel){
         try! realm.write{
+            if cow.inseminations.count != 0 {
+                cow.inseminations[Constants.inseminationCount].inseminationsStatus = "Başarısız"
+            }
+            cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
             cow.inseminations.append(newInsemination)
         }
     }
@@ -93,8 +97,12 @@ class LocaleService {
         return inseminations
     }
     
-    func updateInseminations(cow : CowModel, inseminatedPerson : String , bullName : String , inseminationDate : String ){
-        
+    func updateInseminations(cow : CowModel, insemination : InseminationModel , row : Int){
+        try! realm.write{
+            print("locale \(insemination.inseminationsStatus)")
+            cow.inseminations[row].inseminationsStatus = insemination.inseminationsStatus
+            
+        }
     }
     
     func addInseminationsPerson(person : PersonModel){
@@ -150,7 +158,37 @@ class LocaleService {
         }
     }
     
-    
+    func addPregnancy(cow: CowModel , newPregnancy : PregnancyModel, row: Int){
+        
+            try! realm.write{
+                cow.inseminations[row].pregnancyList.append(newPregnancy)
+            }
+        if newPregnancy.inspectionResult == "Başarılı"{
+            try! realm.write{
+                cow.reproductiveStatus = ReproductiveStatus(rawValue: 6)
+                guard let status = InseminationStatus(rawValue: 0)?.name else {return}
+                cow.inseminations[row].inseminationsStatus = status
+            }
+        }else if newPregnancy.inspectionResult == "Başarısız"{
+            try! realm.write{
+                cow.reproductiveStatus = ReproductiveStatus(rawValue: 4)
+                guard let status = InseminationStatus(rawValue: 1)?.name else {return}
+                cow.inseminations[row].inseminationsStatus = status
+            }
+        }else if newPregnancy.inspectionResult == "Yavru Atma"{
+            try! realm.write{
+                cow.reproductiveStatus = ReproductiveStatus(rawValue: 4)
+                guard let status = InseminationStatus(rawValue: 4)?.name else {return}
+                cow.inseminations[row].inseminationsStatus = status
+            }
+        }else if newPregnancy.inspectionResult == "Beklemede"{
+            try! realm.write{
+                cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
+                guard let status = InseminationStatus(rawValue: 2)?.name else {return}
+                cow.inseminations[row].inseminationsStatus = status
+            }
+        }
+    }
     
 }
 

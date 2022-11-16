@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,8 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PregnancyControlViewController" customModule="Herd_Tracking" customModuleProvider="target">
             <connections>
-                <outlet property="inspectionDateTextField" destination="Js9-kA-Atp" id="YZE-WO-EsT"/>
-                <outlet property="inspectionResultTextField" destination="gkQ-lp-iMJ" id="ZY0-f4-i5P"/>
                 <outlet property="pregnancyTableView" destination="qDi-F8-cfZ" id="PGq-cF-M16"/>
             </connections>
         </placeholder>
@@ -20,44 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Muayne Tarihi" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Js9-kA-Atp">
-                    <rect key="frame" x="20" y="54" width="374" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Muayne Sonucu" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkQ-lp-iMJ">
-                    <rect key="frame" x="20" y="103" width="374" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBO-Az-beO">
-                    <rect key="frame" x="172.5" y="152" width="69" height="31"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
-                    <connections>
-                        <action selector="pregnancySave:" destination="-1" eventType="touchUpInside" id="nGz-Jv-cBL"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qDi-F8-cfZ">
-                    <rect key="frame" x="0.0" y="188" width="414" height="436"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qDi-F8-cfZ" firstAttribute="top" secondItem="PBO-Az-beO" secondAttribute="bottom" constant="5" id="3Nz-TI-XrG"/>
-                <constraint firstItem="gkQ-lp-iMJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="BtA-wx-gDh"/>
-                <constraint firstItem="Js9-kA-Atp" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="DNS-Az-16x"/>
-                <constraint firstItem="qDi-F8-cfZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JAz-cl-4Fv"/>
-                <constraint firstItem="gkQ-lp-iMJ" firstAttribute="top" secondItem="Js9-kA-Atp" secondAttribute="bottom" constant="15" id="MQn-mf-IKk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qDi-F8-cfZ" secondAttribute="bottom" id="Scm-fx-aTj"/>
-                <constraint firstItem="PBO-Az-beO" firstAttribute="top" secondItem="gkQ-lp-iMJ" secondAttribute="bottom" constant="15" id="T1F-LI-lV9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Js9-kA-Atp" secondAttribute="trailing" constant="20" id="cww-Qa-4i5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qDi-F8-cfZ" secondAttribute="trailing" id="frs-A8-RKz"/>
-                <constraint firstItem="Js9-kA-Atp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="skL-Bd-rsu"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gkQ-lp-iMJ" secondAttribute="trailing" constant="20" id="x5v-pt-D3R"/>
-                <constraint firstItem="PBO-Az-beO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xY0-E3-mw3"/>
+                <constraint firstItem="qDi-F8-cfZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FHU-JK-duV"/>
+                <constraint firstAttribute="bottom" secondItem="qDi-F8-cfZ" secondAttribute="bottom" id="WPi-mQ-5id"/>
+                <constraint firstItem="qDi-F8-cfZ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="cvi-DD-gRa"/>
+                <constraint firstItem="qDi-F8-cfZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mS1-Oz-b5I"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="286.95652173913044" y="-86.383928571428569"/>

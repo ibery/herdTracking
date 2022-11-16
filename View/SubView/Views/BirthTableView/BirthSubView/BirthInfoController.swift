@@ -124,9 +124,15 @@ class BirthInfoController : UIView , NibInitializable {
         birthModel.calfTwoEarTag = secondCalfEarTagTextField.text
         birthModel.twoCalfGender = secondCalfGenderTextField.text
         
-        birthViewModel.giveBirth(cow: cow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextFiedl, formOfCalvingTextFiedl: formOfCalvingTextField, birthDateTextFiedl: birthDateTextField, twinsSwitch: twinsSwitch, secondCalfEarTagTextFiedl: secondCalfEarTagTextField, secondCalfNameTextField: secondCalfNameTextField, secondGenderTextField: secondCalfGenderTextField, calfCow: calfCow, calfingDate: birthDateTextField, secondCalfCow: secondCalf, newBirth: birthModel)
-        closeView()
+        birthViewModel.giveBirth(cow: cow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextFiedl, formOfCalvingTextFiedl: formOfCalvingTextField, birthDateTextFiedl: birthDateTextField, twinsSwitch: twinsSwitch, secondCalfEarTagTextFiedl: secondCalfEarTagTextField, secondCalfNameTextField: secondCalfNameTextField, secondGenderTextField: secondCalfGenderTextField, calfCow: calfCow, calfingDate: birthDateTextField, secondCalfCow: secondCalf, newBirth: birthModel , view : self)
         
+//        guard let viewController = Storyboard.menu.viewController else {return }
+//        viewController.navigationController?.show(viewController, sender: nil)
+        
+  
+        closeView()
+
+
         // burası birthViewModel de yapılacak
     }
     @IBAction func CancelButton(_ sender: UIButton) {
@@ -141,7 +147,7 @@ class BirthInfoController : UIView , NibInitializable {
     func closeView(){
         guard let delegate = delegate else {return}
         delegate.closeBirthInfoView()
-        
+     
     }
     
     @objc private func cancelButtonClicked(){

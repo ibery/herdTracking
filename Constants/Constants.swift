@@ -33,6 +33,7 @@ struct Constants {
         static let lessthanAge = "Bir yaşından Küçük Hayvan Tohumlanamaz!"
         static let pragnent = "Hayvan zaten gebe!"
         static let postpartumOfDay = "Yeni doğum yapan hayvan 20 gün içerisinde tohumlanamaz!"
+        static let pregnancyDate = "Muayne tarihi giriniz!"
     }
     
     
@@ -79,5 +80,7 @@ struct Constants {
     static var birthCow = CowModel()
     static var inseminationCount = -1
     static var formOfCalving = ""
+    static var inspectionTextField = UITextField()
+    
     
 }

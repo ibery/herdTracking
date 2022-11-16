@@ -14,7 +14,7 @@ class CowCardViewController : BaseViewController {
     // MARK: - Properties
     @IBOutlet weak var generalInformationsView: GeneralInformationsController!
     @IBOutlet weak var inseminationInformationsView: InseminationInformationsController!
-
+    
     @IBOutlet weak var birthInfoView: BirthInfoListController!
     
     
@@ -23,7 +23,7 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var pregnancyControlView: PregnancyControlViewController!
     @IBOutlet weak var otherView: OtherViewController!
     private var editButton = UIBarButtonItem()
-
+    
     @IBOutlet weak var cowEditingView: CowCardEditingController!
     
     @IBOutlet weak var earTagLabel: UILabel!
@@ -32,24 +32,27 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var reproductiveStatusLabel: UILabel!
     @IBOutlet weak var leashNumberLabel: UILabel!
-//    @IBOutlet weak var syringeImage: UIImageView!
-//    @IBOutlet weak var spermsImage: UIImageView!
-//    @IBOutlet weak var birthImage: UIImageView!
-//    @IBOutlet weak var noteImage: UIImageView!
+    //    @IBOutlet weak var syringeImage: UIImageView!
+    //    @IBOutlet weak var spermsImage: UIImageView!
+    //    @IBOutlet weak var birthImage: UIImageView!
+    //    @IBOutlet weak var noteImage: UIImageView!
     @IBOutlet weak var cowCardMenuCollectionView: UICollectionView!
     @IBOutlet weak var cowProfileImage: UIImageView!
     
     
     
     var cow : CowModel = CowModel()
-//    var cowCardEditing = CowCardEditingController()
-   
+    var birthInfoController = BirthInfoController()
+    let datePicker = UIDatePicker()
+    var pregnancyDate = UITextField()
+    //    var cowCardEditing = CowCardEditingController()
+    
     
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setupScreen()
         earTagLabel.text = cow.earTag
         cowEditingView.isHidden = true
@@ -59,16 +62,17 @@ class CowCardViewController : BaseViewController {
         inseminationInformationsView.delegate = self
         birthInfoView.delegate = self
         generalInformationsView.delegate = self
+        pregnancyControlView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
- //       setupProperties()
-       
-        print("collection view ")
+  //      createDatePicker()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let indexPath:IndexPath = IndexPath(row: 0, section: 0)
-            cowCardMenuCollectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-
+        cowCardMenuCollectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,61 +81,186 @@ class CowCardViewController : BaseViewController {
         
         
     }
-
+    
     // MARK: - Setup
     func setupScreen(){
         editButton   = UIBarButtonItem(image: UIImage(systemName: "note.text"),  style: .plain, target: self, action: #selector(editTapped))
         navigationItem.rightBarButtonItems = [editButton]
     }
     
-//    func setupProperties(){
-//        // Burası guard lanacak
-//     //   guard let cow = cow else {return}
-//        earTagLabel.text = "Küpe : \(cow.earTag)"
-//        ageLabel.text = "Yaş : \(String(NumberOfDays.dateDayCount(date: cow.dateOfBirth, format: "dd.MM.yy")))"
-//        grupLabel.text = "Grup No : \(cow.groupNo)"
-//        nameLabel.text = "Adı : \(cow.cowName)"
-//        reproductiveStatusLabel.text = "Üreme Durumu : \(cow.reproductiveStatus?.name)"
-//        leashNumberLabel.text = "Tasma No : \( cow.leashNumber)"
-//        syringeImage.isUserInteractionEnabled = true
-//        spermsImage.isUserInteractionEnabled = true
-//        birthImage.isUserInteractionEnabled = true
-//        noteImage.isUserInteractionEnabled = true
-//
-//        syringeImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syringeImageClick)))
-//        spermsImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spermsImageClick)))
-//        birthImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(birthImageClick)))
-//        noteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noteImageClick)))
-//
-//    }
+    func createDatePicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        datePicker.preferredDatePickerStyle = .wheels
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(CowCardViewController.cancelButtonClicked))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(CowCardViewController.doneButtonClicked))
+        toolbar.setItems([cancelButton,.flexibleSpace() ,doneButton], animated: true)
+        pregnancyDate.inputAccessoryView = toolbar
+        pregnancyDate.inputView = datePicker
+        datePicker.datePickerMode = .date
+    }
+    
+
+    
     
     // MARK: - Actions
     
     
     //MARK: - Methods
     @objc func editTapped(){
-       // düzenlemeyer güncellenecek
+        // düzenlemeyer güncellenecek
         cowEditingView.isHidden = false
     }
     
+    @objc func doneButtonClicked(){
 
-//    @objc func spermsImageClick(){
-//        guard let viewController = self.getViewController(fromStoryboard: .inseminations , type: AddInseminationsViewController.self) else {return}
-//        viewController.cow = cow
-//        self.navigationController?.show(viewController, sender: nil)
-//
-//    }
-    
-//    func firstItemSelect(){
-//
-//    }
-    
-    
-    
+        if let datePickerView = self.datePicker.inputView as? UIDatePicker {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateString = dateFormatter.string(from: datePickerView.date)
+            self.pregnancyDate.text = dateString
+
+            self.pregnancyDate.resignFirstResponder()
+        }
+    }
+
+    @objc func cancelButtonClicked(){
+        self.pregnancyDate.resignFirstResponder()
+    }
+
+   
 }
 
 extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol {
+    func toPage(cow: CowModel,row :Int) {
+        print("delegate çağırıldı")
+        guard let viewController = self.getViewController(fromStoryboard: .pregnancyInspection, type: PregnancyInspectionViewController.self) else {return}
+        print("delegate çağırıldı 2")
+        viewController.cow = cow
+        viewController.row = row
+        self.navigationController?.show(viewController, sender: nil)
+        
+    }
+    
 
+    func addInspectionPregnancy(cow : CowModel , row : Int ) {
+        
+        
+//        let inspectionPicker = UIPickerView()
+//
+//        var pregnancyResult = UITextField()
+//                let alert = UIAlertController(title: "Gebelik Muaynesi", message: "", preferredStyle: .alert)
+//        
+//                let action = UIAlertAction(title: "Ekle", style: .default) {(action) in
+//
+//                    if self.pregnancyDate.text != ""{
+//                        let pregnancyModel = PregnancyModel()
+//
+//                        cow.inseminations[row].pregnancyList?.inspectionResult = pregnancyResult.text
+//                        pregnancyModel.inspectionResult = pregnancyResult.text
+//                        pregnancyModel.inspectionDate = self.pregnancyDate.text
+//
+//                        LocaleService.shared.addPregnancy(cow: cow, newPregnancy: pregnancyModel)
+//
+//                    }else{
+//                        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.pregnancyDate)
+//                    }
+//                }
+//                alert.addAction(action)
+//                alert.addTextField {
+//                    (fieldName) in
+//                    self.pregnancyDate = fieldName
+//                    self.pregnancyDate.placeholder = "Muayne Tarihi Seçiniz"
+//
+//                }
+//                alert.addTextField{
+//                    (fieldBreed) in
+//                    pregnancyResult = fieldBreed
+//                    pregnancyResult.placeholder = "Muayne sonucunu giriniz"
+//                }
+//                present(alert , animated: true ,completion: nil)
+//
+//        
+//        let toolbar = UIToolbar()
+//        toolbar.sizeToFit()
+//        datePicker.preferredDatePickerStyle = .wheels
+//        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(cancelButtonClicked))
+//        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneButtonClicked))
+//        toolbar.setItems([cancelButton,.flexibleSpace() ,doneButton], animated: true)
+//        pregnancyDate.inputAccessoryView = toolbar
+//        pregnancyDate.inputView = datePicker
+// 
+//        datePicker.datePickerMode = .date
+//        
+
+//        func doneButtonClicked(){
+//
+//            if let datePickerView = self.datePicker.inputView as? UIDatePicker {
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "dd-MM-yyyy"
+//                let dateString = dateFormatter.string(from: datePickerView.date)
+//                self.pregnancyDate.text = dateString
+//
+//                self.pregnancyDate.resignFirstResponder()
+//            }
+//        }
+//
+//        func cancelButtonClicked(){
+//            self.pregnancyDate.resignFirstResponder()
+//        }
+        
+
+            //    let datePicker = UIDatePicker()
+        //        let inspectionPicker = UIPickerView()
+//                let pregnancyDate = UITextField()
+//                var pregnancyResult = UITextField()
+        
+//        let myDatePicker: UIDatePicker = UIDatePicker()
+   //     myDatePicker.timeZone = .local
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        let dateString = dateFormatter.string(from: myDatePicker.date)
+//        pregnancyDate.text = dateString
+//            myDatePicker.preferredDatePickerStyle = .wheels
+//            myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+//            let alertController = UIAlertController(title: "Gebelik Muaynesi \n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+//            alertController.view.addSubview(myDatePicker)
+//            let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+//                print("Selected Date: \(myDatePicker.date)")
+//                print("date String : \(dateString)")
+//                print("pregnancy date  : \(pregnancyDate.text)")
+//            })
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//            alertController.addAction(selectAction)
+//            alertController.addAction(cancelAction)
+//            present(alertController, animated: true)
+         
+       
+//        datePicker.frame = CGRect(x: 0, y: 40, width: 270, height: 200)
+//
+//        let alert = UIAlertController(title: "TITLE", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+//        alert.view.addSubview(datePicker)
+//
+//        let selectAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+//            print("Selected Date: \(datePicker.date)")
+//        })
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//        alert.addAction(selectAction)
+//        alert.addAction(cancelAction)
+//
+//        present(alert, animated: true)
+//
+        
+        
+       
+        
+
+
+        
+    }
+    
+  
     func cowCardEditinCow()-> CowModel{
         return cow
     }
@@ -143,13 +272,15 @@ extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtoco
     func getCow() -> CowModel {
         return cow
     }
-
+    
     
 }
 
-    
-extension CowCardViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
 
+
+
+extension CowCardViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Views.allCases.count
     }
@@ -162,9 +293,9 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width - 16.0 * 2
-                let height: CGFloat = 300.0
-                
-    return CGSize(width: width, height: height)
+        let height: CGFloat = 300.0
+        
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -187,10 +318,10 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
         case .other:
             return otherView.isHidden = false
         case .none: break
-
+            
         }
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let views = Views(rawValue: indexPath.row)
         
@@ -210,12 +341,57 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
         case .other:
             return otherView.isHidden = true
         case .none: break
-
+            
         }
     }
-
-
+    
+    
 }
 
 
-
+extension UITextField {
+   func datePicker<T>(target: T,
+                   doneAction: Selector,
+                   cancelAction: Selector,
+                   datePickerMode: UIDatePicker.Mode = .date) {
+    let screenWidth = UIScreen.main.bounds.width
+    
+    func buttonItem(withSystemItemStyle style: UIBarButtonItem.SystemItem) -> UIBarButtonItem {
+        let buttonTarget = style == .flexibleSpace ? nil : target
+        let action: Selector? = {
+            switch style {
+            case .cancel:
+                return cancelAction
+            case .done:
+                return doneAction
+            default:
+                return nil
+            }
+        }()
+        
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: style,
+                                            target: buttonTarget,
+                                            action: action)
+        
+        return barButtonItem
+    }
+    
+    let datePicker = UIDatePicker(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: screenWidth,
+                                                height: 216))
+    datePicker.datePickerMode = datePickerMode
+    datePicker.preferredDatePickerStyle = .inline
+    self.inputView = datePicker
+    
+    let toolBar = UIToolbar(frame: CGRect(x: 0,
+                                          y: 0,
+                                          width: screenWidth,
+                                          height: 44))
+    toolBar.setItems([buttonItem(withSystemItemStyle: .cancel),
+                      buttonItem(withSystemItemStyle: .flexibleSpace),
+                      buttonItem(withSystemItemStyle: .done)],
+                     animated: true)
+    self.inputAccessoryView = toolBar
+    }
+    }

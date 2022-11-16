@@ -30,6 +30,7 @@ class CowModel : Object {
     @Persisted var noteList = List<NoteModel>()
     @Persisted var vaccineList = List<VaccineListModel>()
     
+    
     convenience init(earTag : String, dateOfBirth : String, leashNumber : String?, gender : String, groupNo : String?, cowBreed : String,  magnet : Bool, numberOfLactations : Int?, lastCalvingDate : String?, insurance : Bool?, dryOffDate : String? , reproductiveStatus: ReproductiveStatus? ){
         self.init()
         self.earTag = earTag

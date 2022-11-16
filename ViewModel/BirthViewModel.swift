@@ -16,6 +16,7 @@ class BirthViewModel {
     
     //    private var cow = CowModel()
     private var cowViewModel = CowViewModel()
+    
     // MARK: - Initializers
     
     
@@ -27,8 +28,9 @@ class BirthViewModel {
     
     // MARK: - Methods
     
-    func giveBirth(cow : CowModel , calfEarTagTextField : UITextField, calfNameTextField : UITextField , calfGenderTextField : UITextField ,formOfCalvingTextFiedl : UITextField , birthDateTextFiedl : UITextField ,twinsSwitch : UISwitch ,secondCalfEarTagTextFiedl : UITextField ,secondCalfNameTextField : UITextField , secondGenderTextField : UITextField ,calfCow : CowModel , calfingDate : UITextField , secondCalfCow : CowModel ,newBirth : BirthModel){
-        if birthReproductiveStatus(cow: cow){ // başında ünlem olacak
+    func giveBirth(cow : CowModel , calfEarTagTextField : UITextField, calfNameTextField : UITextField , calfGenderTextField : UITextField ,formOfCalvingTextFiedl : UITextField , birthDateTextFiedl : UITextField ,twinsSwitch : UISwitch ,secondCalfEarTagTextFiedl : UITextField ,secondCalfNameTextField : UITextField , secondGenderTextField : UITextField ,calfCow : CowModel , calfingDate : UITextField , secondCalfCow : CowModel ,newBirth : BirthModel ,view : UIView){
+        
+        if !birthReproductiveStatus(cow: cow){
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.notPregnancy)
         }else{
             guard let formCalvingType = FormOfCalving(rawValue: 1)?.name else {return}
@@ -43,18 +45,17 @@ class BirthViewModel {
                     if cow.inseminations.count > 1 {
                         for i in cow.inseminations{
                             Constants.inseminationCount += 1
-                            if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{
-                                
+                            if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{   
                                 break
                             }
                         }
-                        
                     }else{
-                        
                         Constants.inseminationCount = 0
                     }
                     Constants.birthCow.lastCalvingDate = birthDateTextFiedl.text
                     LocaleService.shared.birthUpdateCow(cow: cow)
+                    view.isHidden = true
+
                 }
             }else if formOfCalvingTextFiedl.text == FormOfCalving(rawValue: 2)?.name{
                 if birthDateTextFiedl.text == ""{
@@ -68,14 +69,13 @@ class BirthViewModel {
                         for i in cow.inseminations{
                             Constants.inseminationCount += 1
                             if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{
-                                
                                 break
                             }
                         }
                     }else{
                         Constants.inseminationCount = 0
                     }
-                    
+                  view.isHidden = true
                 }
             }else if formOfCalvingTextFiedl.text == FormOfCalving(rawValue: 0)?.name || formOfCalvingTextFiedl.text == FormOfCalving(rawValue: 3)?.name{
                 
@@ -83,47 +83,115 @@ class BirthViewModel {
                     if birthDateTextFiedl.text == "" || calfEarTagTextField.text == "" || secondCalfEarTagTextFiedl.text == "" {
                         UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earTagAndDate)
                     }else{
-                        firstAndSecondCalfBirth(firstCalf: calfCow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextField, calfingDate: birthDateTextFiedl, cow : cow)
                         
-                        firstAndSecondCalfBirth(firstCalf: secondCalfCow, calfEarTagTextField: secondCalfNameTextField, calfNameTextField: secondCalfNameTextField, calfGenderTextField: secondGenderTextField, calfingDate: birthDateTextFiedl, cow :cow)
-                        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successCalfing)
-                        newBirth.birthDate = birthDateTextFiedl.text
-                        newBirth.calfOneEarTag = calfEarTagTextField.text
-                        newBirth.oneCalfGender = calfGenderTextField.text
-                        newBirth.calfTwoEarTag = secondCalfEarTagTextFiedl.text
-                        newBirth.twoCalfGender = secondGenderTextField.text
+                        var status = false
+                        if let calfEarTag = calfEarTagTextField.text , let calfEarTagSecond  = secondCalfEarTagTextFiedl.text {
+                            calfCow.earTag = calfEarTag
+                            secondCalfCow.earTag = calfEarTagSecond
+                            
+                            for i in cowViewModel.fetchCowViewModel(){
+                                if i.earTag == calfEarTag || i.earTag == calfEarTagSecond{
+                                    status = true
+                                    break
+                                }
+                            }
+                            if status == false{
+                                calfCow.cowName = calfNameTextField.text
+                                secondCalfCow.cowName = secondCalfNameTextField.text
+                                if let gender =  calfGenderTextField.text{calfCow.gender = gender}
+                                if let secondGender = secondGenderTextField.text{secondCalfCow.gender = secondGender}
+                                if let dateOf = birthDateTextFiedl.text{calfCow.dateOfBirth = dateOf; secondCalfCow.dateOfBirth = dateOf}
+                                calfCow.cowBreed = cow.cowBreed
+                                secondCalfCow.cowBreed = cow.cowBreed
+                                calfCow.motherEarTag = cow.earTag
+                                secondCalfCow.motherEarTag = cow.earTag
+                                calfCow.leashNumber = ""
+                                secondCalfCow.leashNumber = ""
+                                cowViewModel.addCowViewModel(cowAdd: calfCow)
+                                cowViewModel.addCowViewModel(cowAdd: secondCalfCow)
+                                newBirth.birthDate = birthDateTextFiedl.text
+                                newBirth.calfOneEarTag = calfEarTagTextField.text
+                                newBirth.oneCalfGender = calfGenderTextField.text
+                                newBirth.twoCalfGender = secondGenderTextField.text
+                                newBirth.calfTwoEarTag = secondCalfEarTagTextFiedl.text
+                                Constants.birthCow.reproductiveStatus = ReproductiveStatus(rawValue: 2)
+                                Constants.birthCow.lastCalvingDate = birthDateTextFiedl.text
+                                
+                                if cow.inseminations.count > 1 {
+                                    for i in cow.inseminations{
+                                        Constants.inseminationCount += 1
+                                        if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{
+                                            i.inseminationsStatus = InseminationStatus(rawValue: 3)!.name
+                                            break
+                                        }
+                                    }
+                                }else{
+                                    Constants.inseminationCount = 0
+                                }
+                                Constants.birthCow.numberOfLactations = lactacionAndLastCalvingDate(cow: cow)
+                                LocaleService.shared.birthUpdateCow(cow: cow)
+                                LocaleService.shared.addBirth(cow: cow, newBirth: newBirth)
+                                view.isHidden = true
+                   
+//                                let newViewController = MenuTableViewController()
+//                                self.navigationController?.pushViewController(newViewController, animated: true)
+                            }else{
+                                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+                            }
+                        }
                     }
                 }else{
                     if birthDateTextFiedl.text == "" || calfEarTagTextField.text == ""{
                         UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earTagAndDate)
                     }else{
-                        firstAndSecondCalfBirth(firstCalf: calfCow, calfEarTagTextField: calfEarTagTextField, calfNameTextField: calfNameTextField, calfGenderTextField: calfGenderTextField, calfingDate: birthDateTextFiedl , cow :cow)
-                        newBirth.birthDate = birthDateTextFiedl.text
-                        newBirth.calfOneEarTag = calfEarTagTextField.text
-                        newBirth.oneCalfGender = calfGenderTextField.text
-                    }
-                }
-                Constants.birthCow.reproductiveStatus = ReproductiveStatus(rawValue: 2)
-                Constants.birthCow.lastCalvingDate = birthDateTextFiedl.text
-                
-                if cow.inseminations.count > 1 {
-                    for i in cow.inseminations{
-                        Constants.inseminationCount += 1
-                        if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{
-                            i.inseminationsStatus = InseminationStatus(rawValue: 3)!.name
-                            break
+                        var status = false
+                        if let calfEarTag = calfEarTagTextField.text {
+                            calfCow.earTag = calfEarTag
+                            
+                            for i in cowViewModel.fetchCowViewModel(){
+                                if i.earTag == calfEarTag {
+                                    status = true
+                                    break
+                                }
+                            }
+                            if status == false{
+                                calfCow.cowName = calfNameTextField.text
+                                if let gender =  calfGenderTextField.text{calfCow.gender = gender}
+                                if let dateOf = birthDateTextFiedl.text{calfCow.dateOfBirth = dateOf}
+                                calfCow.cowBreed = cow.cowBreed
+                                calfCow.motherEarTag = cow.earTag
+                                calfCow.leashNumber = ""
+                                cowViewModel.addCowViewModel(cowAdd: calfCow)
+                                newBirth.birthDate = birthDateTextFiedl.text
+                                newBirth.calfOneEarTag = calfEarTagTextField.text
+                                newBirth.oneCalfGender = calfGenderTextField.text
+                                Constants.birthCow.reproductiveStatus = ReproductiveStatus(rawValue: 2)
+                                Constants.birthCow.lastCalvingDate = birthDateTextFiedl.text
+                                
+                                if cow.inseminations.count > 1 {
+                                    for i in cow.inseminations{
+                                        Constants.inseminationCount += 1
+                                        if i.inseminationsStatus == InseminationStatus(rawValue: 0)?.name{
+                                            i.inseminationsStatus = InseminationStatus(rawValue: 3)!.name
+                                            break
+                                        }
+                                    }
+                                }else{
+                                    Constants.inseminationCount = 0
+                                }
+                                Constants.birthCow.numberOfLactations = lactacionAndLastCalvingDate(cow: cow)
+                                LocaleService.shared.birthUpdateCow(cow: cow)
+                                LocaleService.shared.addBirth(cow: cow, newBirth: newBirth)
+                     //           view.isHidden = true
+
+                            }else{
+                                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+                            }
                         }
                     }
-                }else{
-                    Constants.inseminationCount = 0
                 }
-                Constants.birthCow.numberOfLactations = lactacionAndLastCalvingDate(cow: cow)
-                LocaleService.shared.birthUpdateCow(cow: cow)
-                LocaleService.shared.addBirth(cow: cow, newBirth: newBirth)
             }
-            
         }
-        
     }
     
     private func birthReproductiveStatus(cow : CowModel) -> Bool{
@@ -155,26 +223,37 @@ class BirthViewModel {
     }
     
     private func firstAndSecondCalfBirth(firstCalf : CowModel , calfEarTagTextField :UITextField,calfNameTextField : UITextField , calfGenderTextField : UITextField ,calfingDate: UITextField , cow :CowModel){
+        var status = false
         if let calfEarTag = calfEarTagTextField.text{
             firstCalf.earTag = calfEarTag
-        }else{
-            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+            
+            for i in cowViewModel.fetchCowViewModel() {
+                
+                if i.earTag == calfEarTag {
+                    status = true
+                    break
+                }
+            }
+            
+            if status == false {
+                if let calfName = calfNameTextField.text{
+                    firstCalf.cowName = calfName
+                }
+                if let gender = calfGenderTextField.text {
+                    firstCalf.gender = gender
+                }
+                if let birthDate = calfingDate.text{
+                    firstCalf.dateOfBirth = birthDate
+                }
+                firstCalf.cowBreed = cow.cowBreed
+                firstCalf.motherEarTag = cow.earTag
+                firstCalf.leashNumber = ""
+                cowViewModel.addCowViewModel(cowAdd: firstCalf)
+            }else{
+                UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.messageThereIsCow)
+            }
         }
         
-        if let calfName = calfNameTextField.text{
-            firstCalf.cowName = calfName
-        }
-        if let gender = calfGenderTextField.text {
-            firstCalf.gender = gender
-        }
-        if let birthDate = calfingDate.text{
-            firstCalf.dateOfBirth = birthDate
-        }
-        firstCalf.cowBreed = cow.cowBreed
-        firstCalf.motherEarTag = cow.earTag
-        firstCalf.leashNumber = ""
-        cowViewModel.addCowViewModel(cowAdd: firstCalf)
-         
     }
     
     private func inseminationNumber(cow : CowModel){

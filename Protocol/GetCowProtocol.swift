@@ -10,6 +10,8 @@ import UIKit
 
 protocol GetCowAndViewProtocol {
     func getCow() -> CowModel
+    func addInspectionPregnancy(cow : CowModel , row : Int )
+    func toPage(cow: CowModel,row :Int)
 }
 
 protocol CloseInseminationViewProtocol{
@@ -26,4 +28,7 @@ protocol BirthProtocol{
     func fetchCow()->CowModel
     func closeBirthInfoView()
 }
+
+
+
 

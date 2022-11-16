@@ -20,6 +20,7 @@ enum Storyboard : Int {
     case inseminations
     case person
     case bull
+    case pregnancyInspection
     
     
     var name : String {
@@ -46,6 +47,8 @@ enum Storyboard : Int {
             return "ShowPerson"
         case.bull:
             return "ShowBull"
+        case.pregnancyInspection:
+            return "PregnancyInspection"
         }
         
     }

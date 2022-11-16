@@ -8,20 +8,17 @@
 import Foundation
 import UIKit
 
-protocol getCowPregnancyControlProtocol{
-    func getCowPregnancyControl() -> CowModel
-}
+
 
 class PregnancyControlViewController : UIView ,NibInitializable {
     
     // MARK: - Properties
-    @IBOutlet weak var inspectionDateTextField: UITextField!
-    @IBOutlet weak var inspectionResultTextField: UITextField!
+   
     @IBOutlet weak var pregnancyTableView: UITableView!
     
     
     var nibName: String = "PregnancyControlScreen"
-    var delegate : getCowPregnancyControlProtocol?
+    var delegate : GetCowAndViewProtocol?
     
     // MARK: - Initializers
     
@@ -40,19 +37,23 @@ class PregnancyControlViewController : UIView ,NibInitializable {
     
     private func postInitialize(_ view: UIView) {}
     
+    
     // MARK: - Setup
+    
     override func layoutSubviews() {
         pregnancyTableView.delegate = self
         pregnancyTableView.dataSource = self
-        
     }
+    
+
     
     // MARK: - Actions
     
-    @IBAction func pregnancySave(_ sender: Any) {
-    }
+
     
     // MARK: - Methods
+    
+ 
     
     private func setup(){}
 }
@@ -68,3 +69,5 @@ extension PregnancyControlViewController : UITableViewDelegate ,UITableViewDataS
     
     
 }
+
+
