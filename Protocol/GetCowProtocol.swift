@@ -33,6 +33,11 @@ protocol VaccineProtocol{
     func toHome()
 }
 
+protocol NoteProtocol{
+    func noteCow()->CowModel
+    func hiddenView()
+}
+
 
 
 

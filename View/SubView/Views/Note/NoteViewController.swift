@@ -11,12 +11,13 @@ import UIKit
 class NoteViewController : UIView , NibInitializable {
     
     // MARK: - Properties
-    @IBOutlet weak var noteDateTextField: UITextField!
+
     
+    @IBOutlet weak var addNoteView: AddNoteController!
     @IBOutlet weak var noteTableView: UITableView!
-    @IBOutlet weak var addNoteTextField: UITextField!
-    
     var nibName: String = "NoteScreen"
+    var delegate : NoteProtocol?
+
 
     
     
@@ -47,6 +48,10 @@ class NoteViewController : UIView , NibInitializable {
     }
     
     // MARK: - Actions
+    @IBAction func showAddNoteController(_ sender: UIButton) {
+        addNoteView.isHidden = false
+        print("add button tıklandı")
+    }
     
     
     // MARK: - Methods
@@ -65,3 +70,18 @@ extension NoteViewController : UITableViewDelegate , UITableViewDataSource{
     
     
 }
+
+extension NoteViewController : NoteProtocol {
+    func noteCow() -> CowModel {
+        guard let delegate = delegate?.noteCow() else{return CowModel()}
+        return delegate
+    }
+    
+    func hiddenView() {
+        addNoteView.isHidden = true
+        print("noteViewcontroller")
+    }
+    
+    
+}
+

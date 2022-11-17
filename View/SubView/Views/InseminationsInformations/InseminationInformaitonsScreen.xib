@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vXe-0c-bvl">
-                    <rect key="frame" x="0.0" y="44" width="414" height="635"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="631"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ns1-jn-z7g">
@@ -36,13 +37,15 @@
                     </connections>
                 </button>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-kE-6hI" customClass="InseminationsAddController" customModule="Herd_Tracking" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="635"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="631"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vXe-0c-bvl" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4Wx-Ef-7bQ"/>
+                <constraint firstItem="vXe-0c-bvl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5a5-fK-aUh"/>
                 <constraint firstItem="vXe-0c-bvl" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="6Ys-ed-SvE"/>
                 <constraint firstItem="vXe-0c-bvl" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Kmi-Hi-Hey"/>
                 <constraint firstItem="rr7-kE-6hI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SqE-Xl-CwV"/>
@@ -50,8 +53,10 @@
                 <constraint firstItem="rr7-kE-6hI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="VdB-8m-WfY"/>
                 <constraint firstItem="vXe-0c-bvl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bOd-59-6mL"/>
                 <constraint firstItem="ns1-jn-z7g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gjF-HA-f1a"/>
+                <constraint firstItem="vXe-0c-bvl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hyf-3f-Jek"/>
                 <constraint firstItem="vXe-0c-bvl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lJD-Hd-ln2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rr7-kE-6hI" secondAttribute="trailing" id="opr-Fa-iQa"/>
+                <constraint firstItem="vXe-0c-bvl" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="pNy-BZ-JTJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ns1-jn-z7g" secondAttribute="trailing" constant="10" id="qQ2-Il-8f0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

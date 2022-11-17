@@ -60,6 +60,7 @@ class CowCardViewController : BaseViewController {
         generalInformationsView.delegate = self
         pregnancyControlView.delegate = self
         vaccineView.delegate = self
+        noteView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
   //      createDatePicker()
         
@@ -128,9 +129,17 @@ class CowCardViewController : BaseViewController {
    
 }
 
-extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol {
+extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol ,NoteProtocol{
+    func noteCow() -> CowModel {
+        return cow
+    }
+    
+    func hiddenView() {
+        print("cow card hidden view")
+    }
+    
     func toHome() {
-        guard let viewController = Storyboard.home.viewController else {return }
+        guard let viewController = self.getViewController(fromStoryboard: .home, type: HomeViewController.self) else {return}
         self.navigationController?.show(viewController, sender: nil)
     }
     
@@ -149,120 +158,7 @@ extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtoco
     
 
     func addInspectionPregnancy(cow : CowModel , row : Int ) {
-        
-        
-//        let inspectionPicker = UIPickerView()
-//
-//        var pregnancyResult = UITextField()
-//                let alert = UIAlertController(title: "Gebelik Muaynesi", message: "", preferredStyle: .alert)
-//        
-//                let action = UIAlertAction(title: "Ekle", style: .default) {(action) in
-//
-//                    if self.pregnancyDate.text != ""{
-//                        let pregnancyModel = PregnancyModel()
-//
-//                        cow.inseminations[row].pregnancyList?.inspectionResult = pregnancyResult.text
-//                        pregnancyModel.inspectionResult = pregnancyResult.text
-//                        pregnancyModel.inspectionDate = self.pregnancyDate.text
-//
-//                        LocaleService.shared.addPregnancy(cow: cow, newPregnancy: pregnancyModel)
-//
-//                    }else{
-//                        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.pregnancyDate)
-//                    }
-//                }
-//                alert.addAction(action)
-//                alert.addTextField {
-//                    (fieldName) in
-//                    self.pregnancyDate = fieldName
-//                    self.pregnancyDate.placeholder = "Muayne Tarihi Seçiniz"
-//
-//                }
-//                alert.addTextField{
-//                    (fieldBreed) in
-//                    pregnancyResult = fieldBreed
-//                    pregnancyResult.placeholder = "Muayne sonucunu giriniz"
-//                }
-//                present(alert , animated: true ,completion: nil)
-//
-//        
-//        let toolbar = UIToolbar()
-//        toolbar.sizeToFit()
-//        datePicker.preferredDatePickerStyle = .wheels
-//        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(cancelButtonClicked))
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneButtonClicked))
-//        toolbar.setItems([cancelButton,.flexibleSpace() ,doneButton], animated: true)
-//        pregnancyDate.inputAccessoryView = toolbar
-//        pregnancyDate.inputView = datePicker
-// 
-//        datePicker.datePickerMode = .date
-//        
-
-//        func doneButtonClicked(){
-//
-//            if let datePickerView = self.datePicker.inputView as? UIDatePicker {
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "dd-MM-yyyy"
-//                let dateString = dateFormatter.string(from: datePickerView.date)
-//                self.pregnancyDate.text = dateString
-//
-//                self.pregnancyDate.resignFirstResponder()
-//            }
-//        }
-//
-//        func cancelButtonClicked(){
-//            self.pregnancyDate.resignFirstResponder()
-//        }
-        
-
-            //    let datePicker = UIDatePicker()
-        //        let inspectionPicker = UIPickerView()
-//                let pregnancyDate = UITextField()
-//                var pregnancyResult = UITextField()
-        
-//        let myDatePicker: UIDatePicker = UIDatePicker()
-   //     myDatePicker.timeZone = .local
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd-MM-yyyy"
-//        let dateString = dateFormatter.string(from: myDatePicker.date)
-//        pregnancyDate.text = dateString
-//            myDatePicker.preferredDatePickerStyle = .wheels
-//            myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
-//            let alertController = UIAlertController(title: "Gebelik Muaynesi \n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
-//            alertController.view.addSubview(myDatePicker)
-//            let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-//                print("Selected Date: \(myDatePicker.date)")
-//                print("date String : \(dateString)")
-//                print("pregnancy date  : \(pregnancyDate.text)")
-//            })
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//            alertController.addAction(selectAction)
-//            alertController.addAction(cancelAction)
-//            present(alertController, animated: true)
-         
-       
-//        datePicker.frame = CGRect(x: 0, y: 40, width: 270, height: 200)
-//
-//        let alert = UIAlertController(title: "TITLE", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
-//        alert.view.addSubview(datePicker)
-//
-//        let selectAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
-//            print("Selected Date: \(datePicker.date)")
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//
-//        alert.addAction(selectAction)
-//        alert.addAction(cancelAction)
-//
-//        present(alert, animated: true)
-//
-        
-        
-       
-        
-
-
-        
+  
     }
     
   

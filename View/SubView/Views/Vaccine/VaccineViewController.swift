@@ -83,6 +83,7 @@ class VaccineViewController : UIView ,NibInitializable {
         }else{
             vaccineViewModel.addVaccineViewModel(cow: delegate.vaccineCow(), vaccineModel: vaccineModel)
             delegate.toHome()
+            vaccineTableView.reloadData()
             
         }
     }
