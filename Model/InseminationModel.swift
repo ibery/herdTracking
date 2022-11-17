@@ -15,7 +15,7 @@ class InseminationModel : Object {
     @Persisted var inseminationsBullName : BullModel?
     @Persisted var inseminationDate : String = ""
     @Persisted var inseminationsStatus : String = ""
-    @Persisted var pregnancyList = List<PregnancyModel>()
+    
   //  var parentCow = LinkingObjects(fromType: CowModel.self , property: "inseminations")
   
     

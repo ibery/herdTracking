@@ -10,7 +10,6 @@ import UIKit
 
 protocol GetCowAndViewProtocol {
     func getCow() -> CowModel
-    func addInspectionPregnancy(cow : CowModel , row : Int )
     func toPage(cow: CowModel,row :Int)
 }
 
@@ -27,6 +26,11 @@ protocol CowCardEditingProtocol{
 protocol BirthProtocol{
     func fetchCow()->CowModel
     func closeBirthInfoView()
+}
+
+protocol VaccineProtocol{
+    func vaccineCow() -> CowModel
+    func toHome()
 }
 
 

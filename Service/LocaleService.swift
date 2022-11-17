@@ -16,11 +16,11 @@ class LocaleService {
     static let shared = LocaleService()
     
     lazy var realm = try! Realm()
-    var cowsResults : Results<CowModel>?
-    var bullResults : Results<BullModel>?
-    var inseminationsResults : Results<InseminationModel>?
-    var cow  = CowModel()
-    var inseminations = InseminationModel()
+//    var cowsResults : Results<CowModel>?
+//    var bullResults : Results<BullModel>?
+//    var inseminationsResults : Results<InseminationModel>?
+//    var cow  = CowModel()
+//    var inseminations = InseminationModel()
     
     
     // MARK: - Initializers
@@ -161,7 +161,7 @@ class LocaleService {
     func addPregnancy(cow: CowModel , newPregnancy : PregnancyModel, row: Int){
         
             try! realm.write{
-                cow.inseminations[row].pregnancyList.append(newPregnancy)
+                cow.pregnancyList.append(newPregnancy)
             }
         if newPregnancy.inspectionResult == "Başarılı"{
             try! realm.write{
@@ -190,7 +190,13 @@ class LocaleService {
         }
     }
     
+    func addVaccine(cow: CowModel , newVaccine : VaccineModel){
+        try! realm.write{
+            cow.vaccineList.append(newVaccine)
+            print("add vaccine çağırıldı")
+        }
+    }
+    
 }
-
 
 

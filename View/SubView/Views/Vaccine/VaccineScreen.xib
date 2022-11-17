@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,21 +22,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Fe-R1-Ecd">
-                    <rect key="frame" x="0.0" y="183" width="414" height="549"/>
+                    <rect key="frame" x="0.0" y="190.5" width="414" height="541.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Aşı Tarihi Seçiniz" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXA-9R-Q1d">
-                    <rect key="frame" x="20" y="49" width="374" height="34"/>
+                    <rect key="frame" x="20" y="53" width="374" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Aşı Adı Seçiniz" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6F-CN-wVQ">
-                    <rect key="frame" x="20" y="98" width="374" height="34"/>
+                    <rect key="frame" x="20" y="102" width="374" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g75-TT-DJE">
-                    <rect key="frame" x="172.5" y="147" width="69" height="31"/>
+                    <rect key="frame" x="168.5" y="151" width="77" height="34.5"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Kaydet"/>
                     <connections>
@@ -47,14 +48,18 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="W6F-CN-wVQ" firstAttribute="top" secondItem="NXA-9R-Q1d" secondAttribute="bottom" constant="15" id="00u-gX-AKa"/>
+                <constraint firstItem="8Fe-R1-Ecd" firstAttribute="top" secondItem="g75-TT-DJE" secondAttribute="bottom" constant="5" id="4pt-K3-oOl"/>
                 <constraint firstItem="NXA-9R-Q1d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="5h9-G5-Vba"/>
                 <constraint firstItem="8Fe-R1-Ecd" firstAttribute="top" secondItem="g75-TT-DJE" secondAttribute="bottom" constant="5" id="D3i-27-2DW"/>
                 <constraint firstItem="NXA-9R-Q1d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="FJ0-xV-8bL"/>
+                <constraint firstItem="8Fe-R1-Ecd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="H08-F8-7Zh"/>
                 <constraint firstItem="8Fe-R1-Ecd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="KCD-Qj-c2j"/>
+                <constraint firstItem="8Fe-R1-Ecd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="MOR-T8-YGs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W6F-CN-wVQ" secondAttribute="trailing" constant="20" id="SJ5-k9-2b2"/>
                 <constraint firstItem="8Fe-R1-Ecd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WUB-bv-1qV"/>
                 <constraint firstItem="g75-TT-DJE" firstAttribute="top" secondItem="W6F-CN-wVQ" secondAttribute="bottom" constant="15" id="Zmw-W3-YUj"/>
                 <constraint firstItem="8Fe-R1-Ecd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bn7-mW-Cdt"/>
+                <constraint firstItem="8Fe-R1-Ecd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="br5-Mc-x5q"/>
                 <constraint firstItem="W6F-CN-wVQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dIy-AJ-SJ2"/>
                 <constraint firstItem="g75-TT-DJE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sR3-AV-feO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NXA-9R-Q1d" secondAttribute="trailing" constant="20" id="zko-cO-oxf"/>

@@ -17,7 +17,7 @@ class NoteViewController : UIView , NibInitializable {
     @IBOutlet weak var addNoteTextField: UITextField!
     
     var nibName: String = "NoteScreen"
-//    var delegate : getCowInseminationInformationProtocol?
+
     
     
     // MARK: - Initializers

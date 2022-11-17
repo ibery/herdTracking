@@ -6,9 +6,11 @@
 //
 import RealmSwift
 
-class VaccineListModel: Object {
+class VaccineModel: Object {
     @Persisted var vaccineDate : String?
-    @Persisted var vaccineName : String?
+    @Persisted var vaccineName : String = ""
+//    @Persisted var vaccineRapel : Int?
+    
 }
 
 

@@ -34,6 +34,7 @@ struct Constants {
         static let pragnent = "Hayvan zaten gebe!"
         static let postpartumOfDay = "Yeni doğum yapan hayvan 20 gün içerisinde tohumlanamaz!"
         static let pregnancyDate = "Muayne tarihi giriniz!"
+        static let vaccineDate = "Aşı tarihi giriniz!"
     }
     
     
@@ -55,6 +56,10 @@ struct Constants {
         static let showBullTableViewCell = "BullCell"
         static let birthListTableViewcell = "BirthCell"
         static let birthListTableView = "BirthListTableViewCell"
+        static let pregnancyCell = "PregnacyCell"
+        static let pregnancyController = "PregnancyTableViewCell"
+        static let vaccineCell = "vaccineCell"
+        static let vaccineController = "VaccineTableViewCell"
     }
     
     
@@ -69,7 +74,7 @@ struct Constants {
         
         static let cowCardMenuCollectionViewItemArray = ["Genel Bilgiler","Tohumlama Bilgileri","Doğum Bilgileri","Aşı Bilgileri","Not Bilgileri","Diğer Bilgiler"]
         
-        static let inseminationsArray = ["Gebe","Boş","Beklemede"]
+//        static let inseminationsArray = ["Gebe","Boş","Beklemede"]
     }
     
     static var repro = ReproductiveStatus()

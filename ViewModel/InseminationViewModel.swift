@@ -85,30 +85,26 @@ class InseminationViewModel {
         if cow.inseminations.count == 0{
             addInseminationAndCowUpdate(cow: cow, newInsemination : newInsemination)
         }else{
+            var status = false
+            var count = 0
             for i in cow.inseminations{
                 if i.inseminationsStatus == "Beklemede" {
-                   print("burası insemination count =  \(i.accessibilityElementCount())")
-                    Constants.inseminationCount += 1
-                
-               //     i.inseminationsStatus = "Başarısız"
-                    
-              //      cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
-                  //  cowViewModel.updateCowViewModel(cow: cow)
-            // burası kontrol edilecek beklemede başarısız oluyor mu diye
+                    status = true
+                    break
                 }
+                count += 1
             }
-            addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
+            if status{
+                Constants.inseminationCount = count
+                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
+            }else{
+                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
+            }
+            
         }
     }
 
-//    private func cowReproductiveStatusUpdate(cow :CowModel){
-//        cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
-//        cowViewModel.updateCowViewModel(cow: cow)
-//    }
-
     private func addInseminationAndCowUpdate(cow : CowModel, newInsemination : InseminationModel){
-//        cowReproductiveStatusUpdate(cow: cow)
-       
         LocaleService.shared.addInseminations(cow: cow, newInsemination: newInsemination)
         UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
         

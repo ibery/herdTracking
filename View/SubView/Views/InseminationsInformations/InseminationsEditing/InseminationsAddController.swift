@@ -116,7 +116,6 @@ class InseminationsAddController : UIView ,NibInitializable {
             }
         }
         if let delegate = delegate {
-            print( "insemination controller")
             inseminationViewModel.addInseminationViewModel(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations, inseminationDateTextField: inseminationsDateTextField)
          
             

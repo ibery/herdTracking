@@ -26,61 +26,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cow" translatesAutoresizingMaskIntoConstraints="NO" id="92E-R9-IJj">
-                                        <rect key="frame" x="16" y="60" width="139" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="139" id="g3Z-Ha-lcH"/>
-                                            <constraint firstAttribute="height" constant="128" id="pWd-vU-SAc"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="küpe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaM-1p-3Hx">
-                                        <rect key="frame" x="161" y="60" width="108" height="39"/>
+                                        <rect key="frame" x="173" y="77" width="208" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tasma no" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-WL-uz8">
-                                        <rect key="frame" x="256" y="74" width="116" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="üreme durumu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGN-vO-Gti">
-                                        <rect key="frame" x="172" y="86" width="87" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yaş" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqq-ar-31K">
-                                        <rect key="frame" x="277" y="93" width="75" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvQ-im-zS4">
-                                        <rect key="frame" x="256" y="39" width="89" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTw-gU-x2l">
-                                        <rect key="frame" x="163" y="39" width="150" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33G-uU-uo5">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="33G-uU-uo5">
                                         <rect key="frame" x="0.0" y="205" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="EcV-bZ-vr5"/>
-                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oJ3-eA-smr">
                                             <size key="itemSize" width="412" height="42"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -99,76 +55,61 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LeK-n3-sHv" userLabel="GeneralInformationView" customClass="GeneralInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LeK-n3-sHv" userLabel="GeneralInformationView" customClass="GeneralInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMP-oh-8qu" userLabel="InseminationInfoView" customClass="InseminationInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMP-oh-8qu" userLabel="InseminationInfoView" customClass="InseminationInformationsController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1Z-eg-FHH" customClass="BirthInfoListController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1Z-eg-FHH" customClass="BirthInfoListController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-tX-wl7" customClass="PregnancyControlViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-tX-wl7" customClass="PregnancyControlViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-Io-i7w" userLabel="VaccineInformation" customClass="VaccineViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-Io-i7w" userLabel="VaccineInformation" customClass="VaccineViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-ae-XVN" userLabel="NoteInformation" customClass="NoteViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-ae-XVN" userLabel="NoteInformation" customClass="NoteViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24N-R2-s2Y" userLabel="OtherInformation" customClass="OtherViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24N-R2-s2Y" userLabel="OtherInformation" customClass="OtherViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dJ-1G-QJM" customClass="CowCardEditingController" customModule="Herd_Tracking" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="438"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dJ-1G-QJM" customClass="CowCardEditingController" customModule="Herd_Tracking" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="247" width="382" height="438"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTw-gU-x2l">
+                                        <rect key="frame" x="173" y="133" width="208" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cow" translatesAutoresizingMaskIntoConstraints="NO" id="92E-R9-IJj">
+                                        <rect key="frame" x="23" y="95" width="77" height="77"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="LeK-n3-sHv" secondAttribute="trailing" id="3VJ-70-gku"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="nSr-ae-XVN" secondAttribute="trailing" id="4LU-Dv-FVr"/>
-                                    <constraint firstItem="LeK-n3-sHv" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="C1A-aW-p38"/>
-                                    <constraint firstItem="h1Z-eg-FHH" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="CAW-dY-E1G"/>
-                                    <constraint firstItem="Dhz-Io-i7w" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="CdJ-hX-HjT"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="oMP-oh-8qu" secondAttribute="trailing" id="Edw-ID-2uJ"/>
-                                    <constraint firstItem="nSr-ae-XVN" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="FjO-Vw-zQr"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="LeK-n3-sHv" secondAttribute="bottom" id="H4a-Mw-Wxw"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="h1Z-eg-FHH" secondAttribute="trailing" id="MaQ-T2-jz3"/>
-                                    <constraint firstItem="Dhz-Io-i7w" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="Mj4-bk-YPd"/>
-                                    <constraint firstItem="oMP-oh-8qu" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="O5W-1S-rrY"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="oMP-oh-8qu" secondAttribute="bottom" id="Uha-gy-sJ0"/>
-                                    <constraint firstItem="33G-uU-uo5" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="VfF-Zq-FOH"/>
-                                    <constraint firstItem="oMP-oh-8qu" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="W1z-cJ-hUN"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="24N-R2-s2Y" secondAttribute="trailing" id="Wqk-O4-b23"/>
-                                    <constraint firstItem="h1Z-eg-FHH" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="Wyh-AS-bcO"/>
-                                    <constraint firstItem="92E-R9-IJj" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" constant="16" id="YQc-ha-PS3"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="Dhz-Io-i7w" secondAttribute="trailing" id="Yg5-f1-g4r"/>
-                                    <constraint firstItem="33G-uU-uo5" firstAttribute="top" secondItem="92E-R9-IJj" secondAttribute="bottom" constant="17" id="ZgG-t2-LtK"/>
-                                    <constraint firstItem="24N-R2-s2Y" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="Zi3-Fz-4Vf"/>
-                                    <constraint firstItem="92E-R9-IJj" firstAttribute="top" secondItem="H7G-gX-0Xd" secondAttribute="top" constant="60" id="bPI-VA-mad"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="Dhz-Io-i7w" secondAttribute="bottom" id="eQK-Dv-FkX"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="lLp-tX-wl7" secondAttribute="trailing" id="fUl-3e-SUp"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="h1Z-eg-FHH" secondAttribute="bottom" id="jwO-jx-tBL"/>
-                                    <constraint firstItem="lLp-tX-wl7" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="kRP-x5-0hq"/>
-                                    <constraint firstItem="24N-R2-s2Y" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="lWW-Tx-3tF"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="24N-R2-s2Y" secondAttribute="bottom" id="oMz-f1-mHD"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="lLp-tX-wl7" secondAttribute="bottom" id="oel-N1-dmV"/>
-                                    <constraint firstItem="lLp-tX-wl7" firstAttribute="leading" secondItem="H7G-gX-0Xd" secondAttribute="leading" id="pzn-QI-5Ul"/>
-                                    <constraint firstItem="LeK-n3-sHv" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="tG3-0U-J6j"/>
-                                    <constraint firstItem="nSr-ae-XVN" firstAttribute="top" secondItem="33G-uU-uo5" secondAttribute="bottom" id="vxT-kg-33l"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="trailing" secondItem="33G-uU-uo5" secondAttribute="trailing" id="xA6-eo-kiA"/>
-                                    <constraint firstItem="H7G-gX-0Xd" firstAttribute="bottom" secondItem="nSr-ae-XVN" secondAttribute="bottom" id="yLk-1Q-0hU"/>
-                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="HdC-sA-jRW"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="H7G-gX-0Xd"/>
                             </scrollView>

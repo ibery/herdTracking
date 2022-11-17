@@ -12,7 +12,6 @@ enum Gender : Int , CaseIterable{
     case male
     
     var name : String {
-        
         switch self {
         case.female:
             return "Dişi"

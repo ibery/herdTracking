@@ -43,6 +43,7 @@ class PregnancyControlViewController : UIView ,NibInitializable {
     override func layoutSubviews() {
         pregnancyTableView.delegate = self
         pregnancyTableView.dataSource = self
+        self.pregnancyTableView.register(UINib(nibName: Constants.TableView.pregnancyController, bundle: nil), forCellReuseIdentifier: Constants.TableView.pregnancyCell)
     }
     
 
@@ -60,11 +61,20 @@ class PregnancyControlViewController : UIView ,NibInitializable {
 
 extension PregnancyControlViewController : UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let delegate = delegate else{return 0}
+        print("delegate cow count = \(delegate.getCow().pregnancyList.count)")
+        return delegate.getCow().pregnancyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.pregnancyCell, for: indexPath) as? PregnancyTableViewCell else {return UITableViewCell()}
+        guard let delegate = delegate else {return UITableViewCell()}
+        cell.inspectionDateLabel.text = delegate.getCow().pregnancyList[indexPath.row].inspectionDate
+        cell.inspectionResultLabel.text = delegate.getCow().pregnancyList[indexPath.row].inspectionResult
+    
+        return cell
+        
     }
     
     

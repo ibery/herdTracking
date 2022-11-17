@@ -64,12 +64,10 @@ class PregnancyInspectionViewController: BaseViewController {
         pregnancyModel.inspectionResult = inspectionResultTextFiedl.text
         
         LocaleService.shared.addPregnancy(cow : cow, newPregnancy: pregnancyModel,row: row)
-        
+   
+        // Bu kod bloğu çalışmıyor kontrol edilecek 
         guard let viewController = Storyboard.home.viewController else {return }
-        print("guard let geçti")
         self.navigationController?.show(viewController, sender: nil)
-       
-        print("view controller geçti")
     }
     
     

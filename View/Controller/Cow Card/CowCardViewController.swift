@@ -32,10 +32,6 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var reproductiveStatusLabel: UILabel!
     @IBOutlet weak var leashNumberLabel: UILabel!
-    //    @IBOutlet weak var syringeImage: UIImageView!
-    //    @IBOutlet weak var spermsImage: UIImageView!
-    //    @IBOutlet weak var birthImage: UIImageView!
-    //    @IBOutlet weak var noteImage: UIImageView!
     @IBOutlet weak var cowCardMenuCollectionView: UICollectionView!
     @IBOutlet weak var cowProfileImage: UIImageView!
     
@@ -63,6 +59,7 @@ class CowCardViewController : BaseViewController {
         birthInfoView.delegate = self
         generalInformationsView.delegate = self
         pregnancyControlView.delegate = self
+        vaccineView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
   //      createDatePicker()
         
@@ -131,11 +128,19 @@ class CowCardViewController : BaseViewController {
    
 }
 
-extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol {
+extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol {
+    func toHome() {
+        guard let viewController = Storyboard.home.viewController else {return }
+        self.navigationController?.show(viewController, sender: nil)
+    }
+    
+    func vaccineCow() -> CowModel {
+        return cow
+    }
+    
     func toPage(cow: CowModel,row :Int) {
-        print("delegate çağırıldı")
+        
         guard let viewController = self.getViewController(fromStoryboard: .pregnancyInspection, type: PregnancyInspectionViewController.self) else {return}
-        print("delegate çağırıldı 2")
         viewController.cow = cow
         viewController.row = row
         self.navigationController?.show(viewController, sender: nil)
@@ -272,6 +277,9 @@ extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtoco
     func getCow() -> CowModel {
         return cow
     }
+    
+    
+    
     
     
 }
