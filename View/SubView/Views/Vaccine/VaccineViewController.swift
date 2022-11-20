@@ -82,8 +82,8 @@ class VaccineViewController : UIView ,NibInitializable {
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.vaccineDate)
         }else{
             vaccineViewModel.addVaccineViewModel(cow: delegate.vaccineCow(), vaccineModel: vaccineModel)
-            delegate.toHome()
-            vaccineTableView.reloadData()
+            
+            
             
         }
     }

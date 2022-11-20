@@ -104,6 +104,8 @@ class BirthViewModel {
                                 calfCow.cowBreed = cow.cowBreed
                                 secondCalfCow.cowBreed = cow.cowBreed
                                 calfCow.motherEarTag = cow.earTag
+                                calfCow.fatherName = cow.inseminations[findFatherName(cow: cow)].inseminationsBullName?.bullName
+                                secondCalfCow.fatherName = cow.inseminations[findFatherName(cow: cow)].inseminationsBullName?.bullName
                                 secondCalfCow.motherEarTag = cow.earTag
                                 calfCow.leashNumber = ""
                                 secondCalfCow.leashNumber = ""
@@ -160,6 +162,7 @@ class BirthViewModel {
                                 if let dateOf = birthDateTextFiedl.text{calfCow.dateOfBirth = dateOf}
                                 calfCow.cowBreed = cow.cowBreed
                                 calfCow.motherEarTag = cow.earTag
+                                calfCow.fatherName = cow.inseminations[findFatherName(cow: cow)].inseminationsBullName?.bullName
                                 calfCow.leashNumber = ""
                                 cowViewModel.addCowViewModel(cowAdd: calfCow)
                                 newBirth.birthDate = birthDateTextFiedl.text
@@ -247,6 +250,7 @@ class BirthViewModel {
                 }
                 firstCalf.cowBreed = cow.cowBreed
                 firstCalf.motherEarTag = cow.earTag
+                firstCalf.fatherName = cow.inseminations[findFatherName(cow: cow)].inseminationsBullName?.bullName
                 firstCalf.leashNumber = ""
                 cowViewModel.addCowViewModel(cowAdd: firstCalf)
             }else{
@@ -270,6 +274,17 @@ class BirthViewModel {
         }
         guard let formCalving = FormOfCalving(rawValue: 0)?.name else {return}
         Constants.formOfCalving = formCalving
+    }
+    
+    private func findFatherName(cow : CowModel) -> Int{
+        var sayac = 0
+        for i in cow.inseminations{
+            if i.inseminationsStatus == "Başarılı"{
+                break
+            }
+            sayac += 1
+        }
+        return sayac
     }
     
 }

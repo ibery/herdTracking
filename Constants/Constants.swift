@@ -60,6 +60,8 @@ struct Constants {
         static let pregnancyController = "PregnancyTableViewCell"
         static let vaccineCell = "vaccineCell"
         static let vaccineController = "VaccineTableViewCell"
+        static let noteCell = "noteCell"
+        static let noteController = "NoteTableViewCell"
     }
     
     
@@ -78,7 +80,6 @@ struct Constants {
     }
     
     static var repro = ReproductiveStatus()
-    static var tableView = UITableView()
     static var bullName = BullModel()
     static var inseminationPerson = PersonModel()
     static var cowStatus = false

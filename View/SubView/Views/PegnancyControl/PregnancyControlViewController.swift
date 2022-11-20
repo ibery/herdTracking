@@ -62,7 +62,6 @@ class PregnancyControlViewController : UIView ,NibInitializable {
 extension PregnancyControlViewController : UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let delegate = delegate else{return 0}
-        print("delegate cow count = \(delegate.getCow().pregnancyList.count)")
         return delegate.getCow().pregnancyList.count
     }
     

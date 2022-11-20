@@ -199,5 +199,9 @@ class CowViewModel {
         return cow
     }
     
+    func updateOtherCowInfo(cow : CowModel , updateCow : CowModel){
+        LocaleService.shared.updateOtherCow(cow: cow, newCow: updateCow)
+    }
+    
  
 }

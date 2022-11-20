@@ -23,14 +23,15 @@ class InseminationsAddController : UIView ,NibInitializable {
     @IBOutlet weak var inseminationsBullTextField: UITextField!
     @IBOutlet weak var inseminationsPersonTextField: UITextField!
   
-    let datePicker = UIDatePicker()
+    private let datePicker = UIDatePicker()
     var nibName: String = "InseminationsAddView"
-    var delegate : CloseInseminationViewProtocol?
-    lazy var inseminationViewModel = InseminationViewModel()
-    var bullViewModel = BullViewModel()
-    var personViewModel = PersonViewModel()
-    let bullNamePickerView = UIPickerView()
-    let personNamePickerView = UIPickerView()
+    var delegate : GetCowAndViewProtocol?
+    private lazy var inseminationViewModel = InseminationViewModel()
+    private var bullViewModel = BullViewModel()
+    private var personViewModel = PersonViewModel()
+    private let bullNamePickerView = UIPickerView()
+    private let personNamePickerView = UIPickerView()
+    
     
     
     // MARK: - Initializers
@@ -114,13 +115,16 @@ class InseminationsAddController : UIView ,NibInitializable {
                 }
             }
         }
-        if let delegate = delegate {
-            inseminationViewModel.addInseminationViewModel(cow: delegate.addInseminationsDelegate(), newInsemination: addInseminations, inseminationDateTextField: inseminationsDateTextField)
- 
-        }
+
+        guard let delegate = delegate else {return}
+       
+        inseminationViewModel.addInseminationViewModel(cow: delegate.getCow(), newInsemination: addInseminations, inseminationDateTextField: inseminationsDateTextField)
+
+               
         delegateCloseInseminationsView()
-        Constants.tableView.reloadData() // delegate ile yapılacak
+        delegate.inseminationToHome()
         
+        // HOME SAYFASI İKİ KERE GELİYOR AYARLANACAK
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -128,6 +132,8 @@ class InseminationsAddController : UIView ,NibInitializable {
     }
     
     // MARK: - Methods
+    
+ 
     
     @objc func cancelClicked(){
         self.inseminationsDateTextField.resignFirstResponder()
@@ -144,10 +150,12 @@ class InseminationsAddController : UIView ,NibInitializable {
     }
     
     func delegateCloseInseminationsView(){
-        if let delegate = delegate {
-            delegate.closeInseminationView()
-        }
+        guard let delegate = delegate else {return}
+        delegate.closeAddInseminationView()
+        delegate.inseminationToHome()
+        
     }
+
 }
 
 extension InseminationsAddController : UIPickerViewDelegate , UIPickerViewDataSource {

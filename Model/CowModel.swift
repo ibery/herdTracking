@@ -18,12 +18,13 @@ class CowModel : Object {
     @Persisted var cowName : String?
     @Persisted var groupNo : String?
     @Persisted var cowBreed : String = ""
-    @Persisted var magnet : Bool?
+    @Persisted var magnet : String?
     @Persisted var numberOfLactations : Int?
     @Persisted var lastCalvingDate : String?
-    @Persisted var insurance : Bool?
+    @Persisted var insurance : String?
     @Persisted var dryOffDate : String?
     @Persisted var motherEarTag : String?
+    @Persisted var fatherName : String?
     @Persisted var reproductiveStatus: ReproductiveStatus?
     @Persisted var inseminations = List<InseminationModel>()
     @Persisted var birthList = List<BirthModel>()
@@ -32,7 +33,7 @@ class CowModel : Object {
     @Persisted var pregnancyList = List<PregnancyModel>()
     
     
-    convenience init(earTag : String, dateOfBirth : String, leashNumber : String?, gender : String, groupNo : String?, cowBreed : String,  magnet : Bool, numberOfLactations : Int?, lastCalvingDate : String?, insurance : Bool?, dryOffDate : String? , reproductiveStatus: ReproductiveStatus? ){
+    convenience init(earTag : String, dateOfBirth : String, leashNumber : String?, gender : String, groupNo : String?, cowBreed : String,  magnet : String?, numberOfLactations : Int?, lastCalvingDate : String?, insurance : String?, dryOffDate : String? , reproductiveStatus: ReproductiveStatus? ){
         self.init()
         self.earTag = earTag
         self.dateOfBirth = dateOfBirth

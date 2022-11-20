@@ -19,8 +19,6 @@ class NoteViewController : UIView , NibInitializable {
     var delegate : NoteProtocol?
 
 
-    
-    
     // MARK: - Initializers
     
     required init?(coder: NSCoder ) {
@@ -39,18 +37,19 @@ class NoteViewController : UIView , NibInitializable {
     
     private func postInitialize(_ view: UIView) {}
     
+    
     // MARK: - Setup
     
     override func layoutSubviews() {
         noteTableView.delegate = self
         noteTableView.dataSource = self
-        
+        addNoteView.delegate = self
+        self.noteTableView.register(UINib(nibName: Constants.TableView.noteController, bundle: nil), forCellReuseIdentifier: Constants.TableView.noteCell)
     }
     
     // MARK: - Actions
     @IBAction func showAddNoteController(_ sender: UIButton) {
         addNoteView.isHidden = false
-        print("add button tıklandı")
     }
     
     
@@ -61,11 +60,16 @@ class NoteViewController : UIView , NibInitializable {
 
 extension NoteViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let delegate = delegate else {return 0}
+        return delegate.noteCow().noteList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.noteCell, for: indexPath) as? NoteTableViewCell else {return UITableViewCell()}
+        guard let delegate = delegate else {return UITableViewCell()}
+        cell.noteLabel.text = delegate.noteCow().noteList[indexPath.row].noteName
+        cell.dateLabel.text = delegate.noteCow().noteList[indexPath.row].noteDate
+        return cell
     }
     
     
@@ -77,9 +81,10 @@ extension NoteViewController : NoteProtocol {
         return delegate
     }
     
-    func hiddenView() {
+    func noteHiddenView() {
         addNoteView.isHidden = true
-        print("noteViewcontroller")
+        guard let delegate = delegate else {return}
+        delegate.noteHiddenView()
     }
     
     

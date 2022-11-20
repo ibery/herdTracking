@@ -27,15 +27,11 @@ class CowCardViewController : BaseViewController {
     @IBOutlet weak var cowEditingView: CowCardEditingController!
     
     @IBOutlet weak var earTagLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var grupLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var reproductiveStatusLabel: UILabel!
-    @IBOutlet weak var leashNumberLabel: UILabel!
     @IBOutlet weak var cowCardMenuCollectionView: UICollectionView!
     @IBOutlet weak var cowProfileImage: UIImageView!
-    
-    
+    @IBOutlet weak var numberOfDaysMilkedLabel: UILabel!
+    @IBOutlet weak var numberOfLactationLabel: UILabel!
     
     var cow : CowModel = CowModel()
     var birthInfoController = BirthInfoController()
@@ -51,6 +47,19 @@ class CowCardViewController : BaseViewController {
         
         setupScreen()
         earTagLabel.text = cow.earTag
+        nameLabel.text = cow.cowName
+        if let numberLactation = cow.numberOfLactations {
+            numberOfLactationLabel.text = "\(numberLactation)"
+        }else{
+            numberOfLactationLabel.text = "-"
+        }
+       
+        if let lastCalving = cow.lastCalvingDate{
+            numberOfDaysMilkedLabel.text = "\( NumberOfDays.dateDayCount(date: lastCalving))"
+        }else{
+            numberOfDaysMilkedLabel.text = "-"
+        }
+         
         cowEditingView.isHidden = true
         cowEditingView.delegate = self
         cowCardMenuCollectionView.delegate = self
@@ -61,6 +70,7 @@ class CowCardViewController : BaseViewController {
         pregnancyControlView.delegate = self
         vaccineView.delegate = self
         noteView.delegate = self
+        otherView.delegate = self
         self.cowCardMenuCollectionView.register(UINib(nibName: Constants.CollectionView.cowCardMenuCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cowCardMenuCell)
   //      createDatePicker()
         
@@ -130,12 +140,18 @@ class CowCardViewController : BaseViewController {
 }
 
 extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol ,NoteProtocol{
+    func closeAddInseminationView() {}
+    
+    func inseminationToHome() {
+        self.navigationController?.show(Storyboard.home.viewController!, sender: nil)
+    }
+    
     func noteCow() -> CowModel {
         return cow
     }
     
-    func hiddenView() {
-        print("cow card hidden view")
+    func noteHiddenView() {
+        self.navigationController?.show(Storyboard.home.viewController!, sender: nil)
     }
     
     func toHome() {
@@ -156,12 +172,6 @@ extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtoco
         
     }
     
-
-    func addInspectionPregnancy(cow : CowModel , row : Int ) {
-  
-    }
-    
-  
     func cowCardEditinCow()-> CowModel{
         return cow
     }

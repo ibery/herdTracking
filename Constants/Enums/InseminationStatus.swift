@@ -21,7 +21,7 @@ enum InseminationStatus: Int , PersistableEnum {
             return "Başarılı"
         case.fail :
             return "Başarısız"
-        case .contineu:
+        case.contineu:
             return "Beklemede"
         case.completed:
             return "Doğurdu"

@@ -22,6 +22,7 @@ class GeneralInformationsController : UIView , NibInitializable {
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     
+    @IBOutlet weak var cowBreedLabel: UILabel!
     var nibName: String = "GeneralInformationsScreen"
     var delegate : GetCowAndViewProtocol?
     private let cowModel = CowModel()
@@ -57,6 +58,7 @@ class GeneralInformationsController : UIView , NibInitializable {
             leashNumberLabel.text = delegate.getCow().leashNumber
             groupLabel.text = delegate.getCow().groupNo ?? "-"
             ageLabel.text = String( "\(NumberOfDays.dateDayCount(date: delegate.getCow().dateOfBirth, format: "dd.MM.yy")) Gün")
+            cowBreedLabel.text = delegate.getCow().cowBreed
            
         }
     }

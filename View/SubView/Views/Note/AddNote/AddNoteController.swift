@@ -13,9 +13,11 @@ class AddNoteController : UIView , NibInitializable {
     // MARK: - Properties
     @IBOutlet weak var addNoteDateTextField: UITextField!
     @IBOutlet weak var addNoteTextField: UITextField!
+    
+    private var datePicker = UIDatePicker()
     var nibName: String = "AddNoteScreen"
     var delegate : NoteProtocol?
-    private var datePicker = UIDatePicker()
+    
     
     // MARK: - Initializers
     
@@ -39,38 +41,35 @@ class AddNoteController : UIView , NibInitializable {
     // MARK: - Setup
     
     private func setup() {}
-    
-    private func createDatePicker(){
+    func createDatePicker(){
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         datePicker.preferredDatePickerStyle = .wheels
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(cancelClicked))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneClicked))
-        toolbar.setItems([cancelButton , .flexibleSpace() , doneButton], animated: true)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: nil, action: #selector(cancelButtonClicked))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(doneButtonClicked))
+        toolbar.setItems([cancelButton,.flexibleSpace() ,doneButton], animated: true)
         addNoteDateTextField.inputAccessoryView = toolbar
         addNoteDateTextField.inputView = datePicker
         datePicker.datePickerMode = .date
-         
     }
     
     // MARK: - Actions
     
     @IBAction func saveNote(_ sender: UIButton) {
+        let noteModel = NoteModel()
+        let noteViewModel = NoteViewModel()
         guard let delegate = delegate else {return}
-        
-        delegate.noteCow()
-        delegate.hiddenView()
-        
+        noteModel.noteDate = addNoteDateTextField.text
+        noteModel.noteName = addNoteTextField.text
+        noteViewModel.addNoteViewModel(cow: delegate.noteCow(), noteModel: noteModel)
+        delegate.noteHiddenView()
     }
     
     
     // MARK: - Methods
     
-    @objc func cancelClicked(){
-        self.addNoteDateTextField.resignFirstResponder()
-    }
-    
-    @objc func doneClicked(){
+    @objc func doneButtonClicked(){
+        
         if let datePickerView = self.datePicker.inputView as? UIDatePicker {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -79,5 +78,10 @@ class AddNoteController : UIView , NibInitializable {
             self.addNoteDateTextField.resignFirstResponder()
         }
     }
+    
+    @objc func cancelButtonClicked(){
+        self.addNoteDateTextField.resignFirstResponder()
+    }
+
 }
 

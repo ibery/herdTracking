@@ -11,12 +11,14 @@ import UIKit
 protocol GetCowAndViewProtocol {
     func getCow() -> CowModel
     func toPage(cow: CowModel,row :Int)
+    func inseminationToHome()
+    func closeAddInseminationView()
 }
 
-protocol CloseInseminationViewProtocol{
-    func addInseminationsDelegate() -> CowModel
-    func closeInseminationView()
-}
+//protocol CloseInseminationViewProtocol{
+//    func addInseminationsDelegate() -> CowModel
+//    func closeInseminationView()
+//}
 
 protocol CowCardEditingProtocol{
     func cowCardEditinCow ()-> CowModel
@@ -35,7 +37,7 @@ protocol VaccineProtocol{
 
 protocol NoteProtocol{
     func noteCow()->CowModel
-    func hiddenView()
+    func noteHiddenView()
 }
 
 

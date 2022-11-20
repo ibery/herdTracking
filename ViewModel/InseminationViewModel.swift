@@ -19,6 +19,7 @@ class InseminationViewModel {
     var inseminationsResults : Results<InseminationModel>?
     
     
+    
     // MARK: - Initializers
     
     // MARK: - Setup
@@ -106,8 +107,8 @@ class InseminationViewModel {
 
     private func addInseminationAndCowUpdate(cow : CowModel, newInsemination : InseminationModel){
         LocaleService.shared.addInseminations(cow: cow, newInsemination: newInsemination)
-        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
-        
+
+  
     }
 }
 

@@ -23,5 +23,9 @@ class NoteViewModel {
     
     // MARK: - Methods
     
+    func addNoteViewModel(cow : CowModel , noteModel : NoteModel){
+        LocaleService.shared.addNote(cow: cow, newNote: noteModel)
+        
+    }
 }
 

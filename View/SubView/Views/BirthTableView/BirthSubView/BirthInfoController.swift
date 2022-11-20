@@ -62,7 +62,7 @@ class BirthInfoController : UIView , NibInitializable {
     override func layoutSubviews() {
         
         guard let delegate = delegate else {return}
-        print("delegate cow : \(delegate.fetchCow().earTag)")
+        
         createDatePicker()
         createPickerView(textField: formOfCalvingTextField , pickerView: formOfCalvingPickerView)
         createPickerView(textField: calfGenderTextFiedl, pickerView: firstCalfGenderPickerView)

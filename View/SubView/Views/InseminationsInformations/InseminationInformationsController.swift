@@ -115,16 +115,38 @@ extension InseminationInformationsController : UITableViewDataSource , UITableVi
  
 }
 
-extension InseminationInformationsController : CloseInseminationViewProtocol{
-    func addInseminationsDelegate() -> CowModel {
+extension InseminationInformationsController : GetCowAndViewProtocol{
+    func closeAddInseminationView() {
+        addInseminationView.isHidden = true
+    }
+    
+    func getCow() -> CowModel {
         guard let delegate = delegate?.getCow() else {return CowModel()}
         return delegate
     }
     
-    func closeInseminationView() {
-        addInseminationView.isHidden = true
-        inseminationInformationsTableView.reloadData()
+    func toPage(cow: CowModel, row: Int) {}
+    
+    func inseminationToHome() {
+        
+        guard let delegate = delegate else {return}
+        delegate.inseminationToHome()
+        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
+        // ALERT MESAJI İKİ KERE GELİYOR
     }
+    
+//    func addInseminationsDelegate() -> CowModel {
+//        guard let delegate = delegate?.getCow() else {return CowModel()}
+//        return delegate
+//    }
+//
+//    func closeInseminationView() {
+//        addInseminationView.isHidden = true
+//        guard let delegate = delegate else {return}
+//        delegate.inseminationToHome()
+//    }
+    
+    
    
 }
 

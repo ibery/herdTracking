@@ -62,6 +62,17 @@ class LocaleService {
         return cows
     }
     
+    func updateOtherCow(cow : CowModel , newCow : CowModel){
+        try! realm.write{
+            cow.magnet = newCow.magnet
+            cow.insurance = newCow.insurance
+            cow.numberOfLactations = newCow.numberOfLactations
+            cow.lastCalvingDate = newCow.lastCalvingDate
+            cow.motherEarTag = newCow.motherEarTag
+            cow.fatherName = newCow.fatherName
+        }
+    }
+    
     func birthUpdateCow(cow : CowModel){
         
         try! realm.write {
@@ -82,6 +93,8 @@ class LocaleService {
 
     }
     
+    
+    
     func addInseminations(cow: CowModel , newInsemination : InseminationModel){
         try! realm.write{
             if cow.inseminations.count != 0 {
@@ -90,6 +103,8 @@ class LocaleService {
             cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
             cow.inseminations.append(newInsemination)
         }
+
+        
     }
     
     func fetchInseminations()-> Results<InseminationModel>{
@@ -193,7 +208,12 @@ class LocaleService {
     func addVaccine(cow: CowModel , newVaccine : VaccineModel){
         try! realm.write{
             cow.vaccineList.append(newVaccine)
-            print("add vaccine çağırıldı")
+        }
+    }
+    
+    func addNote(cow: CowModel, newNote: NoteModel){
+        try! realm.write{
+            cow.noteList.append(newNote)
         }
     }
     
