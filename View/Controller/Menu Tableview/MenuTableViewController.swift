@@ -31,13 +31,13 @@ class MenuTableViewController : BaseViewController {
         menuTableView.dataSource = self
         self.menuTableView.register(UINib(nibName: Constants.TableView.menuTableView, bundle: nil), forCellReuseIdentifier: Constants.TableView.menuCell)
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         menuTableView.reloadData()
+        tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -55,15 +55,20 @@ class MenuTableViewController : BaseViewController {
 
 extension MenuTableViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cowViewModel.fetchCowViewModel().count
+        return cowViewModel.tableViewFilter(filter: filter).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.menuCell , for: indexPath) as? MenuTableViewCell else {return UITableViewCell()}
      //   cell.ImageCell.image = UIImage(named: cows[indexPath.row])
-        cell.cowNameLabel.text = cowViewModel.fetchCowViewModel()[indexPath.row].cowName
-        cell.earTagLabel.text = cowViewModel.fetchCowViewModel()[indexPath.row].earTag
-        cell.reproductiveStatusLabel.text = cowViewModel.fetchCowViewModel()[indexPath.row].reproductiveStatus?.name
+        cell.cowNameLabel.text = cowViewModel.tableViewFilter(filter: filter)[indexPath.row].cowName
+        cell.earTagLabel.text = cowViewModel.tableViewFilter(filter: filter)[indexPath.row].earTag
+        if cowViewModel.tableViewFilter(filter: filter)[indexPath.row].gender == "Erkek"{
+            cell.reproductiveStatusLabel.text = "Erkek"
+        }else{
+            cell.reproductiveStatusLabel.text = cowViewModel.tableViewFilter(filter: filter)[indexPath.row].reproductiveStatus?.name
+        }
+        
         cell.dayCountLabel.text = ""
         return cell 
     }
@@ -73,12 +78,11 @@ extension MenuTableViewController : UITableViewDelegate , UITableViewDataSource 
         guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}
         viewController.cow = cowViewModel.fetchCowViewModel()[indexPath.row]
         self.navigationController?.show(viewController, sender: nil)
-       
-//        guard let viewController = self.getViewController(fromStoryboard: .card, type: CowCardViewController.self) else {return}
-//        self.navigationController?.show(viewController, sender: nil)
+
     }
     
     
     
     
 }
+ 

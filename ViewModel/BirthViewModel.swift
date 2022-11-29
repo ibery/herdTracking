@@ -30,7 +30,7 @@ class BirthViewModel {
     
     func giveBirth(cow : CowModel , calfEarTagTextField : UITextField, calfNameTextField : UITextField , calfGenderTextField : UITextField ,formOfCalvingTextFiedl : UITextField , birthDateTextFiedl : UITextField ,twinsSwitch : UISwitch ,secondCalfEarTagTextFiedl : UITextField ,secondCalfNameTextField : UITextField , secondGenderTextField : UITextField ,calfCow : CowModel , calfingDate : UITextField , secondCalfCow : CowModel ,newBirth : BirthModel ,view : UIView){
         
-        if !birthReproductiveStatus(cow: cow){
+        if birthReproductiveStatus(cow: cow){
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.notPregnancy)
         }else{
             guard let formCalvingType = FormOfCalving(rawValue: 1)?.name else {return}
@@ -109,6 +109,8 @@ class BirthViewModel {
                                 secondCalfCow.motherEarTag = cow.earTag
                                 calfCow.leashNumber = ""
                                 secondCalfCow.leashNumber = ""
+                                calfCow.reproductiveStatus = ReproductiveStatus(rawValue: 0)
+                                secondCalfCow.reproductiveStatus = ReproductiveStatus(rawValue: 0)
                                 cowViewModel.addCowViewModel(cowAdd: calfCow)
                                 cowViewModel.addCowViewModel(cowAdd: secondCalfCow)
                                 newBirth.birthDate = birthDateTextFiedl.text
@@ -164,6 +166,7 @@ class BirthViewModel {
                                 calfCow.motherEarTag = cow.earTag
                                 calfCow.fatherName = cow.inseminations[findFatherName(cow: cow)].inseminationsBullName?.bullName
                                 calfCow.leashNumber = ""
+                                calfCow.reproductiveStatus = ReproductiveStatus(rawValue: 0)
                                 cowViewModel.addCowViewModel(cowAdd: calfCow)
                                 newBirth.birthDate = birthDateTextFiedl.text
                                 newBirth.calfOneEarTag = calfEarTagTextField.text

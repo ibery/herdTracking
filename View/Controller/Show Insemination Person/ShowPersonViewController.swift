@@ -95,7 +95,7 @@ extension ShowPersonViewController : UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //     return personViewModel.fetchPerson().count != 0 ? personViewModel.fetchPerson().count : 0
-        print("fetch person : \(personViewModel.fetchPersonViewModel().count)")
+    
         return personViewModel.fetchPersonViewModel().count
     }
     

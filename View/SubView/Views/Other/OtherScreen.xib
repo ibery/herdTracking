@@ -14,10 +14,13 @@
                 <outlet property="fatherNameTextField" destination="U6m-88-82C" id="Rsw-fq-XL1"/>
                 <outlet property="insuranceTextField" destination="JzZ-nc-Nnz" id="R4u-qH-u5a"/>
                 <outlet property="lastCalvingDateTextField" destination="Gm0-eA-LK1" id="QHE-14-uhY"/>
+                <outlet property="lastCalvingLabel" destination="aMp-4W-WuE" id="1E7-cW-qSD"/>
                 <outlet property="magnetTextField" destination="TVq-jA-isc" id="Eui-9K-WEU"/>
                 <outlet property="motherEarTagTextField" destination="LeR-lR-UeZ" id="nuv-qB-Pfx"/>
+                <outlet property="numbarOfLactationLabel" destination="CvY-nP-MKL" id="rNq-3L-Sib"/>
                 <outlet property="numberOfDaysMilkedTextField" destination="vmR-d8-qPU" id="LgM-P9-clh"/>
                 <outlet property="numberOfLactationTextField" destination="TOV-t9-asi" id="8Yz-zT-85e"/>
+                <outlet property="numberOfMilkedLabel" destination="GgN-Kd-nLr" id="YO8-g3-RSS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

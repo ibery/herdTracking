@@ -17,7 +17,7 @@ class BaseViewController : UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.viewDidLayoutSubviews()
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = UIColor.blue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class BaseViewController : UIViewController  {
             
             guard let viewController = Storyboard.bull.viewController else {return}
             self.navigationController?.show(viewController, sender: nil)
-            print("Users action was tapped")
+            
         }
         
         let addInseminationPersonButton = UIAction(title: "Tohumlayıcı Ekle", image: UIImage(systemName: "person.fill.badge.plus")) { (action) in
@@ -56,11 +56,11 @@ class BaseViewController : UIViewController  {
         }
         
         let removeCowButton = UIAction(title: "Sürüden Çıkan Hayvanlar", image: UIImage(systemName: "person.fill.xmark.rtl")) { (action) in
-            print("Remove User action was tapped")
+           
         }
         
         let createFilter = UIAction(title : "Filitre Yap" , image: UIImage(systemName: "magnifyingglass")) { (action) in
-            print(" Filitre yap basıldı ")
+           
         }
         
         

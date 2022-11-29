@@ -11,6 +11,9 @@ class OtherViewController : UIView ,NibInitializable {
     
     // MARK: - Properties
     
+    @IBOutlet weak var numberOfMilkedLabel: UILabel!
+    @IBOutlet weak var lastCalvingLabel: UILabel!
+    @IBOutlet weak var numbarOfLactationLabel: UILabel!
     @IBOutlet weak var fatherNameTextField: UITextField!
     @IBOutlet weak var motherEarTagTextField: UITextField!
     @IBOutlet weak var numberOfDaysMilkedTextField: UITextField!
@@ -49,6 +52,22 @@ class OtherViewController : UIView ,NibInitializable {
         textFieldInfo()
         createPickerView(textField: magnetTextField, pickerView: magnetPicker)
         createPickerView(textField: insuranceTextField, pickerView: insurancePicker)
+        guard let delegate = delegate?.getCow() else {return}
+        if delegate.gender == "Erkek"{
+            numberOfMilkedLabel.isHidden = true
+            numberOfDaysMilkedTextField.isHidden = true
+            lastCalvingLabel.isHidden = true
+            lastCalvingDateTextField.isHidden = true
+            numberOfLactationTextField.isHidden = true
+            numbarOfLactationLabel.isHidden = true
+        }else{
+            numberOfMilkedLabel.isHidden = false
+            numberOfDaysMilkedTextField.isHidden = false
+            lastCalvingLabel.isHidden = false
+            lastCalvingDateTextField.isHidden = false
+            numberOfLactationTextField.isHidden = false
+            numbarOfLactationLabel.isHidden = false
+        }
         
     }
     
@@ -88,7 +107,7 @@ class OtherViewController : UIView ,NibInitializable {
         if let numberOflactation = otherCow.numberOfLactations{
             numberOfLactationTextField.text = "\(numberOflactation)"
         }else{
-            numberOfLactationTextField.text = "-"
+            numberOfLactationTextField.placeholder = "Laktasyon Sayısı Giriniz"
         }
         
         if let lastCalving = otherCow.lastCalvingDate {
@@ -96,18 +115,28 @@ class OtherViewController : UIView ,NibInitializable {
             let numberOfDaysMilked = NumberOfDays.dateDayCount(date: lastCalving)
             numberOfDaysMilkedTextField.text = "\(numberOfDaysMilked)"
         }else{
-            lastCalvingDateTextField.text = "-"
-            numberOfDaysMilkedTextField.text = "-"
+            lastCalvingDateTextField.placeholder = "Son Tohumlama Tarihi"
+            numberOfDaysMilkedTextField.placeholder = "Sağılan Gün Sayısı"
         }
         if otherCow.motherEarTag == nil{
-            motherEarTagTextField.text = "-"
+            motherEarTagTextField.placeholder = "Anne Küpe Numarası Giriniz"
         }else{
             motherEarTagTextField.text = otherCow.motherEarTag
         }
         if otherCow.fatherName == nil{
-            fatherNameTextField.text = "-"
+            fatherNameTextField.placeholder = "Baba Adı Giriniz"
         }else{
             fatherNameTextField.text = otherCow.fatherName
+        }
+        if otherCow.insurance == nil || otherCow.insurance == "Hayır"{
+            insuranceTextField.text = "Hayır"
+        }else{
+            insuranceTextField.text = "Evet"
+        }
+        if otherCow.magnet == nil || otherCow.magnet == "Hayır"{
+            magnetTextField.text = "Hayır"
+        }else{
+            magnetTextField.text = "Evet"
         }
         lastCalvingDateTextField.isEnabled = false
         numberOfDaysMilkedTextField.isEnabled = false

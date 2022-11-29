@@ -31,11 +31,14 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         super.viewDidLayoutSubviews()
         //  navigationController?.navigationBar.isHidden = true
         setupPieChart()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addSideMenuButton()
+        tabBarController?.tabBar.isHidden = false
+        
     }
     
     

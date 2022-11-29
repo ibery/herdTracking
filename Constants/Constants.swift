@@ -35,6 +35,8 @@ struct Constants {
         static let postpartumOfDay = "Yeni doğum yapan hayvan 20 gün içerisinde tohumlanamaz!"
         static let pregnancyDate = "Muayne tarihi giriniz!"
         static let vaccineDate = "Aşı tarihi giriniz!"
+        static let lastClavingDate = "Son Buzağılama Tarihi Giriniz!"
+        static let dryOffDate = "Kuruya çıkma tarihi giriniz!"
     }
     
     
@@ -62,6 +64,13 @@ struct Constants {
         static let vaccineController = "VaccineTableViewCell"
         static let noteCell = "noteCell"
         static let noteController = "NoteTableViewCell"
+        static let myWorkInseminatedCell = "myWorkInseminatedCell"
+        static let myWorkInseminatedController = "MyWorkInseminatedTableViewCell"
+        static let firstPregnancyCell = "firstPregnancyCell"
+        static let firstPregnancyController = "FirstPregnancyTableViewCell"
+        static let calfWeanedCell = "calfWeanedCell"
+        static let calfWeanedController = "CalfWeanedTableViewCell"
+        
     }
     
     
@@ -72,7 +81,7 @@ struct Constants {
         // dizi veri tabanına kayıt edilecek ırklar veri tabanından çekilecek
         static var genderArray = ["Dişi","Erkek"]
         
-        static let collectionViewItemArray = ["tumHayvanlar","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","kesimlik","0-3ayBuzagi","3-12ayDana","duve","erkekler"]
+        static let collectionViewItemArray = ["tumHayvanlar","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","0-3ayBuzagi","3-12ayDana","duve","erkekler","kesimlik"]
         
         static let cowCardMenuCollectionViewItemArray = ["Genel Bilgiler","Tohumlama Bilgileri","Doğum Bilgileri","Aşı Bilgileri","Not Bilgileri","Diğer Bilgiler"]
         
@@ -84,9 +93,10 @@ struct Constants {
     static var inseminationPerson = PersonModel()
     static var cowStatus = false
     static var birthCow = CowModel()
-    static var inseminationCount = -1
+    static var inseminationCount = -1 // silinecek mi ?
     static var formOfCalving = ""
     static var inspectionTextField = UITextField()
-    
+    static var collectionRow = 0
+    static var dryOffRow = 0
     
 }

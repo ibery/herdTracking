@@ -25,8 +25,8 @@ class  PregnancyViewModel{
     // MARK: - Methods
     
     func addInspection(cow : CowModel , pregnancyModel : PregnancyModel, pregnancyDateTextField : UITextField , pregnancyResultTextField : UITextField){
-        var inseminationCount = 0
-        guard let pregnancyDate = pregnancyDateTextField.text else {return}
+//        var inseminationCount = 0
+//        guard let pregnancyDate = pregnancyDateTextField.text else {return}
         
 //        if pregnancyDate == ""{
 //            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.pregnancyDate)

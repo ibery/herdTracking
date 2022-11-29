@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="ageLabel" destination="kox-fd-tQg" id="kFS-gb-cRe"/>
                 <outlet property="cowBreedLabel" destination="5sI-iR-9jN" id="4bt-rO-P2A"/>
+                <outlet property="dryOffCountLabel" destination="PFh-Kd-eso" id="tgG-pz-1NX"/>
+                <outlet property="dryOffLabel" destination="2gV-Fz-otj" id="iFy-43-jB4"/>
                 <outlet property="earTagLabel" destination="HCs-oH-Fzz" id="d6p-50-ab9"/>
                 <outlet property="groupLabel" destination="F6x-sb-srb" id="2tJ-FX-1JS"/>
                 <outlet property="leashNumberLabel" destination="pYn-g4-7Jq" id="9SN-AJ-EK8"/>
@@ -26,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yee-HS-qo9">
-                    <rect key="frame" x="20" y="58" width="374" height="233.5"/>
+                    <rect key="frame" x="20" y="58" width="374" height="269"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GSd-74-0d9">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -141,6 +143,23 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-iR-9jN">
                                     <rect key="frame" x="194.5" y="0.0" width="179.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ujc-eE-lll">
+                            <rect key="frame" x="0.0" y="248.5" width="374" height="20.5"/>
+                            <subviews>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuruya Kalan Gün" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gV-Fz-otj">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-Kd-eso">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

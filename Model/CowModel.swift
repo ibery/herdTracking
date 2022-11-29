@@ -25,6 +25,7 @@ class CowModel : Object {
     @Persisted var dryOffDate : String?
     @Persisted var motherEarTag : String?
     @Persisted var fatherName : String?
+    @Persisted var secondPregnancyControl : Bool = false
     @Persisted var reproductiveStatus: ReproductiveStatus?
     @Persisted var inseminations = List<InseminationModel>()
     @Persisted var birthList = List<BirthModel>()

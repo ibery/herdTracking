@@ -42,6 +42,32 @@ enum Views : Int , CaseIterable {
 }
 
 
+enum ViewsMale : Int , CaseIterable {
+    case general
+    case vaccine
+    case note
+    case other
+    
+    
+    var name : String{
+        switch self{
+        case .general:
+            return "Genel Bilgiler"
+        case .vaccine:
+            return "Aşı Bilgileri"
+        case .note:
+            return "Not Bilgileri"
+        case .other:
+            return "Diğer Bilgiler"
+        }
+    }
+    
+    var views : String{
+        return name
+    }
+}
+
+
 
 
 

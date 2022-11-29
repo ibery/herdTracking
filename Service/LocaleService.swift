@@ -34,22 +34,6 @@ class LocaleService {
     
     // MARK: - Methods
     
-  
-    
-    //    func addCow(cow : CowModel){
-    //        do{
-    //            try realm.write{
-    //                realm.add(cow)
-    //
-    //                UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successful)
-    //
-    //            }
-    //        }catch{
-    //            print("Error saving cow\(error.localizedDescription)")
-    //            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.filedToRegister)
-    //        }
-    //
-    //    }
     
     func addCow(cow : CowModel){
             try! realm.write{
@@ -73,12 +57,24 @@ class LocaleService {
         }
     }
     
+    func generalUpdateCow(cow : CowModel , newCow : CowModel){
+        try! realm.write{
+            cow.earTag = newCow.earTag
+            cow.cowName = newCow.cowName
+            cow.dateOfBirth = newCow.dateOfBirth
+            cow.cowBreed = newCow.cowBreed
+            cow.gender = newCow.gender
+            cow.groupNo = newCow.groupNo
+        }
+    }
     func birthUpdateCow(cow : CowModel){
         
         try! realm.write {
             cow.reproductiveStatus = Constants.birthCow.reproductiveStatus
             cow.lastCalvingDate = Constants.birthCow.lastCalvingDate
             cow.numberOfLactations = Constants.birthCow.numberOfLactations
+            cow.secondPregnancyControl = false
+            cow.dryOffDate = nil
             
             if Constants.formOfCalving == FormOfCalving(rawValue: 2)?.name{
                 guard let status = InseminationStatus(rawValue: 4)?.name else {return}
@@ -91,6 +87,12 @@ class LocaleService {
         }
 
 
+    }
+    func dyrOffUpdate(cow:CowModel, date : String){
+        try! realm.write{
+            cow.reproductiveStatus = ReproductiveStatus(rawValue: 5)
+            cow.dryOffDate = date
+        }
     }
     
     
@@ -114,7 +116,6 @@ class LocaleService {
     
     func updateInseminations(cow : CowModel, insemination : InseminationModel , row : Int){
         try! realm.write{
-            print("locale \(insemination.inseminationsStatus)")
             cow.inseminations[row].inseminationsStatus = insemination.inseminationsStatus
             
         }
@@ -178,6 +179,11 @@ class LocaleService {
             try! realm.write{
                 cow.pregnancyList.append(newPregnancy)
             }
+        if cow.reproductiveStatus?.name == "Gebe"{
+            try! realm.write{
+                cow.secondPregnancyControl = true
+            }
+        }
         if newPregnancy.inspectionResult == "Başarılı"{
             try! realm.write{
                 cow.reproductiveStatus = ReproductiveStatus(rawValue: 6)

@@ -40,6 +40,10 @@ protocol NoteProtocol{
     func noteHiddenView()
 }
 
+protocol myWorkToCowCard{
+    func toCowCard(cowModel : CowModel)
+}
+
 
 
 

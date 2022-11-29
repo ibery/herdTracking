@@ -24,6 +24,7 @@ class CowCardEditingController : UIView , NibInitializable {
     @IBOutlet weak var dateOfBirthEditingTextField: UITextField!
     @IBOutlet weak var cowBreedEditingTextFiedl: UITextField!
     @IBOutlet weak var genderEditingTextfield: UITextField!
+    @IBOutlet weak var groupNoTextField: UITextField!
     
     var delegate:CowCardEditingProtocol?
     var nibName: String = "CowCardEditingViewScreen"
@@ -31,6 +32,8 @@ class CowCardEditingController : UIView , NibInitializable {
     let breedPickerView = UIPickerView()
     let genderPickerView = UIPickerView()
     let datePicker = UIDatePicker()
+    let cowViewModel = CowViewModel()
+    let newCow = CowModel()
     
     
     // MARK: - Initializers
@@ -57,6 +60,7 @@ class CowCardEditingController : UIView , NibInitializable {
         createPickerView(textField: genderEditingTextfield, pickerView: genderPickerView)
         createPickerView(textField: cowBreedEditingTextFiedl, pickerView: breedPickerView)
         createDatePicker()
+        
     }
     
     // MARK: - Setup
@@ -85,7 +89,7 @@ class CowCardEditingController : UIView , NibInitializable {
     
     @IBAction func saveButton(_ sender: Any) {
         
-        if let delegate = delegate {
+        if delegate != nil {
             if earTagEditingTextField.text == "" {
                 UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.earRing)
             }else{
@@ -93,6 +97,21 @@ class CowCardEditingController : UIView , NibInitializable {
                     UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.birthOfDate)
                 }else{
 //                    LocaleService.shared.updateCow(cow: delegate.cowCardEditinCow(), name: cowNameEditingTextField.text ?? "", earTag: earTagEditingTextField.text ?? "", dateOfBirth: dateOfBirthEditingTextField.text ?? "", cowBreed: cowBreedEditingTextFiedl.text ?? "", gender: genderEditingTextfield.text ?? "")
+        
+                    guard let earTag = earTagEditingTextField.text else {return}
+                    newCow.earTag = earTag
+                    guard let cowName = cowNameEditingTextField.text else {return}
+                    newCow.cowName = cowName
+                    guard let dateOfBirth = dateOfBirthEditingTextField.text else {return}
+                    newCow.dateOfBirth = dateOfBirth
+                    guard let cowBreed = cowBreedEditingTextFiedl.text else {return}
+                    newCow.cowBreed = cowBreed
+                    guard let gender = genderEditingTextfield.text else {return}
+                    newCow.gender = gender
+                    guard let group = groupNoTextField.text else {return}
+                    newCow.groupNo = group
+                    
+                    cowViewModel.generalUpdate(cow: editingCow, addCow: newCow)
                     
                     UIWindow.showAlert(title: Constants.Alert.successTitle, message: Constants.Alert.successfullUpdate)
                     delegateViewFunc()
@@ -125,6 +144,7 @@ class CowCardEditingController : UIView , NibInitializable {
         dateOfBirthEditingTextField.text = editingCow.dateOfBirth
         cowBreedEditingTextFiedl.text = editingCow.cowBreed
         genderEditingTextfield.text = editingCow.gender
+        groupNoTextField.text = editingCow.groupNo
         
     }
     

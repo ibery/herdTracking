@@ -44,7 +44,7 @@ class CowCardViewController : BaseViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tabBarController?.tabBar.isHidden = true
         setupScreen()
         earTagLabel.text = cow.earTag
         nameLabel.text = cow.cowName
@@ -86,7 +86,7 @@ class CowCardViewController : BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        viewHidden()
         
     }
     
@@ -115,6 +115,19 @@ class CowCardViewController : BaseViewController {
     
     
     //MARK: - Methods
+    
+    private func viewHidden(){
+        generalInformationsView.isHidden = false
+        inseminationInformationsView.isHidden = true
+        birthInfoView.isHidden = true
+        vaccineView.isHidden = true
+        noteView.isHidden = true
+        pregnancyControlView.isHidden = true
+        otherView.isHidden = true
+        
+    }
+    
+    
     @objc func editTapped(){
         // düzenlemeyer güncellenecek
         cowEditingView.isHidden = false
@@ -135,8 +148,7 @@ class CowCardViewController : BaseViewController {
     @objc func cancelButtonClicked(){
         self.pregnancyDate.resignFirstResponder()
     }
-
-   
+  
 }
 
 extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol ,NoteProtocol{
@@ -183,25 +195,24 @@ extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtoco
     func getCow() -> CowModel {
         return cow
     }
-    
-    
-    
-    
-    
 }
-
-
-
 
 extension CowCardViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Views.allCases.count
+        return cow.gender == "Dişi" ? Views.allCases.count : ViewsMale.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CollectionView.cowCardMenuCell, for: indexPath) as? CowCardMenuCollectionViewCell else {return UICollectionViewCell()}
-        cell.menuLabel.text = Views(rawValue: indexPath.row)?.name
+        if cow.gender == "Dişi"{
+            cell.menuLabel.textColor = .blue
+            cell.menuLabel.text = Views(rawValue: indexPath.row)?.name
+        }else{
+            cell.menuLabel.textColor = .blue
+            cell.menuLabel.text = ViewsMale(rawValue: indexPath.row)?.name
+        }
+
         
         return cell
     }
@@ -213,27 +224,44 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let views = Views(rawValue: indexPath.row)
-        
-        switch views {
-        case .general:
-            return generalInformationsView.isHidden = false
-        case .inseminations:
-            return inseminationInformationsView.isHidden = false
-        case .birth:
-            return birthInfoView.isHidden = false
-        case .pregnancyControl:
-            return pregnancyControlView.isHidden = false
-        case .vaccine:
-            return vaccineView.isHidden = false
-        case .note:
-            return noteView.isHidden = false
-        case .other:
-            return otherView.isHidden = false
-        case .none: break
+        if cow.gender == "Dişi"{
+            let views = Views(rawValue: indexPath.row)
             
+            switch views {
+            case .general:
+                return generalInformationsView.isHidden = false
+            case .inseminations:
+                return inseminationInformationsView.isHidden = false
+            case .birth:
+                return birthInfoView.isHidden = false
+            case .pregnancyControl:
+                return pregnancyControlView.isHidden = false
+            case .vaccine:
+                return vaccineView.isHidden = false
+            case .note:
+                return noteView.isHidden = false
+            case .other:
+                return otherView.isHidden = false
+            case .none: break
+                
+            }
+        }else{
+            let views = ViewsMale(rawValue: indexPath.row)
+            
+            switch views {
+            case .general:
+                return generalInformationsView.isHidden = false
+            case .vaccine:
+                return vaccineView.isHidden = false
+            case .note:
+                return noteView.isHidden = false
+            case .other:
+                return otherView.isHidden = false
+            case .none: break
+                
+            }
         }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

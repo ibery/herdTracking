@@ -38,7 +38,7 @@
                 </button>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-kE-6hI" customClass="InseminationsAddController" customModule="Herd_Tracking" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="48" width="414" height="631"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

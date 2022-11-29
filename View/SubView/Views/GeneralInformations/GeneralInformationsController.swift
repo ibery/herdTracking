@@ -23,6 +23,8 @@ class GeneralInformationsController : UIView , NibInitializable {
     @IBOutlet weak var ageLabel: UILabel!
     
     @IBOutlet weak var cowBreedLabel: UILabel!
+    @IBOutlet weak var dryOffLabel: UILabel!
+    @IBOutlet weak var dryOffCountLabel: UILabel!
     var nibName: String = "GeneralInformationsScreen"
     var delegate : GetCowAndViewProtocol?
     private let cowModel = CowModel()
@@ -59,6 +61,20 @@ class GeneralInformationsController : UIView , NibInitializable {
             groupLabel.text = delegate.getCow().groupNo ?? "-"
             ageLabel.text = String( "\(NumberOfDays.dateDayCount(date: delegate.getCow().dateOfBirth, format: "dd.MM.yy")) Gün")
             cowBreedLabel.text = delegate.getCow().cowBreed
+            
+            if delegate.getCow().reproductiveStatus?.name == "Gebe"{
+                dryOffLabel.isHidden = false
+                dryOffCountLabel.isHidden = false
+                for i in delegate.getCow().inseminations{
+                    if  i.inseminationsStatus == "Başarılı"{
+                        dryOffCountLabel.text = String(210 - NumberOfDays.dateDayCount(date: i.inseminationDate))
+                    }
+                }
+            }else if delegate.getCow().reproductiveStatus?.name == "Kuruda"{
+                dryOffLabel.isHidden = false
+                dryOffCountLabel.isHidden = false
+                dryOffCountLabel.text = "\(delegate.getCow().dryOffDate) tarihinde kuruya çıkmış"
+            }
            
         }
     }

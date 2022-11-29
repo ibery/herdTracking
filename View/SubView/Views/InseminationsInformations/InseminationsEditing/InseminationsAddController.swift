@@ -152,7 +152,7 @@ class InseminationsAddController : UIView ,NibInitializable {
     func delegateCloseInseminationsView(){
         guard let delegate = delegate else {return}
         delegate.closeAddInseminationView()
-        delegate.inseminationToHome()
+//        delegate.inseminationToHome()
         
     }
 

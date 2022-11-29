@@ -11,7 +11,7 @@ import RealmSwift
 class PregnancyModel : Object {
     
     @objc dynamic var inspectionResult : String?
-    @objc dynamic var inspectionDate : String?
+    @objc dynamic var inspectionDate : String? 
   
 }
 

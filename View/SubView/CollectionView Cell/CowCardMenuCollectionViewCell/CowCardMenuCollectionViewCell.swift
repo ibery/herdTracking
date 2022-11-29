@@ -20,10 +20,24 @@ class CowCardMenuCollectionViewCell: UICollectionViewCell {
       didSet {
         //  self.contentView.backgroundColor = isSelected ?.blue : .clear
 
-          self.menuLabel.textColor = isSelected ? .red : .black
+          self.menuLabel.textColor = isSelected ? .red : .blue
           self.menuCellView.isHidden = isSelected ? false : true
-         
+          
+
       }
+        
+        
     }
+    
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//  let userInterFaaceStyle = traitCollection.userInterfaceStyle
+//
+//         if userInterFaaceStyle == .dark{
+//             self.menuLabel.textColor = isSelected ? .red : .white
+//
+//         }else{
+//             self.menuLabel.textColor = isSelected ? .red : .black
+//         }
+//    }
 
 }

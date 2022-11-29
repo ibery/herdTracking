@@ -37,25 +37,23 @@
                     </connections>
                 </button>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhU-me-rMl" customClass="AddNoteController" customModule="Herd_Tracking" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="108" width="414" height="405"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="679"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="yhU-me-rMl" secondAttribute="height" multiplier="46:45" id="Va7-f8-xjp"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="yhU-me-rMl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="14Z-FR-Mvb"/>
+                <constraint firstItem="yhU-me-rMl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2et-W3-32C"/>
                 <constraint firstAttribute="trailing" secondItem="uX6-By-wq1" secondAttribute="trailing" constant="10" id="2k1-Zy-56Y"/>
                 <constraint firstItem="uX6-By-wq1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="3Zq-sK-cfh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yhU-me-rMl" secondAttribute="trailing" id="B0q-Yr-erh"/>
+                <constraint firstItem="yhU-me-rMl" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="RhU-Xg-mFM"/>
+                <constraint firstItem="yhU-me-rMl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="URW-OX-iMZ"/>
                 <constraint firstItem="sF3-5g-1yG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="YPF-lt-DEh"/>
                 <constraint firstItem="sF3-5g-1yG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eCz-11-hs4"/>
-                <constraint firstItem="yhU-me-rMl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="fAP-dL-m9o"/>
                 <constraint firstItem="sF3-5g-1yG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="qBN-WO-n0C"/>
                 <constraint firstItem="sF3-5g-1yG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="swf-Ng-NWE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yhU-me-rMl" secondAttribute="bottom" id="xK4-VH-2Eg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="295.6521739130435" y="168.41517857142856"/>

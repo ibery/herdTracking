@@ -74,7 +74,7 @@ class CowViewModel {
     func tableViewFilter(filter : String)-> [CowModel]{
         switch filter {
         case Constants.Arrays.collectionViewItemArray[0]:
-            return cow
+            return allCow()
         case Constants.Arrays.collectionViewItemArray[1]:
             return freshCow()
         case Constants.Arrays.collectionViewItemArray[2]:
@@ -108,8 +108,23 @@ class CowViewModel {
         
     }
     
-    // func lar private olacak 
-    func males()->[CowModel]{
+    private func insuranceCow() ->[CowModel]{
+        cow.removeAll()
+        for i in fetchCowViewModel(){
+            if i.insurance == "Evet"{
+                cow.append(i)
+            }
+        }
+        return cow
+    }
+    private func allCow()-> [CowModel]{
+        cow.removeAll()
+        for i in fetchCowViewModel(){
+            cow.append(i)
+        }
+        return cow
+    }
+    private func males()->[CowModel]{
         cow.removeAll()
         for c in fetchCowViewModel(){
             if c.gender == "Erkek"{
@@ -118,44 +133,34 @@ class CowViewModel {
         }
         return cow
     }
-    
-    func heiferFilter()-> [CowModel]{
+    private func heiferFilter()-> [CowModel]{
         return forFilter(status: ReproductiveStatus.duve)
     }
-    
-    func advancedPregnant () -> [CowModel]{
+    private func advancedPregnant () -> [CowModel]{
         return forFilter(status: ReproductiveStatus.Yakın_Gebe)
     }
-    
-    func pregnant() -> [CowModel]{
+    private func pregnant() -> [CowModel]{
         return forFilter(status: ReproductiveStatus.Gebe)
     }
-    
-    func calf() -> [CowModel]{
+    private func calf() -> [CowModel]{
         return forFilter(status: ReproductiveStatus.yasiKucuk)
     }
-    
-    func inseminatedCow()-> [CowModel]{
+    private func inseminatedCow()-> [CowModel]{
         return forFilter(status: ReproductiveStatus.Tohumlanmıs)
     }
-    
-    func freshCow() -> [CowModel] {
+    private func freshCow() -> [CowModel] {
         return forFilter(status: ReproductiveStatus.Taze)
     }
-    
-    func emptyCow() -> [CowModel]{
+    private func emptyCow() -> [CowModel]{
         return forFilter(status: ReproductiveStatus.Boş)
     }
-    
-    func dryOffCow() -> [CowModel]{
+    private func dryOffCow() -> [CowModel]{
         return forFilter(status: ReproductiveStatus.Kuruda)
     }
-    
-    func slaughterCow() -> [CowModel]{
+    private func slaughterCow() -> [CowModel]{
         return forFilter(status: ReproductiveStatus.Kesimlik)
     }
-    
-    func pregnancyControl() ->[CowModel]{
+    private func pregnancyControl() ->[CowModel]{
         cow.removeAll()
         for c in forFilter(status: ReproductiveStatus.Tohumlanmıs){
             for i in c.inseminations {
@@ -166,8 +171,7 @@ class CowViewModel {
         }
         return cow
     }
-    
-    func zeroThreeMonths()-> [CowModel]{
+    private func zeroThreeMonths()-> [CowModel]{
         cow.removeAll()
         for c in fetchCowViewModel(){
             if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 91{
@@ -176,8 +180,7 @@ class CowViewModel {
         }
         return cow
     }
-    
-    func threeTwelveMonths() -> [CowModel]{
+    private func threeTwelveMonths() -> [CowModel]{
         cow.removeAll()
         for c in fetchCowViewModel(){
             if NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") > 90 && NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 360{
@@ -186,21 +189,23 @@ class CowViewModel {
         }
         return cow
     }
-    
-    
-    func forFilter (status : ReproductiveStatus) -> [CowModel]{
+    private func forFilter (status : ReproductiveStatus) -> [CowModel]{
         cow.removeAll()
         for c in fetchCowViewModel(){
             if c.reproductiveStatus == status{
                 cow.append(c)
-               
             }
         }
         return cow
     }
-    
     func updateOtherCowInfo(cow : CowModel , updateCow : CowModel){
         LocaleService.shared.updateOtherCow(cow: cow, newCow: updateCow)
+    }
+    func generalUpdate(cow :CowModel , addCow : CowModel){
+        LocaleService.shared.generalUpdateCow(cow: cow, newCow: addCow)
+    }
+    func dryOffDate(cow:CowModel, date : String){
+        LocaleService.shared.dyrOffUpdate(cow: cow , date : date)
     }
     
  
