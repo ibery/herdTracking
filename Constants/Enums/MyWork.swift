@@ -13,6 +13,7 @@ enum MyWork : Int , CaseIterable {
     case firstPregnancy
     case secondPregnancy
     case dryOff
+    case nearBirth
     case weaning
    
     var name : String{
@@ -25,6 +26,8 @@ enum MyWork : Int , CaseIterable {
             return "İkinci Gebelik Kontrolü"
         case .dryOff:
             return "Kuruya Çıkarma"
+        case.nearBirth:
+            return "Doğumu Yakın"
         case.weaning:
             return "Sütten Kesilecek Buzağılar"
           }

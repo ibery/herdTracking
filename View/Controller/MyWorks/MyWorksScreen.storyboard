@@ -62,6 +62,10 @@
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zd-PP-VmN" customClass="NearBirthViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="90" width="414" height="772"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,10 +74,14 @@
                             <constraint firstItem="S1J-nO-X3Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="3o6-oH-jtb"/>
                             <constraint firstItem="S1J-nO-X3Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="4vY-jQ-81C"/>
                             <constraint firstItem="5Ac-Ca-Cn0" firstAttribute="top" secondItem="S1J-nO-X3Y" secondAttribute="bottom" id="5kH-jI-rDW"/>
+                            <constraint firstItem="1Zd-PP-VmN" firstAttribute="top" secondItem="S1J-nO-X3Y" secondAttribute="bottom" id="9ii-qy-xGn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Ac-Ca-Cn0" secondAttribute="trailing" id="EUB-V4-7Bg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1Zd-PP-VmN" secondAttribute="bottom" id="F6g-sN-Ekj"/>
                             <constraint firstItem="Cis-YN-cSU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FWc-zM-ban"/>
                             <constraint firstItem="Cis-YN-cSU" firstAttribute="top" secondItem="S1J-nO-X3Y" secondAttribute="bottom" id="GRH-Ym-GZ5"/>
                             <constraint firstItem="LdJ-g9-mJ6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="HoP-Me-ImY"/>
+                            <constraint firstItem="1Zd-PP-VmN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="JTa-Gf-YxL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1Zd-PP-VmN" secondAttribute="trailing" id="L2H-6o-3sw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LdJ-g9-mJ6" secondAttribute="bottom" id="Ldf-0W-A8Y"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Cis-YN-cSU" secondAttribute="bottom" id="OqL-5c-bxt"/>
                             <constraint firstItem="A48-qC-QBn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Rgh-H6-5w3"/>
@@ -97,6 +105,7 @@
                         <outlet property="firstPregnancyView" destination="5Ac-Ca-Cn0" id="dB6-BQ-zNk"/>
                         <outlet property="inseminatedView" destination="A48-qC-QBn" id="G5n-jt-KhL"/>
                         <outlet property="myWorkMenuCellection" destination="S1J-nO-X3Y" id="RsO-my-KFX"/>
+                        <outlet property="nearBirthView" destination="1Zd-PP-VmN" id="KTm-QA-BBP"/>
                         <outlet property="secondPregnancyView" destination="g5R-OY-tFx" id="grh-2p-Kw2"/>
                     </connections>
                 </viewController>

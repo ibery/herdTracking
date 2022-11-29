@@ -70,6 +70,8 @@ struct Constants {
         static let firstPregnancyController = "FirstPregnancyTableViewCell"
         static let calfWeanedCell = "calfWeanedCell"
         static let calfWeanedController = "CalfWeanedTableViewCell"
+        static let nearBirthCell = "nearBirthCell"
+        static let nearBirthController = "NearBirthTableViewCell"
         
     }
     

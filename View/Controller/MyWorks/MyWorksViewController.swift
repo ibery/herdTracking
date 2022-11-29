@@ -16,6 +16,7 @@ class MyWorksViewController: BaseViewController {
     @IBOutlet weak var inseminatedView: InseminatedViewController!
     @IBOutlet weak var WeanedView: CalfToBeWeaned!
     @IBOutlet weak var dryOffView: DryOffViewController!
+    @IBOutlet weak var nearBirthView: NearBirthViewController!
     var cowViewModel = CowViewModel()
     
     // MARK: - Life cycle
@@ -40,6 +41,7 @@ class MyWorksViewController: BaseViewController {
         secondPregnancyView.secondPregnancyTableView.reloadData()
         dryOffView.dryOffTableView.reloadData()
         WeanedView.weanedTableView.reloadData()
+        nearBirthView.nearBirthTableView.reloadData()
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -103,6 +105,8 @@ extension MyWorksViewController : UICollectionViewDataSource , UICollectionViewD
                 return secondPregnancyView.isHidden = false
             case .dryOff:
                 return dryOffView.isHidden = false
+            case.nearBirth:
+                return nearBirthView.isHidden = false
             case.weaning:
                 return WeanedView.isHidden = false
             case .none: break
@@ -124,6 +128,8 @@ extension MyWorksViewController : UICollectionViewDataSource , UICollectionViewD
             return secondPregnancyView.isHidden = true
         case .dryOff:
             return dryOffView.isHidden = true
+        case.nearBirth:
+            return nearBirthView.isHidden = true
         case.weaning:
             return WeanedView.isHidden = true
         case .none: break

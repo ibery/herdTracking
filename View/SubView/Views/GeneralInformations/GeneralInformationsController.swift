@@ -73,7 +73,8 @@ class GeneralInformationsController : UIView , NibInitializable {
             }else if delegate.getCow().reproductiveStatus?.name == "Kuruda"{
                 dryOffLabel.isHidden = false
                 dryOffCountLabel.isHidden = false
-                dryOffCountLabel.text = "\(delegate.getCow().dryOffDate) tarihinde kuruya çıkmış"
+                guard let dlgt = delegate.getCow().dryOffDate else {return}
+                dryOffCountLabel.text = "\(dlgt) tarihinde kuruya çıkmış"
             }
            
         }
