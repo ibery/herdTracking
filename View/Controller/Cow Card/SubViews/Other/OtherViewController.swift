@@ -85,9 +85,16 @@ class OtherViewController : UIView ,NibInitializable {
         guard let delegate = delegate else {return}
         guard let numberOfLactationInt = numberOfLactationTextField.text else {return}
         updateCow.numberOfLactations = Int( numberOfLactationInt)
-        updateCow.lastCalvingDate = lastCalvingDateTextField.text
-        updateCow.motherEarTag = motherEarTagTextField.text
-        updateCow.fatherName = fatherNameTextField.text
+        if lastCalvingDateTextField.text != ""{
+            updateCow.lastCalvingDate = lastCalvingDateTextField.text
+        }
+        if motherEarTagTextField.text != ""{
+            updateCow.motherEarTag = motherEarTagTextField.text
+        }
+        if fatherNameTextField.text != ""{
+            updateCow.fatherName = fatherNameTextField.text
+        }
+        
         updateCow.magnet = magnetTextField.text
         updateCow.insurance = insuranceTextField.text
         cowViewModel.updateOtherCowInfo(cow: delegate.getCow(), updateCow: updateCow)
@@ -108,6 +115,7 @@ class OtherViewController : UIView ,NibInitializable {
             numberOfLactationTextField.text = "\(numberOflactation)"
         }else{
             numberOfLactationTextField.placeholder = "Laktasyon Sayısı Giriniz"
+            numberOfLactationTextField.text = nil
         }
         
         if let lastCalving = otherCow.lastCalvingDate {
@@ -117,14 +125,18 @@ class OtherViewController : UIView ,NibInitializable {
         }else{
             lastCalvingDateTextField.placeholder = "Son Tohumlama Tarihi"
             numberOfDaysMilkedTextField.placeholder = "Sağılan Gün Sayısı"
+            lastCalvingDateTextField.text = nil
+            numberOfDaysMilkedTextField.text = nil
         }
         if otherCow.motherEarTag == nil{
             motherEarTagTextField.placeholder = "Anne Küpe Numarası Giriniz"
+            motherEarTagTextField.text = nil
         }else{
             motherEarTagTextField.text = otherCow.motherEarTag
         }
         if otherCow.fatherName == nil{
             fatherNameTextField.placeholder = "Baba Adı Giriniz"
+            fatherNameTextField.text = nil
         }else{
             fatherNameTextField.text = otherCow.fatherName
         }
@@ -140,9 +152,6 @@ class OtherViewController : UIView ,NibInitializable {
         }
         lastCalvingDateTextField.isEnabled = false
         numberOfDaysMilkedTextField.isEnabled = false
-        
-        
-
         
     }
 }

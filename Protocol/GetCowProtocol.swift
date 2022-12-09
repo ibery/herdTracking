@@ -15,11 +15,6 @@ protocol GetCowAndViewProtocol {
     func closeAddInseminationView()
 }
 
-//protocol CloseInseminationViewProtocol{
-//    func addInseminationsDelegate() -> CowModel
-//    func closeInseminationView()
-//}
-
 protocol CowCardEditingProtocol{
     func cowCardEditinCow ()-> CowModel
     func closeCowCardEditingView()
@@ -42,6 +37,10 @@ protocol NoteProtocol{
 
 protocol myWorkToCowCard{
     func toCowCard(cowModel : CowModel)
+}
+
+protocol AddFeedProtocol{
+    func closeAddFeedView()
 }
 
 

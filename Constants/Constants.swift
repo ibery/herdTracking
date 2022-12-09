@@ -37,6 +37,8 @@ struct Constants {
         static let vaccineDate = "Aşı tarihi giriniz!"
         static let lastClavingDate = "Son Buzağılama Tarihi Giriniz!"
         static let dryOffDate = "Kuruya çıkma tarihi giriniz!"
+        static let feedName = "Eklemek istediğiniz yem daha önceden eklenmiş!"
+        static let emptyFeed = "Boş alan bırakmayınız!"
     }
     
     
@@ -72,6 +74,10 @@ struct Constants {
         static let calfWeanedController = "CalfWeanedTableViewCell"
         static let nearBirthCell = "nearBirthCell"
         static let nearBirthController = "NearBirthTableViewCell"
+        static let notificationCell = "NotificationCell"
+        static let notificationController = "NotificationTableViewCell"
+        static let feedCell = "feedCell"
+        static let feedController = "FeedTableViewCell"
         
     }
     
@@ -86,8 +92,7 @@ struct Constants {
         static let collectionViewItemArray = ["tumHayvanlar","0-60Taze","tohumlanmis","gebelikKontrolu","bos","gebe","yakinGebe","kuruda","sigortali","0-3ayBuzagi","3-12ayDana","duve","erkekler","kesimlik"]
         
         static let cowCardMenuCollectionViewItemArray = ["Genel Bilgiler","Tohumlama Bilgileri","Doğum Bilgileri","Aşı Bilgileri","Not Bilgileri","Diğer Bilgiler"]
-        
-//        static let inseminationsArray = ["Gebe","Boş","Beklemede"]
+
     }
     
     static var repro = ReproductiveStatus()
@@ -100,5 +105,6 @@ struct Constants {
     static var inspectionTextField = UITextField()
     static var collectionRow = 0
     static var dryOffRow = 0
+    static var progressCow = CowModel()
     
 }

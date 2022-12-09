@@ -78,35 +78,37 @@ class InseminationViewModel {
         if cow.reproductiveStatus?.name == "Gebe" || cow.reproductiveStatus?.name == "Yakın Gebe" || cow.reproductiveStatus?.name == "Kuruda"{
             UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.pragnent)
         }else{
-            doHaveInsemination(cow: cow , newInsemination : newInsemination)
+            addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
         }
     }
 
-    private func doHaveInsemination(cow : CowModel , newInsemination : InseminationModel){
-        if cow.inseminations.count == 0{
-            addInseminationAndCowUpdate(cow: cow, newInsemination : newInsemination)
-        }else{
-            var status = false
-            var count = 0
-            for i in cow.inseminations{
-                if i.inseminationsStatus == "Beklemede" {
-                    status = true
-                    break
-                }
-                count += 1
-            }
-            if status{
-                Constants.inseminationCount = count
-                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
-            }else{
-                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
-            }
-            
-        }
-    }
+//    private func doHaveInsemination(cow : CowModel , newInsemination : InseminationModel){
+//        if cow.inseminations.count == 0{
+//            addInseminationAndCowUpdate(cow: cow, newInsemination : newInsemination)
+//        }else{
+//            var status = false
+//            var count = 0
+//            for i in cow.inseminations{
+//                if i.inseminationsStatus == "Beklemede" {
+//                    status = true
+//                    break
+//                }
+//                count += 1
+//            }
+//            if status{
+//                Constants.inseminationCount = count
+//                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
+//            }else{
+//                Constants.inseminationCount = count
+//                addInseminationAndCowUpdate(cow: cow , newInsemination : newInsemination)
+//            }
+//
+//        }
+//    }
 
     private func addInseminationAndCowUpdate(cow : CowModel, newInsemination : InseminationModel){
         LocaleService.shared.addInseminations(cow: cow, newInsemination: newInsemination)
+        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
 
   
     }

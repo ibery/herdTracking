@@ -116,6 +116,8 @@ extension InseminationInformationsController : UITableViewDataSource , UITableVi
 }
 
 extension InseminationInformationsController : GetCowAndViewProtocol{
+    func showPieChart() {}
+    
     func closeAddInseminationView() {
         addInseminationView.isHidden = true
     }
@@ -131,7 +133,7 @@ extension InseminationInformationsController : GetCowAndViewProtocol{
         
         guard let delegate = delegate else {return}
         delegate.inseminationToHome()
-        UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.successful)
+
         // ALERT MESAJI İKİ KERE GELİYOR
     }
     

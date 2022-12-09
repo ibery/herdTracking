@@ -58,6 +58,7 @@ class DryOffDateViewController : UIView , NibInitializable {
     
     @IBAction func closeButton(_ sender: UIButton) {
         guard let delegate = delegate else {return}
+        self.dryOffDateTextField.resignFirstResponder()
         delegate.closeBirthInfoView()
     }
     

@@ -14,6 +14,7 @@ class NearBirthViewController : UIView , NibInitializable {
     @IBOutlet weak var nearBirthTableView: UITableView!
     var nibName: String = "NearBirthScreen"
     private var cowArray = [CowModel]()
+    var delegate : myWorkToCowCard?
     
     // MARK: - Initializers
     
@@ -34,6 +35,7 @@ class NearBirthViewController : UIView , NibInitializable {
         nearBirthTableView.delegate = self
         nearBirthTableView.dataSource = self
         self.nearBirthTableView.register(UINib(nibName: Constants.TableView.nearBirthController, bundle: nil), forCellReuseIdentifier: Constants.TableView.nearBirthCell)
+        
     }
     
     // MARK: - Setup
@@ -53,6 +55,7 @@ class NearBirthViewController : UIView , NibInitializable {
                 for a in i.inseminations{
                     if a.inseminationsStatus == "Başarılı" && NumberOfDays.dateDayCount(date: a.inseminationDate) > 273 {
                         cowArray.append(i)
+                        
                     }
                 }
             }
@@ -65,10 +68,11 @@ class NearBirthViewController : UIView , NibInitializable {
 extension NearBirthViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cowArray.count
+        return nearBirthCows().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.nearBirthCell, for: indexPath) as? NearBirthTableViewCell else {return UITableViewCell()}
         cell.cowEarTagLabel.text = cowArray[indexPath.row].earTag
         cell.cowNameLabel.text = cowArray[indexPath.row].cowName
@@ -80,5 +84,10 @@ extension NearBirthViewController : UITableViewDelegate , UITableViewDataSource{
         }
         cell.nearBirthDayLabel.text = String(283 - day)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let delegate = delegate else {return}
+        delegate.toCowCard(cowModel: cowArray[indexPath.row])
     }
 }

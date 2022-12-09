@@ -51,7 +51,7 @@ class SecondPregnancyViewController : UIView , NibInitializable {
     private func secondPregnancy()->[CowModel]{
         cowArray.removeAll()
         for i in cowViewModel.fetchCowViewModel(){
-            if i.reproductiveStatus?.name == "Gebe" || i.secondPregnancyControl == false{
+            if i.reproductiveStatus?.name == "Gebe" && i.secondPregnancyControl == false{
                 for a in i.inseminations{
                     if a.inseminationsStatus == "Başarılı"{
                         cowArray.append(i)

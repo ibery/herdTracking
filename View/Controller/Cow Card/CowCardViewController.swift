@@ -14,18 +14,13 @@ class CowCardViewController : BaseViewController {
     // MARK: - Properties
     @IBOutlet weak var generalInformationsView: GeneralInformationsController!
     @IBOutlet weak var inseminationInformationsView: InseminationInformationsController!
-    
     @IBOutlet weak var birthInfoView: BirthInfoListController!
-    
-    
     @IBOutlet weak var vaccineView: VaccineViewController!
     @IBOutlet weak var noteView: NoteViewController!
     @IBOutlet weak var pregnancyControlView: PregnancyControlViewController!
     @IBOutlet weak var otherView: OtherViewController!
     private var editButton = UIBarButtonItem()
-    
     @IBOutlet weak var cowEditingView: CowCardEditingController!
-    
     @IBOutlet weak var earTagLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cowCardMenuCollectionView: UICollectionView!
@@ -44,6 +39,8 @@ class CowCardViewController : BaseViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.cowEditingView.layer.borderWidth = 1
+//        self.cowEditingView.layer.borderColor = UIColor(red:129/255, green:12/255, blue:168/255, alpha: 1).cgColor
         tabBarController?.tabBar.isHidden = true
         setupScreen()
         earTagLabel.text = cow.earTag
@@ -152,6 +149,8 @@ class CowCardViewController : BaseViewController {
 }
 
 extension CowCardViewController :   CowCardEditingProtocol, GetCowAndViewProtocol , VaccineProtocol ,NoteProtocol{
+    
+    
     func closeAddInseminationView() {}
     
     func inseminationToHome() {
@@ -265,25 +264,42 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let views = Views(rawValue: indexPath.row)
-        
-        switch views {
-        case .general:
-            return generalInformationsView.isHidden = true
-        case .inseminations:
-            return inseminationInformationsView.isHidden = true
-        case .birth:
-            return birthInfoView.isHidden = true
-        case .pregnancyControl:
-            return pregnancyControlView.isHidden = true
-        case .vaccine:
-            return vaccineView.isHidden = true
-        case .note:
-            return noteView.isHidden = true
-        case .other:
-            return otherView.isHidden = true
-        case .none: break
+        if cow.gender == "Dişi"{
+            let views = Views(rawValue: indexPath.row)
             
+            switch views {
+            case .general:
+                return generalInformationsView.isHidden = true
+            case .inseminations:
+                return inseminationInformationsView.isHidden = true
+            case .birth:
+                return birthInfoView.isHidden = true
+            case .pregnancyControl:
+                return pregnancyControlView.isHidden = true
+            case .vaccine:
+                return vaccineView.isHidden = true
+            case .note:
+                return noteView.isHidden = true
+            case .other:
+                return otherView.isHidden = true
+            case .none: break
+                
+            }
+        }else{
+            let views = ViewsMale(rawValue: indexPath.row)
+            
+            switch views {
+            case .general:
+                return generalInformationsView.isHidden = true
+            case .vaccine:
+                return vaccineView.isHidden = true
+            case .note:
+                return noteView.isHidden = true
+            case .other:
+                return otherView.isHidden = true
+            case .none: break
+                
+            }
         }
     }
     

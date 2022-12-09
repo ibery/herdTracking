@@ -26,6 +26,7 @@ class MyWorksViewController: BaseViewController {
         inseminatedView.delegate = self
         firstPregnancyView.delegate = self
         secondPregnancyView.delegate = self
+        nearBirthView.delegate = self
         myWorkMenuCellection.delegate = self
         myWorkMenuCellection.dataSource = self
         
@@ -34,7 +35,7 @@ class MyWorksViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addSideMenuButton()
+//        self.addSideMenuButton()
         inseminatedView.inseminatedTableView.reloadData()
         firstPregnancyView.firtsPregnancyTableView.reloadData()
         viewHidden()
@@ -66,6 +67,7 @@ class MyWorksViewController: BaseViewController {
         secondPregnancyView.isHidden = true
         dryOffView.isHidden = true
         WeanedView.isHidden = true
+        nearBirthView.isHidden = true
     }
     
 }

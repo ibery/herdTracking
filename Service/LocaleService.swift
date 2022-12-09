@@ -99,15 +99,38 @@ class LocaleService {
     
     func addInseminations(cow: CowModel , newInsemination : InseminationModel){
         try! realm.write{
-            if cow.inseminations.count != 0 {
-                cow.inseminations[Constants.inseminationCount].inseminationsStatus = "Başarısız"
+            var status = false
+            var sayac = 0
+            if cow.inseminations.count == 0 {
+                cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
+                cow.inseminations.append(newInsemination)
+            }else{
+                for i in cow.inseminations{
+                    if i.inseminationsStatus == "Beklemede"{
+                        status = true
+                        break
+                    }
+                    sayac += 1
+                }
+                if status{
+                    guard let iStatus = InseminationStatus(rawValue: 1)?.name else {return}
+                    cow.inseminations[sayac].inseminationsStatus = iStatus
+                    cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
+                    cow.inseminations.append(newInsemination)
+                }else{
+                    cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
+                    cow.inseminations.append(newInsemination)
+                }
+                
             }
-            cow.reproductiveStatus = ReproductiveStatus(rawValue: 3)
-            cow.inseminations.append(newInsemination)
+
         }
 
         
     }
+
+    
+ 
     
     func fetchInseminations()-> Results<InseminationModel>{
         let inseminations = realm.objects(InseminationModel.self)
@@ -137,16 +160,6 @@ class LocaleService {
         let person = realm.objects(PersonModel.self)
         return person
     }
-    
-//    func updatePerson(person : PersonModel , personName : String){
-//        do{
-//            try realm.write{
-//                person.inseminatedPersonName = personName
-//            }
-//        }catch{
-//            print(error)
-//        }
-//    }
     
     func addBull(bull : BullModel){
         do{
@@ -221,6 +234,28 @@ class LocaleService {
         try! realm.write{
             cow.noteList.append(newNote)
         }
+    }
+    
+    func addNotification(notification : NotificationModel){
+            try! realm.write{
+                realm.add(notification)
+            }
+    }
+    
+    func fetchNotification()-> Results<NotificationModel>{
+        let notification = realm.objects(NotificationModel.self)
+        return notification
+    }
+    
+    func addFeed(feed : FeedModel){
+            try! realm.write{
+                realm.add(feed)
+            }
+    }
+    
+    func fetchFeed()-> Results<FeedModel>{
+        let feed = realm.objects(FeedModel.self)
+        return feed
     }
     
 }

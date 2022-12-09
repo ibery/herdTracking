@@ -25,12 +25,16 @@ class GeneralInformationsController : UIView , NibInitializable {
     @IBOutlet weak var cowBreedLabel: UILabel!
     @IBOutlet weak var dryOffLabel: UILabel!
     @IBOutlet weak var dryOffCountLabel: UILabel!
+    
+    @IBOutlet weak var progressBarView: ProgressBar!
+    
+   
     var nibName: String = "GeneralInformationsScreen"
     var delegate : GetCowAndViewProtocol?
     private let cowModel = CowModel()
+    var countFired: CGFloat = 0
     
-    
-    
+
     // MARK: - Initializers
     
     
@@ -52,7 +56,40 @@ class GeneralInformationsController : UIView , NibInitializable {
     
     // MARK: - Setup
     
+
+    
     override func layoutSubviews() {
+        var date = 0.0
+        var doubleDate = ""
+        guard let dlgt = delegate else {return}
+        Constants.progressCow = dlgt.getCow()
+        if dlgt.getCow().reproductiveStatus?.name == "Gebe" || dlgt.getCow().reproductiveStatus?.name == "Kuruda" || dlgt.getCow().reproductiveStatus?.name == "Yakın Gebe"{
+            progressBarView.isHidden = false
+            for i in dlgt.getCow().inseminations{
+                if i.inseminationsStatus == "Başarılı"{
+                    date =  Double(NumberOfDays.dateDayCount(date: i.inseminationDate))
+                    break
+                }
+            }
+             doubleDate = String(format: "%.1f", date / 280)
+            if date > 280 {
+                self.progressBarView.progress = min(CGFloat(0.04 * self.countFired), 1)
+
+                self.progressBarView.progress = 1
+            }else{
+                self.progressBarView.progress = min(CGFloat(0.04 * self.countFired), 1)
+
+                self.progressBarView.progress = Double(doubleDate)!
+            }
+
+        }else{
+            progressBarView.isHidden = true
+        }
+        
+        
+       
+  
+        
         if let delegate = delegate {
             earTagLabel.text = delegate.getCow().earTag
             reproductiveStatusLabel.text = delegate.getCow().reproductiveStatus?.name
@@ -76,7 +113,7 @@ class GeneralInformationsController : UIView , NibInitializable {
                 guard let dlgt = delegate.getCow().dryOffDate else {return}
                 dryOffCountLabel.text = "\(dlgt) tarihinde kuruya çıkmış"
             }
-           
+            
         }
     }
     
@@ -87,4 +124,9 @@ class GeneralInformationsController : UIView , NibInitializable {
     
     private func setup(){}
     
+
+    
+
+
 }
+

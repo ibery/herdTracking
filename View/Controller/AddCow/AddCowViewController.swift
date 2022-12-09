@@ -53,7 +53,7 @@ class AddCowViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addSideMenuButton()
+//        self.addSideMenuButton()
     }
     
     // MARK: - Setup
@@ -111,11 +111,7 @@ class AddCowViewController : BaseViewController {
     }
 
     // MARK: - Actions
-    
-//    func cowCheckStatus() -> Bool{
-//        return cowViewModel.checkIfThereIsCow(cowCheck: createdCow())
-//    }
-    
+
     @IBAction func saveCow(_ sender: UIButton) {
 
     //    cowViewModel.checkIfThereIsCow(cowCheck: createdCow())
@@ -169,11 +165,6 @@ class AddCowViewController : BaseViewController {
             cowViewModel.addCowViewModel(cowAdd: cowModel)
             emptyTextFields()
         }
-  
-
-
-        // ekleme işlemi başarılı ise alt satırlar yapılacka
-        
         
         // Toast mesaj gibi otomatik kapanan mesaj ekelenecek
         
@@ -195,16 +186,7 @@ class AddCowViewController : BaseViewController {
             
         }
     }
-//    func createdCow()-> CowModel{
-//        cowModel.earTag = earringNumber.text ?? ""
-//        cowModel.leashNumber = leashNumberEditText.text ?? ""
-//        cowModel.dateOfBirth = dateOfBirth.text ?? ""
-//        cowModel.cowName = cowName.text ?? ""
-//        cowModel.cowBreed = cowBreed.text ?? ""
-//        cowModel.gender = gender.text ?? ""
-//        cowModel.reproductiveStatus = Constants.repro
-//        return cowModel
-//    }
+
     
     @objc func doneButtonClicked(){
         

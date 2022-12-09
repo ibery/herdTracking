@@ -14,8 +14,8 @@ class CalfToBeWeaned : UIView , NibInitializable {
     
     @IBOutlet weak var weanedTableView: UITableView!
     var nibName: String = "CalfToBeWeanedScreen"
-        var cowViewModel = CowViewModel()
-        var cowArray = [CowModel]()
+    private var cowViewModel = CowViewModel()
+    private  var cowArray = [CowModel]()
     
     // MARK: - Initializers
     

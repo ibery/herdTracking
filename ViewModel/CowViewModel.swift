@@ -15,14 +15,7 @@ class CowViewModel {
     var cow = [CowModel]()
     var status = false
     
-//    func updateCowViewModel(cow : CowModel){
-//        LocaleService.shared.updateCow(cow: cow, group: <#T##String?#>, magnet: <#T##Bool?#>, numberOfLactations: <#T##Int#>, lastCalvingDate: <#T##String?#>, insurance: <#T##Bool?#>, dryOffDate: <#T##String?#>, motherOfEarTag: <#T##String?#>, reproductiveStatus: <#T##ReproductiveStatus#>, leashNumber: <#T##String?#>, name: <#T##String#>, earTag: <#T##String#>, dateOfBirth: <#T##String#>, cowBreed: <#T##String#>, gender: <#T##String#>)
-//
-//    }
-    
-//    func updateCowViewModel (cow : CowModel ){
-//        LocaleService.shared.updateCow(cow: cow)
-//    }
+
     
     private func cowTextFieldControl(cowTextField : CowModel){
         

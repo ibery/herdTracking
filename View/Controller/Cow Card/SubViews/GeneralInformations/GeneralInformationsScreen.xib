@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,6 +18,7 @@
                 <outlet property="groupLabel" destination="F6x-sb-srb" id="2tJ-FX-1JS"/>
                 <outlet property="leashNumberLabel" destination="pYn-g4-7Jq" id="9SN-AJ-EK8"/>
                 <outlet property="nameLabel" destination="jg0-PW-OsD" id="kRK-r2-JBW"/>
+                <outlet property="progressBarView" destination="Vam-n0-2Zk" id="UeC-M0-vBH"/>
                 <outlet property="reproductiveStatusLabel" destination="E6Y-Xd-xIM" id="jee-24-E6C"/>
             </connections>
         </placeholder>
@@ -27,8 +27,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="614"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yee-HS-qo9">
-                    <rect key="frame" x="20" y="58" width="374" height="269"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yee-HS-qo9">
+                    <rect key="frame" x="20" y="58" width="374" height="248.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GSd-74-0d9">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -150,7 +150,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ujc-eE-lll">
-                            <rect key="frame" x="0.0" y="248.5" width="374" height="20.5"/>
+                            <rect key="frame" x="0.0" y="248.5" width="374" height="0.0"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuruya Kalan Gün" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gV-Fz-otj">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
@@ -168,21 +168,32 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vam-n0-2Zk" customClass="ProgressBar" customModule="Herd_Tracking" customModuleProvider="target">
+                    <rect key="frame" x="20" y="336.5" width="374" height="231"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="231" id="g1W-jU-FWG"/>
+                        <constraint firstAttribute="width" secondItem="Vam-n0-2Zk" secondAttribute="height" multiplier="34:21" id="vDt-Ee-nj8"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yee-HS-qo9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="LWc-Kj-iB4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vam-n0-2Zk" secondAttribute="trailing" constant="20" id="YAD-wp-KKd"/>
+                <constraint firstItem="Vam-n0-2Zk" firstAttribute="top" secondItem="yee-HS-qo9" secondAttribute="bottom" constant="30" id="eul-Ac-Vuj"/>
                 <constraint firstItem="yee-HS-qo9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="nVO-7N-Aqg"/>
+                <constraint firstItem="Vam-n0-2Zk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="sCh-Dh-Cap"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yee-HS-qo9" secondAttribute="trailing" constant="20" id="xHP-gs-LCj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="277" y="80"/>
+            <point key="canvasLocation" x="276.81159420289856" y="79.6875"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

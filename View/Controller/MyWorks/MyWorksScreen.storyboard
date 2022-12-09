@@ -48,7 +48,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A48-qC-QBn" customClass="InseminatedViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5R-OY-tFx" customClass="SecondPregnancyViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdJ-g9-mJ6" customClass="DryOffViewController" customModule="Herd_Tracking" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdJ-g9-mJ6" customClass="DryOffViewController" customModule="Herd_Tracking" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>

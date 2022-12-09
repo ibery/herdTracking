@@ -14,6 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert , .sound ,.badge]){(success , error) in
+            if error != nil{
+                print(error)
+            }else{
+                // kullanıcıdan izin alındı
+            }
+        }
+
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
 

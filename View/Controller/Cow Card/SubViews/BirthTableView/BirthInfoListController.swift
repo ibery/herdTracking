@@ -38,7 +38,7 @@ class BirthInfoListController : UIView , NibInitializable {
     // MARK: - Setup
     
     override func layoutSubviews() {
-        
+
         
         birthInfoListTableView.dataSource = self
         birthInfoListTableView.delegate = self

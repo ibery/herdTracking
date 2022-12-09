@@ -40,7 +40,7 @@ class BirthViewModel {
                 }else{
                     Constants.birthCow.reproductiveStatus = ReproductiveStatus(rawValue: 2)
                     Constants.birthCow.numberOfLactations = lactacionAndLastCalvingDate(cow: cow)
-                    
+ 
                     inseminationNumber(cow: cow)
                     if cow.inseminations.count > 1 {
                         for i in cow.inseminations{
