@@ -83,9 +83,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="earTagTitleLabel" destination="LMa-Dc-YhK" id="C9e-82-m5H"/>
                 <outlet property="myWorkInseminatedEarTagLabel" destination="F1D-1C-kGM" id="87f-nz-pBt"/>
                 <outlet property="myWorkInseminatedNameLabel" destination="I4X-hj-Ziu" id="8X7-ci-uDM"/>
                 <outlet property="myWorkInseminatedNumberOfMilkedDaysLabel" destination="iQo-8A-RhF" id="oAL-QI-KQG"/>
+                <outlet property="nameTitleLabel" destination="LsV-oR-uBU" id="3mC-lB-LDg"/>
+                <outlet property="numberOfMilkTitleLabel" destination="7ck-pJ-3Y9" id="2x1-kF-BXj"/>
             </connections>
             <point key="canvasLocation" x="172.51908396946564" y="12.323943661971832"/>
         </tableViewCell>

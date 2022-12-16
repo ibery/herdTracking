@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class InseminatedViewController : UIView , NibInitializable {
     
@@ -72,6 +73,7 @@ extension InseminatedViewController  : UITableViewDataSource , UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.myWorkInseminatedCell, for: indexPath) as? MyWorkInseminatedTableViewCell else {return UITableViewCell()}
+        
         cell.myWorkInseminatedEarTagLabel.text = cowArray[indexPath.row].earTag
         cell.myWorkInseminatedNameLabel.text = cowArray[indexPath.row].cowName
         if let lastCalvingDate =  emptyInseminated()[indexPath.row].lastCalvingDate{
@@ -79,6 +81,18 @@ extension InseminatedViewController  : UITableViewDataSource , UITableViewDelega
         }else{
             cell.myWorkInseminatedNumberOfMilkedDaysLabel.text = ""
         }
+        
+        if let colour = FlatWhite().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(emptyInseminated().count)) {
+            cell.backgroundColor = colour
+            cell.myWorkInseminatedEarTagLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.myWorkInseminatedNameLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.myWorkInseminatedNumberOfMilkedDaysLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.earTagTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.nameTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.numberOfMilkTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            
+        }
+            
         return cell
     }
     

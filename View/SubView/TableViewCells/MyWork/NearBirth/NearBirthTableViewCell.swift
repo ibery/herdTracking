@@ -12,6 +12,11 @@ class NearBirthTableViewCell: UITableViewCell {
     @IBOutlet weak var cowEarTagLabel: UILabel!
     @IBOutlet weak var cowNameLabel: UILabel!
     @IBOutlet weak var nearBirthDayLabel: UILabel!
+    @IBOutlet weak var earTagTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var numberOfBirthDayTitleLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

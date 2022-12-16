@@ -11,7 +11,6 @@ import UIKit
 class AddCowViewController : BaseViewController {
     
     @IBOutlet var earringNumber: UITextField!
-    @IBOutlet var ScrollView: UIScrollView!
     @IBOutlet var leashNumberEditText: UITextField!
     @IBOutlet var dateOfBirth: UITextField!
     @IBOutlet var gender: UITextField!

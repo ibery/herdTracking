@@ -51,5 +51,31 @@ class FeedViewModel {
         }
         return status
     }
+    
+    func additionalFeed (feed : FeedModel , addFeed :FeedModel , amountTextField : UITextField , feedDateTextFiedl : UITextField){
+        if amountTextField.text == "" || feedDateTextFiedl.text == "" {
+            UIWindow.showAlert(title: Constants.Alert.title, message: Constants.Alert.emptyFeed)
+        }else{
+            guard let amountText = amountTextField.text else {return}
+            guard let doubleAmountText = Double(amountText) else {return}
+            guard let feedDate = feedDateTextFiedl.text else {return}
+            let days = NumberOfDays.dayBetweenTwoDates(date: feed.feedDate, twiceDate: feedDate)
+            
+            let used = Double(days) * feed.dailyUse
+            let stock = feed.amountReceived - used
+            if stock < 0 || stock == 0{
+                addFeed.amountReceived = doubleAmountText
+            }else{
+                addFeed.amountReceived = doubleAmountText + stock
+            }
+            addFeed.feedDate = feedDate
+            LocaleService.shared.updateAdditionalFeed(feed: feed, addFeed: addFeed)
+            
+            FeedAdditionalViewController().navigationController?.show(Storyboard.feed.viewController!, sender: nil)
+
+        }
+        
+    }
 }
+
 

@@ -11,7 +11,7 @@ enum TabBarItems: Int {
     case home
     case myWorks
     case addCow
-    case notification
+    case reports
     case feed
     
     var title: String{
@@ -22,8 +22,8 @@ enum TabBarItems: Int {
             return "My Works"
         case .addCow:
             return "Add Cow"
-        case .notification:
-            return "Notifications"
+        case .reports:
+            return "Reports"
         case .feed:
             return "Feed"
         }
@@ -37,7 +37,7 @@ enum TabBarItems: Int {
             return Images.myWorks.image
         case .addCow:
             return Images.cowAdd.image
-        case .notification:
+        case .reports:
             return Images.notification.image
         case .feed:
             return Images.feed.image
@@ -66,8 +66,8 @@ enum TabBarItems: Int {
         case .addCow:
             guard let addCowViewController = Storyboard.addCow.viewController else {return UINavigationController()}
             viewController = addCowViewController
-        case .notification:
-            guard let notificationViewController = Storyboard.notification.viewController else {return UINavigationController()}
+        case .reports:
+            guard let notificationViewController = Storyboard.reports.viewController else {return UINavigationController()}
             viewController = notificationViewController
         case .feed:
             guard let feedViewController = Storyboard.feed.viewController else {return UINavigationController()}

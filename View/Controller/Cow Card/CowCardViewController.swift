@@ -269,7 +269,7 @@ extension CowCardViewController : UICollectionViewDataSource , UICollectionViewD
             
             switch views {
             case .general:
-                return generalInformationsView.isHidden = true
+                return generalInformationsView.isHidden = true 
             case .inseminations:
                 return inseminationInformationsView.isHidden = true
             case .birth:

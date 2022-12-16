@@ -258,6 +258,14 @@ class LocaleService {
         return feed
     }
     
+    func updateAdditionalFeed(feed : FeedModel,addFeed : FeedModel){
+        try! realm.write{
+            feed.feedDate = addFeed.feedDate
+            feed.amountReceived = addFeed.amountReceived
+            feed.feedDate = addFeed.feedDate
+        }
+    }
+    
 }
 
 

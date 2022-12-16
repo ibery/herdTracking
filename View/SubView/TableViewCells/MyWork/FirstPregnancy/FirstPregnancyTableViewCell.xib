@@ -83,9 +83,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="earTagTitleLabel" destination="n0x-XB-QjG" id="OzK-jP-SYL"/>
                 <outlet property="firstPregnancyEarTagLabel" destination="mQ2-1h-C0N" id="OBP-S1-XZg"/>
                 <outlet property="firstPregnancyInseminatedDaysLabel" destination="fVM-Jl-vPD" id="pEd-6H-GSR"/>
                 <outlet property="firstPregnancyNameLabel" destination="Wc8-4b-iJC" id="3OR-8B-xL2"/>
+                <outlet property="nameTitleLabel" destination="LOX-vH-Qz7" id="tOs-ns-Qla"/>
+                <outlet property="numberOfDayInseminationLabel" destination="Jjv-z9-LCA" id="T9y-LP-X8f"/>
             </connections>
             <point key="canvasLocation" x="164.8854961832061" y="29.225352112676056"/>
         </tableViewCell>

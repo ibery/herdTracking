@@ -13,7 +13,7 @@ enum Storyboard : Int {
     case myWorks
     case splash
     case addCow
-    case notification
+    case reports
     case feed
     case menu
     case card
@@ -21,6 +21,7 @@ enum Storyboard : Int {
     case person
     case bull
     case pregnancyInspection
+    case additional
     
     
     var name : String {
@@ -33,8 +34,8 @@ enum Storyboard : Int {
             return "Splash"
         case .addCow:
             return "AddCow"
-        case .notification:
-            return "Notification"
+        case .reports:
+            return "Reports"
         case .feed:
             return "Feed"
         case .menu:
@@ -49,6 +50,8 @@ enum Storyboard : Int {
             return "ShowBull"
         case.pregnancyInspection:
             return "PregnancyInspection"
+        case.additional:
+            return "FeedAdditional"
         }
         
     }

@@ -13,6 +13,10 @@ class MyWorkInseminatedTableViewCell: UITableViewCell {
     @IBOutlet weak var myWorkInseminatedNameLabel: UILabel!
     @IBOutlet weak var myWorkInseminatedEarTagLabel: UILabel!
     
+    @IBOutlet weak var earTagTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var numberOfMilkTitleLabel: UILabel!
+    
 //    @IBOutlet weak var myWorkInseminatedEarTagLabel: UILabel!
 //    @IBOutlet weak var myWorkInseminatedNameLabel: UILabel!
     

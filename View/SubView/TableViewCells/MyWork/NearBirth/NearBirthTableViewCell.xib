@@ -80,7 +80,10 @@
             <connections>
                 <outlet property="cowEarTagLabel" destination="4En-Pv-1FV" id="0b3-08-9P9"/>
                 <outlet property="cowNameLabel" destination="ZSL-7g-5UL" id="1tm-Yc-Phh"/>
+                <outlet property="earTagTitleLabel" destination="FBa-0r-8lP" id="6dM-oX-UCB"/>
+                <outlet property="nameTitleLabel" destination="TrG-R6-gnu" id="QN7-oR-ezX"/>
                 <outlet property="nearBirthDayLabel" destination="0U9-CV-4zT" id="8j7-z3-3Ga"/>
+                <outlet property="numberOfBirthDayTitleLabel" destination="R0A-08-SRJ" id="7LV-tP-LeO"/>
             </connections>
             <point key="canvasLocation" x="164.8854961832061" y="37.676056338028168"/>
         </tableViewCell>

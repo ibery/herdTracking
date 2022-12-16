@@ -35,8 +35,11 @@ class FeedViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        addFeedTableView.reloadData()
 //        self.addSideMenuButton()
         tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+
     }
     
     
@@ -79,12 +82,16 @@ extension FeedViewController : UITableViewDelegate , UITableViewDataSource {
         let days = NumberOfDays.dateDayCount(date: feedViewModel.fetchFeedViewModel()[indexPath.row].feedDate)
         let used = Double (days) * feedViewModel.fetchFeedViewModel()[indexPath.row].dailyUse
         let amountReceived = feedViewModel.fetchFeedViewModel()[indexPath.row].amountReceived - used
-        cell.theAmountOffStockLabel.text = String(format: "%.1f", amountReceived)
-        cell.dailyUseLabel.text = String(feedViewModel.fetchFeedViewModel()[indexPath.row].dailyUse)
-        let remaingDays = amountReceived / feedViewModel.fetchFeedViewModel()[indexPath.row].dailyUse
-        cell.numberOfDaysRemainingLabel.text = String(format: "%.1f", remaingDays)
+        if amountReceived < 0{
+            cell.theAmountOffStockLabel.text = "Bitti"
+            cell.numberOfDaysRemainingLabel.text = "0"
+        }else{
+            cell.theAmountOffStockLabel.text = String(format: "%.1f", amountReceived)
+            let remaingDays = amountReceived / feedViewModel.fetchFeedViewModel()[indexPath.row].dailyUse
+            cell.numberOfDaysRemainingLabel.text = String(format: "%.1f", remaingDays)
+        }
         
-//        cell.backgroundColor = UIColor(hexString: <#T##String#>)
+        cell.dailyUseLabel.text = String(feedViewModel.fetchFeedViewModel()[indexPath.row].dailyUse)
        
         
         if let colour = FlatGreen().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(feedViewModel.fetchFeedViewModel().count)) {
@@ -105,9 +112,15 @@ extension FeedViewController : UITableViewDelegate , UITableViewDataSource {
         
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        guard let viewController = self.getViewController(fromStoryboard: .additional, type: FeedAdditionalViewController.self) else {return}
+        
+        viewController.feed = feedViewModel.fetchFeedViewModel()[indexPath.row]
+        self.navigationController?.show(viewController, sender: nil)
+ 
+
+    }
     
     
 }

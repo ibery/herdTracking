@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class DryOffViewController : UIView , NibInitializable {
     
@@ -79,6 +80,18 @@ extension DryOffViewController : UITableViewDataSource , UITableViewDelegate{
             if i.inseminationsStatus == "Başarılı"{
                 cell.firstPregnancyInseminatedDaysLabel.text = String(NumberOfDays.dateDayCount(date: i.inseminationDate))
             }
+        }
+        
+        if let colour = FlatGreen().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(dryOffCows().count)) {
+            cell.backgroundColor = colour
+            
+            cell.firstPregnancyInseminatedDaysLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.firstPregnancyEarTagLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.firstPregnancyNameLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.earTagTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.nameTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.numberOfDayInseminationLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            
         }
         return cell
     }

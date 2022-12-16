@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class SecondPregnancyViewController : UIView , NibInitializable {
     
@@ -81,6 +82,18 @@ extension SecondPregnancyViewController : UITableViewDelegate , UITableViewDataS
             }
         }
         cell.firstPregnancyInseminatedDaysLabel.text = String( NumberOfDays.dateDayCount(date: date))
+        
+        if let colour = FlatPink().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(secondPregnancy().count)) {
+            cell.backgroundColor = colour
+            
+            cell.firstPregnancyInseminatedDaysLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.firstPregnancyEarTagLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.firstPregnancyNameLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.earTagTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.nameTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.numberOfDayInseminationLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            
+        }
         return cell
     }
     

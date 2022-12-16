@@ -78,6 +78,8 @@ struct Constants {
         static let notificationController = "NotificationTableViewCell"
         static let feedCell = "feedCell"
         static let feedController = "FeedTableViewCell"
+        static let reportsCell = "reportsCell"
+        static let reportsController = "ReportsTableViewCell"
         
     }
     

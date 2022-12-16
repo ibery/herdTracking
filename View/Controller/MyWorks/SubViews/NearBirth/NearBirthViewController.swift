@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class NearBirthViewController : UIView , NibInitializable {
     
@@ -83,6 +84,16 @@ extension NearBirthViewController : UITableViewDelegate , UITableViewDataSource{
             }
         }
         cell.nearBirthDayLabel.text = String(283 - day)
+        
+        if let colour = FlatYellow().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(nearBirthCows().count)) {
+            cell.backgroundColor = colour
+            
+            cell.earTagTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.nameTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            cell.numberOfBirthDayTitleLabel.textColor = ContrastColorOf(colour, returnFlat: true)
+            
+        }
+        
         return cell
     }
     

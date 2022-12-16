@@ -15,7 +15,8 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var pieView: PieChartView!
     private var pieChart = PieChartView() // pie graphs
-    
+    private let cowViewModel = CowViewModel()
+    private var cowArray = [CowModel]()
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -24,7 +25,7 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: Constants.CollectionView.homeCollectionView, bundle: nil), forCellWithReuseIdentifier: Constants.CollectionView.cell)
-        
+        cowViewModel.calfToHeifer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,19 +52,19 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         
         pieView.rotationAngle = 0
         // pieView.rotationEnabled = false
-        //pieView.isUserInteractionEnabled = false
-        //   pieView.legend.enabled = false
+//        pieView.isUserInteractionEnabled = false
+           pieView.legend.enabled = false
         
         var entries: [PieChartDataEntry] = Array()
-        entries.append(PieChartDataEntry(value: 50.0,label: "Gebe"))
-        entries.append(PieChartDataEntry(value: 40.0,label: "Tohumlanmış"))
-        entries.append(PieChartDataEntry(value: 10.0,label: "0-60 Taze"))
-        entries.append(PieChartDataEntry(value: 20.0,label: "Kuruda"))
-        entries.append(PieChartDataEntry(value: 70.0,label: "Gebelik Kontrol"))
-        entries.append(PieChartDataEntry(value: 30.0,label: "0-3 aylık"))
-        entries.append(PieChartDataEntry(value: 20.0,label: "3-12 aylık"))
-        entries.append(PieChartDataEntry(value: 20.0,label: "Düveler"))
-        entries.append(PieChartDataEntry(value: 80.0,label: "Erkekler"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Gebe")),label: "Gebe \n (\(cowViewModel.cowStatus(filter: "Gebe")))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Tohumlanmış")),label: "Tohumlanmış \n (\(cowViewModel.cowStatus(filter: "Tohumlanmış")))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Taze")),label: "0-60 Taze \n (\(cowViewModel.cowStatus(filter: "Taze")))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Kuruda")),label: "Kuruda \n (\(cowViewModel.cowStatus(filter: "Kuruda")))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Boş")),label: "Boş \n (\(cowViewModel.cowStatus(filter: "Boş")))"))  // ?
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.homeZeroThreeMonths()),label: "0-3 Ay \n (\(cowViewModel.homeZeroThreeMonths()))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.homeThreeTwelveMonths()),label: "3-12 Ay \n (\(cowViewModel.homeThreeTwelveMonths()))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Düve")),label: "Düveler \n (\(cowViewModel.cowStatus(filter: "Düve")))"))
+        entries.append(PieChartDataEntry(value: Double(cowViewModel.cowStatus(filter: "Boğa")),label: "Boğa \n (\(cowViewModel.cowStatus(filter: "Boğa")))"))
         
         let dataSet = PieChartDataSet(entries: entries , label: "")
         
@@ -77,8 +78,22 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
         let c8 = NSUIColor(hex: 0x41001C)
         let c9 = NSUIColor(hex: 0x51001C)
         
-        dataSet.colors = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
+        let a1 = NSUIColor(red: 0, green: 16, blue: 217)
+        let a2 = NSUIColor(red: 0, green: 32, blue: 255)
+        let a3 = NSUIColor(red: 0, green: 64, blue: 255)
+        let a4 = NSUIColor(red: 0, green: 96, blue: 255)
+        let a5 = NSUIColor(red: 0, green: 128, blue: 255)
+        let a6 = NSUIColor(red: 0, green: 159, blue: 255)
+        let a7 = NSUIColor(red: 0, green: 191, blue: 255)
+        let a8 = NSUIColor(red: 0, green: 0, blue: 255)
+        let a9 = NSUIColor(red: 0, green: 0, blue: 179)
+        
+        
+        
+//       dataSet.colors = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
+        dataSet.colors = [a1,a2,a3,a4,a5,a6,a7,a8,a9]
         dataSet.drawValuesEnabled = false
+        
         
         pieView.data = PieChartData(dataSet: dataSet)
     }
@@ -86,9 +101,12 @@ class HomeViewController: BaseViewController , ChartViewDelegate {
     
     
     // MARK: - Actions
-    
+
     
     //MARK: - Methods
+    
+ 
+
     
 }
 

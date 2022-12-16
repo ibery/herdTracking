@@ -200,6 +200,54 @@ class CowViewModel {
     func dryOffDate(cow:CowModel, date : String){
         LocaleService.shared.dyrOffUpdate(cow: cow , date : date)
     }
+    // KONTROL EDİLECEK CALFTOHEIFER
+    func calfToHeifer(){
+        for i in fetchCowViewModel(){
+            if i.reproductiveStatus?.name == "Buzağı-Dana" && NumberOfDays.dateDayCount(date: i.dateOfBirth) > 365{
+                if i.gender == "Dişi"{
+                    try! realm.write{
+                        i.reproductiveStatus = ReproductiveStatus(rawValue: 1)
+                    }
+                }else{
+                    try! realm.write{
+                        i.reproductiveStatus = ReproductiveStatus(rawValue: 9)
+                    }
+                }
+
+            }
+        }
+    }
+    
+    
+     func homeZeroThreeMonths()-> Int{
+        cow.removeAll()
+        for c in fetchCowViewModel(){
+            if c.reproductiveStatus?.name == "Buzağı-Dana" && NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 91{
+                cow.append(c)
+            }
+        }
+        return cow.count
+    }
+    
+     func homeThreeTwelveMonths() -> Int{
+        cow.removeAll()
+        for c in fetchCowViewModel(){
+            if c.reproductiveStatus?.name == "Buzağı-Dana" && (NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") > 90 && NumberOfDays.dateDayCount(date: c.dateOfBirth, format: "dd.MM.yy") < 360){
+                cow.append(c)
+            }
+        }
+         return cow.count
+    }
+    
+    func cowStatus(filter : String)-> Int{
+        cow.removeAll()
+        for c in fetchCowViewModel(){
+            if c.reproductiveStatus?.name == filter{
+                cow.append(c)
+            }
+        }
+         return cow.count
+    }
     
  
 }

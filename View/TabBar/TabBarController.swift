@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
         let addCowViewController = TabBarItems.addCow.viewController
 //        addCowViewController.tabBarItem = TabBarItems.addCow.tabBarItem
 
-        let notificationViewController = TabBarItems.notification.viewController
+        let notificationViewController = TabBarItems.reports.viewController
 //        notificationViewController.tabBarItem = TabBarItems.notification.tabBarItem
 
          let feedViewController = TabBarItems.feed.viewController

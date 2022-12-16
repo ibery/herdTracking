@@ -12,6 +12,9 @@ class FirstPregnancyTableViewCell: UITableViewCell {
     @IBOutlet weak var firstPregnancyInseminatedDaysLabel: UILabel!
     @IBOutlet weak var firstPregnancyNameLabel: UILabel!
     @IBOutlet weak var firstPregnancyEarTagLabel: UILabel!
+    @IBOutlet weak var earTagTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var numberOfDayInseminationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
